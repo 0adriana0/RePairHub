@@ -18,7 +18,7 @@ export default function Register() {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
-      navigate("/questions");
+      navigate("/location-setting");
     } catch (error) {
       alert(error.message);
     }
