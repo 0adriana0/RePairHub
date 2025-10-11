@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom'
 const LocationSet = ()=> {
   const [address, setAddress] = useState("")
   const [src, setSrc] = useState("")
+  const navigate = useNavigate()
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -17,6 +18,9 @@ const LocationSet = ()=> {
     setSrc(iframeSrc)
   }
 
+  function handleClick(){
+    address && navigate('/chose-role')
+  }
   return (
     <div className='locationSet'>
       <form onSubmit={handleSubmit} className='location-form'>
@@ -29,7 +33,7 @@ const LocationSet = ()=> {
       </form>
         {src ? <iframe src={src} title='map' className='locationIframe'/>:<p className='locationIframe'>Zadejte adresu</p>}
     
-        <Button onClick={useNavigate('/chose-role')}>NEXT</Button>
+        <Button onClick={handleClick}>NEXT</Button>
     </div>
   )
 }

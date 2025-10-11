@@ -22,7 +22,7 @@ import "./App.css";
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/location-setting" element={<LocationSet/>} />
-        <Route path="/chose-role" element/>
+        <Route path="/chose-role" element={<ChoseRole/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
