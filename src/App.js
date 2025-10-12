@@ -6,23 +6,29 @@ import Navbar from "./components/Navbar";
 import SignUpNavbar from "./components/SignUpNavbar";
 import LocationSet from "./pages/LocationSet";
 import ChoseRole from './pages/ChoseRole'
+import ChoseSkills from "./pages/ChoseSkills";
 import "./App.css";
 
  function AppContent() {
-  
+
   const location = useLocation();
-  const hideNavbar =  location.pathname === "location-setting" /* "/" */
-  const showSignUpNavbar = location.pathname === "location-setting"/*||'VÝBĚR ROLE'|| 'ZÁPIS SCHOPNOSTÍ'*/
+
+  const navbarWhiteList = ['/login', '/register']
+  const showNavbar = navbarWhiteList.includes(location.pathname)
+
+  const signUpNavbarWhiteList = ['/location-setting', '/chose-role', 'chose-skills' ]
+  const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
   return (
     <>
-      {/* ! */hideNavbar && <Navbar />}
-      {!showSignUpNavbar && <SignUpNavbar/>}
+      {showNavbar && <Navbar />}
+      {showSignUpNavbar && <SignUpNavbar/>}
       <Routes>
         <Route path="/" element={<Welcome />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/location-setting" element={<LocationSet/>} />
         <Route path="/chose-role" element={<ChoseRole/>}/>
+        <Route path="/chose-skills" element={<ChoseSkills/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
