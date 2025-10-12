@@ -1,0 +1,41 @@
+.chose-role{
+    max-width: 300px;
+    height: 692.906px;
+    background: #2e2b3c;
+    padding: 20px;
+    margin: 90px 42.5px;
+    border-radius: 26px;
+    text-align: center;
+    color: #fff;
+}
+h3{
+    margin: 55px auto;
+}
+.roles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+}
+.roles p{
+    margin: auto;
+    font-size: 18px;
+}
+.role-images{
+    background-color: #02946F;
+    height: 80px;
+    width: 80px;
+    border-radius: 26px;
+}
+.worker-image{
+    width: fit-content;
+    padding: 50px 65.25px;
+}
+.customer-image{
+    padding: 50px;
+    
+}
+.role-images:hover{
+    background-color: #0E725F;
+}
