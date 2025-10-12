@@ -87,7 +87,7 @@ export default function Register() {
           style={{marginBottom: "50px"}}
         />
 
-        <Button type="submit">NEXT</Button>
+        <Button type="submit">Pokračovat</Button>
       </form>
       <div className={styles.login}>
       <p>Už máte účet?</p>

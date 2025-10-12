@@ -16,7 +16,7 @@ import "./App.css";
   const navbarWhiteList = ['/login', '/register']
   const showNavbar = navbarWhiteList.includes(location.pathname)
 
-  const signUpNavbarWhiteList = ['/location-setting', '/chose-role', 'chose-skills' ]
+  const signUpNavbarWhiteList = ['/location-setting', '/chose-role', '/chose-skills' ]
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
   return (
     <>

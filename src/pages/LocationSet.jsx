@@ -33,7 +33,7 @@ const LocationSet = ()=> {
       </form>
         {src ? <iframe src={src} title='map' className='locationIframe'/>:<p className='locationIframe'>Zadejte adresu</p>}
     
-        <Button onClick={handleClick}>NEXT</Button>
+        <Button onClick={handleClick}>Pokračovat</Button>
     </div>
   )
 }

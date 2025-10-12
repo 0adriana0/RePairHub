@@ -14,7 +14,7 @@ export default function Welcome() {
         className={styles.logo}
       />
       <h1 className={styles.slogan}>slogan</h1>
-      <Button onClick={() => navigate("/login")}>NEXT</Button>
+      <Button onClick={() => navigate("/login")}>Pokračovat</Button>
     </div>
   );
 }
