@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebase";
+import { createUserWithEmailAndPassword} from "firebase/auth";
+import { auth, db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Register.module.css";
 import Button from "../components/Button";
+import {doc, setDoc } from "firebase/firestore";
+
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -14,10 +16,17 @@ export default function Register() {
   const [date, setDate] = useState("");
   const navigate = useNavigate();
 
+
   const handleRegister = async (e) => {
     e.preventDefault();
+    const newUser = {email,name,lastName,tel,date}
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user
+      await setDoc(doc(db, 'users', user.uid), {
+        ...newUser,
+        id: user.uid
+      })
       navigate("/location-setting");
     } catch (error) {
       alert(error.message);

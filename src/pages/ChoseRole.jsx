@@ -4,17 +4,24 @@ import workerImg from '../img/o.png'
 import customerImg from '../img/z.png'
 import Button from "../components/Button"
 import { useNavigate } from "react-router-dom"
+import {auth, db} from '../firebase'
+import { updateDoc, doc } from "firebase/firestore"
 
 
 const ChoseRole = () => {
   const [userRole, setUserRole] = useState('')
   const navigate = useNavigate()
 
-  function submitHandle(){
-    function userRoleExists(){
-      userRole==='opravář'? navigate('/chose-skills'): navigate('/profile')
-    }
-    userRole && userRoleExists()
+  async function submitHandle(){
+
+      const user = auth.currentUser
+      user || alert.error("Nikdo není přihlášen")
+      try{
+        const userRef = doc(db, 'users', user.uid)
+        await updateDoc(userRef, {actualRole: userRole})
+
+        userRole==='opravář'? navigate('/chose-skills'): navigate('/profile')
+      } catch(err) {alert(err.message)}
   }
   return (
     <div className="chose-role">

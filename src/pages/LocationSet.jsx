@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './LocationSet.css'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
+import { auth, db } from '../firebase'
+import { updateDoc, doc } from 'firebase/firestore'
 
 
 const LocationSet = ()=> {
@@ -18,8 +20,15 @@ const LocationSet = ()=> {
     setSrc(iframeSrc)
   }
 
-  function handleClick(){
-    address && navigate('/chose-role')
+  async function handleClick(){
+    const user = auth.currentUser
+    user || alert.error("Nikdo není přihlášen")
+
+    try{
+      const userRef = doc(db, 'users', user.uid)
+      await updateDoc(userRef, {location: address})
+      navigate('/chose-role')
+    } catch (err) {alert(err.message)}
   }
   return (
     <div className='locationSet'>

@@ -1,8 +1,12 @@
 import { useState } from 'react'
 import Button from '../components/Button'
 import './ChoseSkills.css'
+import { useNavigate } from 'react-router-dom'
+import { updateDoc,doc } from 'firebase/firestore'
+import { auth,db } from '../firebase'
 
 const ChoseSkills = () => {
+  const navigate = useNavigate()
   const [oneEducation, setOneEducation]= useState('')
   const [educations, setEducations] = useState([])
   const [oneCertificate, setOneCertificate] = useState('')
@@ -10,11 +14,10 @@ const ChoseSkills = () => {
   const [allSkills, setAllSkills] = useState([])
 
   const checkboxChange = (e) => {  
-  const { value, checked } = e.target
-  setAllSkills((p) =>
-    checked ? [...p, value] : p.filter((skill) => skill !== value)
-  )
-  console.log(allSkills);
+    const { value, checked } = e.target
+    setAllSkills((p) =>
+      checked ? [...p, value] : p.filter((skill) =>   skill !== value)
+    )
   
 }
 
@@ -28,6 +31,19 @@ const ChoseSkills = () => {
     e.preventDefault()
     oneCertificate ? setCertificates([...certificates, oneCertificate]) : alert('Vyplňtě prosím pole')
     setOneCertificate('')
+  }
+
+  const submitAll = ()=>{
+    const handleSubmitAll = async ()=>{
+      const user = auth.currentUser
+      user || alert.error("Nikdo není přihlášen")
+      try{
+        const userRef = doc(db, 'users', user.uid)
+        await updateDoc(userRef, {educations, certificates, allSkills})
+    } catch(err) {alert(err.message)}
+  }
+    allSkills.length>0&&educations.length>0 ? handleSubmitAll(): alert('Musíte něco umět a mít nějaké vzdělání')
+
   }
   return (
     <div className="chose-skills">
@@ -79,9 +95,8 @@ const ChoseSkills = () => {
           onChange={(e)=>checkboxChange(e)}/></p>
       </div>
       </form>
-    <Button>Pokračovat</Button>
+    <Button onClick={submitAll}>Pokračovat</Button>
     </div>
   )
 }
-
 export default ChoseSkills
