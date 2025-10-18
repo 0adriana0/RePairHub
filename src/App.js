@@ -7,6 +7,7 @@ import SignUpNavbar from "./components/SignUpNavbar";
 import LocationSet from "./pages/LocationSet";
 import ChoseRole from './pages/ChoseRole'
 import ChoseSkills from "./pages/ChoseSkills";
+import ProfilOpravar from "./pages/ProfilOpravar";
 import "./App.css";
 
  function AppContent() {
@@ -29,6 +30,7 @@ import "./App.css";
         <Route path="/location-setting" element={<LocationSet/>} />
         <Route path="/chose-role" element={<ChoseRole/>}/>
         <Route path="/chose-skills" element={<ChoseSkills/>}/>
+        <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>

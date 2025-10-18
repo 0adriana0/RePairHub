@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from '../components/Button'
 import './ChoseSkills.css'
 import { useNavigate } from 'react-router-dom'
-import { updateDoc,doc } from 'firebase/firestore'
+import { updateDoc,doc, getDoc } from 'firebase/firestore'
 import { auth,db } from '../firebase'
 
 const ChoseSkills = () => {
@@ -24,22 +24,34 @@ const ChoseSkills = () => {
 
   const firstFormSubmit = (e)=>{
     e.preventDefault()
-    oneEducation ? setEducations([...educations, oneEducation]) : alert('Vyplňtě prosím pole')
+
+    function oneEducationExist(){
+      educations.includes(oneEducation) ? alert('Toho už bylo přidáno') : setEducations([...educations, oneEducation])
+    }
+
+    oneEducation ? oneEducationExist() : alert('Vyplňtě prosím pole')
     setOneEducation('')
   }
   const secondFormSubmit = (e)=>{
     e.preventDefault()
-    oneCertificate ? setCertificates([...certificates, oneCertificate]) : alert('Vyplňtě prosím pole')
+
+    function oneCertificateExist(){
+
+      certificates.includes(oneCertificate) ? alert('Toho už bylo přidáno') : setCertificates([...certificates, oneCertificate])
+    }
+    oneCertificate ? oneCertificateExist() : alert('Vyplňtě prosím pole')
     setOneCertificate('')
   }
 
   const submitAll = ()=>{
     const handleSubmitAll = async ()=>{
       const user = auth.currentUser
-      user || alert.error("Nikdo není přihlášen")
+      user || alert("Nikdo není přihlášen")
       try{
         const userRef = doc(db, 'users', user.uid)
         await updateDoc(userRef, {educations, certificates, allSkills})
+        const role = (await getDoc(userRef)).data().actualRole
+        role === 'opravář' ? navigate('/profil-opravar') : navigate('/profil-zakaznik')
     } catch(err) {alert(err.message)}
   }
     allSkills.length>0&&educations.length>0 ? handleSubmitAll(): alert('Musíte něco umět a mít nějaké vzdělání')

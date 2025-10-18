@@ -1,11 +1,12 @@
 import './SignUpNavbar.css'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const SignUpNavbar = () => {
+  const navigate = useNavigate()
   return (
     <nav className='signUpNav'>
     <button
-        onClick={() => Navigate("/register")}
+        onClick={() => navigate("/register")}
         className={'signUpNavbar'}
       >SING UP</button>
     </nav>
