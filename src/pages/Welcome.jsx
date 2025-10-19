@@ -10,11 +10,11 @@ export default function Welcome() {
     <div className={styles.container}>
       <img
         src={logo}
-        alt="Логотип"
+        alt="Logo"
         className={styles.logo}
       />
       <h1 className={styles.slogan}>slogan</h1>
-      <Button onClick={() => navigate("/login")}>NEXT</Button>
+      <Button onClick={() => navigate("/login")}>Pokračovat</Button>
     </div>
   );
 }
