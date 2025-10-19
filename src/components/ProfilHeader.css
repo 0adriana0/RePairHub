@@ -1,0 +1,9 @@
+.profil-header{
+    height: 20vh;
+    background-color: #009B73;
+    border-radius: 0 0 26px 26px;
+    text-align: end;
+}
+.profil-header img{
+    margin: 10px 10px 0 0;
+}

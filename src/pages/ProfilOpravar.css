@@ -1,9 +1,12 @@
+.profil-opravar-all{
+    height: 100vh;
+}
 .profil-opravar{
     max-width: 300px;
-    height: 692.906px;
+    height: 68vh;
     background: #2e2b3c;
     padding: 20px;
-    margin: 90px 42.5px;
+    margin: 0 42.5px 40px 42.5px;
     border-radius: 26px;
     text-align: center;
 }
