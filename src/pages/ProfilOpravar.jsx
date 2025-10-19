@@ -1,9 +1,12 @@
+import './ProfilOpravar.css'
 
 
 const ProfilOpravar = () => {
   return (
-    <div>
-        
+    <div className="profil-opravar">
+        <header>
+
+        </header>
     </div>
   )
 }

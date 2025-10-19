@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Navbar from "./components/Navbar";
 import SignUpNavbar from "./components/SignUpNavbar";
+import Footer from "./components/Footer";
 import LocationSet from "./pages/LocationSet";
 import ChoseRole from './pages/ChoseRole'
 import ChoseSkills from "./pages/ChoseSkills";
@@ -19,6 +20,9 @@ import "./App.css";
 
   const signUpNavbarWhiteList = ['/location-setting', '/chose-role', '/chose-skills' ]
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
+
+  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications', '/searching', '/home']
+  const showFooter = footerWhiteList.includes(location.pathname)
   return (
     <>
       {showNavbar && <Navbar />}
@@ -33,6 +37,7 @@ import "./App.css";
         <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
+      {showFooter && <Footer/>}
     </>
   );
 }
