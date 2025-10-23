@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate("/profile");
+      navigate("/profil-opravar");
     } catch (error) {
       alert(error.message);
     }
