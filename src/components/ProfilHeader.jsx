@@ -1,5 +1,5 @@
 import maleLogo from '../img/logo-small.png'
-import './ProfilHeader.css'
+import './styles/ProfilHeader.css'
 
 const ProfilHeader = ({nadpisText}) => {
   return <header className='profil-header'>

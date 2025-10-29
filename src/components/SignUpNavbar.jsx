@@ -1,4 +1,4 @@
-import './SignUpNavbar.css'
+import './styles/SignUpNavbar.css'
 import { useNavigate } from 'react-router-dom'
 
 const SignUpNavbar = () => {

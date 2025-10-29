@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
+import ChangeRoleBtn from '../components/ChangeRoleBtn'
 
 const ProfilOpravar = () => {
   const navigate = useNavigate()
@@ -133,11 +134,8 @@ const ProfilOpravar = () => {
               onChange={(e)=>changeBio}
               className={bioClass}
             />
-
-
-            <button>Výběr role</button>
+            <ChangeRoleBtn />
             <Button onClick={()=>saveChanges()}>Uložit změny</Button>
-            {/* <Button>Zpět</Button> */}
           </form>
       </div>
     </div>
