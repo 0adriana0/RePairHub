@@ -1,5 +1,5 @@
 import { useState } from "react"
-import './ChoseRole.css'
+import '../styles/ChoseRole.css'
 import workerImg from '../img/o.png'
 import customerImg from '../img/z.png'
 import Button from "../components/Button"
