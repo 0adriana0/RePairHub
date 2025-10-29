@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Button from '../components/Button'
-import './ChoseSkills.css'
+import '../styles/ChoseSkills.css'
 import { useNavigate } from 'react-router-dom'
 import { updateDoc,doc, getDoc } from 'firebase/firestore'
 import { auth,db } from '../firebase'
