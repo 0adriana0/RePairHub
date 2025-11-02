@@ -1,6 +1,7 @@
 .chose-skills{
     max-width: 300px;
-    height: 692.906px;
+    min-height: 692.906px;
+    height: fit-content;
     background: #2e2b3c;
     padding: 20px;
     margin: 90px 42.5px;
@@ -10,11 +11,27 @@
 label{
     margin-top: 30px;
     margin-left: 20px;
+    font-size: 3.76vw;
+}
+.add-new-input-btn{
+    text-align: center;
+    background: none;
+    padding: 5px;
+    height: 29px;
+    width: 29px;
+    font-size: 4vw;
+    font-weight: 1px;
+    color: #fff;
+    margin: 0;
+    margin-right: 5px;
+    border: #009b73 solid 1px;
+    border-radius: 50px;
 }
 .co-umis{
     text-align: left;
     margin-left: 20px;
     font-weight: bold;
+    font-size: 3.76vw;
 }
 .skills-form{
     display: flex;
@@ -33,6 +50,7 @@ label{
     align-items: center;
     margin-left: 15px;
     margin-top: 30px;
+    font-size: 3.76vw ;
 }
 .skills-form div p input{
     appearance: none;
@@ -41,11 +59,11 @@ label{
     position: relative;
     cursor: pointer;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 4.7vw;
+    height: 4.7vw;
     margin: 0;
     padding: 0;
-    margin-right: 12px;
+    margin-right: 0px;
     accent-color: #0E725F;
     background-color: #0E725F;
 }
@@ -54,8 +72,8 @@ label{
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
-    width: 20px;
-    height: 20px;
+    width: 4.7vw;
+    height: 4.7vw;
     margin: 0;
     margin-right: 12px;
     padding: 0;
@@ -64,6 +82,6 @@ label{
     position: absolute;
     top: -0.5px;
     left: 0.5px;
-    font-size: 14px;
+    font-size: 3.3vw;
     text-align: center;
 }

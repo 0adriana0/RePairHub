@@ -13,36 +13,35 @@ const ChoseSkills = () => {
   const [certificates, setCertificates] = useState([])
   const [allSkills, setAllSkills] = useState([])
 
+  const [addedEducationInputs, setAddedEducationInputs] = useState([''])
+  const [disabledInputs, setDisabledInputs] = useState([])
+
+  // Checkboxy 
   const checkboxChange = (e) => {  
     const { value, checked } = e.target
     setAllSkills((p) =>
-      checked ? [...p, value] : p.filter((skill) =>   skill !== value)
+      checked ? [...p, value]:p.filter((skill) =>skill !== value)
     )
   
 }
 
+  // Submity formulářů
+  
 
-  const firstFormSubmit = (e)=>{
+  // Přidávání labelů
+  const handleAddNewEducationInput = (e)=>{
     e.preventDefault()
-
-    function oneEducationExist(){
-      educations.includes(oneEducation) ? alert('Toho už bylo přidáno') : setEducations([...educations, oneEducation])
+    const add=()=>{
+      setDisabledInputs([...disabledInputs, disabledInputs.length])
+      setEducations((p)=>[...p, oneEducation])
+      setAddedEducationInputs((p)=>[...p, ''])
     }
-
-    oneEducation ? oneEducationExist() : alert('Vyplňtě prosím pole')
-    setOneEducation('')
-  }
-  const secondFormSubmit = (e)=>{
-    e.preventDefault()
-
-    function oneCertificateExist(){
-
-      certificates.includes(oneCertificate) ? alert('Toho už bylo přidáno') : setCertificates([...certificates, oneCertificate])
-    }
-    oneCertificate ? oneCertificateExist() : alert('Vyplňtě prosím pole')
-    setOneCertificate('')
+    oneEducation && add()
+    
   }
 
+
+  // Potvrzení všeho
   const submitAll = ()=>{
     const handleSubmitAll = async ()=>{
       const user = auth.currentUser
@@ -59,22 +58,37 @@ const ChoseSkills = () => {
   }
   return (
     <div className="chose-skills">
-      <form onSubmit={firstFormSubmit} className='educations-form'>
-        <label htmlFor="educations">Všechna vzdělání</label>
-        <input 
-          type="text" 
-          placeholder='POTVRDIT PO KAŽDÉM VZDĚLÁNÍ'
-          name='educations'
-          value={oneEducation}
-          onChange={(e)=>setOneEducation(e.target.value)}
-          />
+      <form className='educations-form'>
+        <label htmlFor="educations">Všechna dosažená vzdělání</label>
+       {addedEducationInputs.map((n, index)=>{
+            return  <input 
+                      key={index}
+                      type="text" 
+                      placeholder={addedEducationInputs.length===1? 'Střední odborné učiliště...':'Vaše další vzdělání'}
+                      disabled={index < addedEducationInputs.length-1}
+                      name='educations'
+                      value={educations[index]}
+                      onChange={(e)=>setOneEducation(e.target.value)}
+                    />
+          })}
+        {addedEducationInputs.length<4 && <button className='add-new-input-btn' onClick={(e)=>handleAddNewEducationInput(e)}>+</button>
+        }
+
+        {addedEducationInputs.length>1 && <button className='add-new-input-btn' onClick={(e)=>{
+          e.preventDefault()
+          setAddedEducationInputs(addedEducationInputs.slice(0,-1))
+          setDisabledInputs(disabledInputs.slice(0,-1))
+          setOneEducation('')
+          setEducations(educations.slice(0,-1))
+        }}>-</button>}
+
       </form>
 
-      <form onSubmit={secondFormSubmit} className='certificates-form'>
+      <form className='certificates-form'>
         <label htmlFor="certificates">Všechny certifikáty</label>
         <input 
           type="text" 
-          placeholder='POTVRDIT PO KAŽDÉM CERTIFIKÁTU'
+          placeholder='Aj - B2'
           name='certificates'
           value={oneCertificate}
           onChange={(e)=>setOneCertificate(e.target.value)}
