@@ -43,7 +43,7 @@ export default function Login() {
           required
           style={{marginBottom: "50px"}}
         />
-        <Button className={styles.btn} onClick={() => navigate("/profile")} type="submit">SING IN</Button>
+        <Button className={styles.btn} onClick={() => navigate("/profil-zakaznik")} type="submit">SING IN</Button>
       </form>
       <div className={styles.register}>
       <p>Ještě nemáte účet?</p>

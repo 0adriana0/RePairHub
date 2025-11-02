@@ -9,6 +9,8 @@ import LocationSet from "./pages/LocationSet";
 import ChoseRole from './pages/ChoseRole'
 import ChoseSkills from "./pages/ChoseSkills";
 import ProfilOpravar from "./pages/ProfilOpravar";
+import ProfilZakaznik from "./pages/ProfilZakaznik";
+import Prispevky from "./pages/Prispevky";
 import "./App.css";
 
  function AppContent() {
@@ -35,6 +37,8 @@ import "./App.css";
         <Route path="/chose-role" element={<ChoseRole/>}/>
         <Route path="/chose-skills" element={<ChoseSkills/>}/>
         <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
+        <Route path="/profil-zakaznik" element={<ProfilZakaznik/>}/>
+        <Route path="/profil-zakaznik/prispevky" element={<Prispevky/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {showFooter && <Footer/>}

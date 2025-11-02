@@ -11,7 +11,7 @@ const ProfilOpravar = () => {
   const navigate = useNavigate()
 
   // Informace z databáze
-  const [pfp, setPfp] = useState(defaultPfp)
+  const [pfp] = useState(defaultPfp)
   const [name, setName] = useState('Načítám data...')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('Načítám data...')
@@ -95,11 +95,6 @@ const ProfilOpravar = () => {
     
   }
 
-
-
-
-
-  
 
   // Načítání dat
   useEffect(()=>{
