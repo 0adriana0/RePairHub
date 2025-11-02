@@ -1,4 +1,4 @@
-import './ProfilOpravar.css'
+import '../styles/ProfilOpravar.css'
 import ProfilHeader from '../components/ProfilHeader'
 import defaultPfp from '../img/pfp-default.png'
 import { auth,db } from '../firebase'
@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
+import ChangeRoleBtn from '../components/ChangeRoleBtn'
 
 const ProfilOpravar = () => {
   const navigate = useNavigate()
@@ -18,83 +19,56 @@ const ProfilOpravar = () => {
   const [location, setLocation] = useState('Načítám data...')
   const [bio, setBio] = useState('Načítám data...')
 
-  // Podmínky pro zobrazení inputu pro změnu něčeho
-  const [nameChanging, setNameChanging] = useState(false)
-  const [emailChanging, setEmailChanging] = useState(false)
-  const [locationChanging, setLocationChanging] = useState(false)
 
-  // Změny
-  const [nameALastNameInput, setNameALastNameInput] = useState('')
-  const [newEmail, setNewEmail] = useState('')
-  const [newLocation, setNewLocation] = useState('')
+  // Class pro inputy podle stavu
+  const [nameClass, setNameClass] = useState('informace')
+  const [lastNameClass, setLastNameClass] = useState('informace')
+  const [locationClass, setLocationClass]= useState('informace')
+  const [emailClass, setEmailClass]= useState('informace')
+  const [bioClass, setBioClass]= useState('informace')
+
 
   // Změny na profilu
-  const changeNameAndLastName = (e)=>{
-    if(e.key === 'Enter'){
-      e.preventDefault()
-      const namesArr = nameALastNameInput.split(' ')
-      setName(namesArr[0])
-      setLastName(namesArr[1])
-      setNameChanging(false)
-    }
-    if(e.key === 'Escape'){
-      setNameChanging(false)
-    }
+  const changeName = (e)=>{
+    e.preventDefault()
+    setName(e.target.value)
+    setNameClass('changed-info')
   }
-
+  const changeLastName = (e)=>{
+    e.preventDefault()
+    setLastName(e.target.value)
+    setLastNameClass('changed-info')
+  }
   const changeLocation = (e)=>{
-    if(e.key === 'Enter'){
-      e.preventDefault()
-      setLocation(newLocation)
-      setLocationChanging(false)
-    }
-    if(e.key === 'Escape'){
-      setLocationChanging(false)
-    }
+    e.preventDefault()
+    setLocation(e.target.value)
+    setLocationClass('changed-info')
   }
-
   const changeEmail = (e)=>{
-    
-    if(e.key === 'Enter'){
-      const isValidEmail = ()=>{
-        e.preventDefault()
-        return /\S+@\S+\.\S+/.test(newEmail)
-      }
-      if(isValidEmail()){        
-        e.preventDefault()
-        setEmail(newEmail)
-        setEmailChanging(false)
-      }
-    }
-    if(e.key === 'Escape'){
-      setEmailChanging(false)
-    }
+    e.preventDefault()
+    setEmail(e.target.value)
+    setEmailClass('changed-info')
+  }
+   const changeBio = (e)=>{
+    e.preventDefault()
+    setBio(e.target.value)
+    setBioClass('changed-info')
   }
 
-  const changeBio = (e)=>{
-    if(e.key ==='Enter'){
-       e.preventDefault()
-      const user = auth.currentUser
-      const userRef = doc(db, 'users', user.uid)
-      updateDoc(userRef, {bio: bio})
-    } 
-  }
 
   // Uložení nových dat
   const saveChanges = async ()=>{
-    
     try {
       const user = auth.currentUser
-      user || alert("Nikdo není přihlášen")
       const userRef = doc(db, 'users', user.uid)
-
-      
-      
-      await updateDoc(userRef, {name, lastName, location, email})  
+      await updateDoc(userRef, {name, lastName, location, email, bio})  
     } catch(err) {alert(err.message)}
-    
+    setNameClass('informace')
+    setLastNameClass('informace')
+    setLocationClass('informace')
+    setEmailClass('informace')
+    setBioClass('informace')
   }
-
 
   // Načítání dat
   useEffect(()=>{
@@ -115,60 +89,52 @@ const ProfilOpravar = () => {
     try{
       loadData()
     } catch(err) {alert(err.message)}
-    
-  },[navigate])
+  }, [navigate])
+
+
 
   return (<div className='profil-opravar-all'>
     <ProfilHeader nadpisText='Upravit profil' />
       <div className="profil-opravar">
           <img src={pfp} alt="" />
-          <form>
-            <p id='top-profile'>Jméno a příjmení</p>
-            <p onClick={()=>setNameChanging(true)} className={nameChanging ? 'inactive':'informace'}>{name+' '+lastName}</p>
+          <form onSubmit={(e)=>e.preventDefault()}>
+            <p id='top-profile'>Jméno</p>
             <input 
-              type="text" 
-              placeholder='Nové jméno a příjmení' 
-              className={!nameChanging&&'inactive'}
-              value={nameALastNameInput}
-              onChange={(e)=>setNameALastNameInput(e.target.value)}
-              onKeyDown={(e)=>changeNameAndLastName(e)}
+              type="text"
+              value={name}
+              onChange={(e)=>changeName(e)}
+              className={nameClass}
+            /> 
+            <p>Příjmení</p>
+            <input 
+              type="text"
+              value={lastName}
+              onChange={(e)=>changeLastName(e)}
+              className={lastNameClass}
             />
-
             <p>Lokace</p>
-            <p onClick={()=>setLocationChanging(true)} className={locationChanging?'inactive':'informace'}>{location}</p>
             <input 
               type="text" 
-              placeholder='Nová lokace'
-              className={!locationChanging? 'inactive': undefined}
-              value={newLocation}
-              onChange={(e)=>setNewLocation(e.target.value)}
-              onKeyDown={(e)=>changeLocation(e)}
+              value={location}
+              onChange={(e)=>changeLocation(e)}
+              className={locationClass}
             />
-
-            <p>Email</p>
-            <p onClick={()=>setEmailChanging(true)} className={emailChanging?'inactive':'informace'}>{email}</p>
+            <p>Kontaktní email</p>
             <input 
-              type="email"
-              placeholder='Nový email'
-              required
-              className={!emailChanging?'inactive':undefined}
-              value={newEmail}
-              onChange={(e)=>setNewEmail(e.target.value)}
-              onKeyDown={(e)=>changeEmail(e)}
-              />
-
+              type="text"
+              value={email}   
+              onChange={(e)=>changeEmail(e)}
+              className={emailClass}
+            />
             <p>Bio</p>
             <input 
               type="text"
-              value={bio?bio:''}
+              value={bio}
               placeholder='Napište něco o sobě'
-              onChange={(e)=>setBio(e.target.value)}
-              onKeyDown={(e)=>changeBio(e)}
-              className='informace'
+              onChange={(e)=>changeBio}
+              className={bioClass}
             />
-
-
-            <button>Výběr role</button>
+            <ChangeRoleBtn />
             <Button onClick={()=>saveChanges()}>Uložit změny</Button>
           </form>
       </div>

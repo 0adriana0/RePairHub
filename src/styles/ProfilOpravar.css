@@ -16,27 +16,20 @@
     left: 39.41vw;
 }
 #top-profile{
-    margin-top: 35px;
+    margin-top: 8%;
 }
 .profil-opravar p{
     text-align: left;
-    margin-top: 15px;
+    margin-top: 0;
     margin-bottom: 5px;
     padding-left: 10px;
 }
 .profil-opravar .informace{
-    width: 280px;
-    height: 20px;
-    padding: 10px 12px;
-    margin-bottom: 18px;
-    border-radius: 8px;
-    font-size: 15px;
-    transition: border-color 0.3s ease;
-    background-color: #176358;
-    border: none;
     color: #6BE0C2;
-    margin-top: 0;
 }
 .profil-opravar .inactive{
     display: none;
+}
+.profil-opravar .changed-info{
+    color: lightslategrey;
 }
