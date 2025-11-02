@@ -10,10 +10,40 @@
     border-radius: 26px;
     text-align: center;
 }
-.profil-opravar img{
+.profil-opravar-smaller{
+    height: 34vh;
+}
+.profil-opravar .pfp-set{
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.profil-opravar .pfp-set p{
+    margin: 0;
+    text-align: left;
+}
+.profil-opravar .pfp-set input{
+    color: #009B73;
+    border: 2px solid #009B73;
+    width: 240px;
+    border-radius: 6px;
+    padding: 0;
+    margin: 20px 0;
+    background: none;
+}
+.profil-opravar .pfp{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
     position: absolute;
     top: 14vh;
     left: 39.41vw;
+}
+.profil-opravar .pen{
+    position: absolute;
+    left: 53vw;
 }
 #top-profile{
     margin-top: 8%;
