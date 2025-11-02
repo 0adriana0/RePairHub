@@ -14,7 +14,9 @@ const ChoseSkills = () => {
   const [allSkills, setAllSkills] = useState([])
 
   const [addedEducationInputs, setAddedEducationInputs] = useState([''])
-  const [disabledInputs, setDisabledInputs] = useState([])
+  const [disabledEducationsInputs, setdisabledEducationsInputs] = useState([])
+  const [addedCertificateInputs, setAddedCertificateInputs] = useState([''])
+  const [disabledCertificatesInputs, setdisabledCertificateInputs] = useState([])
 
   // Checkboxy 
   const checkboxChange = (e) => {  
@@ -28,11 +30,11 @@ const ChoseSkills = () => {
   // Submity formulářů
   
 
-  // Přidávání labelů
+  // Přidávání inputů
   const handleAddNewEducationInput = (e)=>{
     e.preventDefault()
     const add=()=>{
-      setDisabledInputs([...disabledInputs, disabledInputs.length])
+      setdisabledEducationsInputs([...disabledEducationsInputs, disabledEducationsInputs.length])
       setEducations((p)=>[...p, oneEducation])
       setAddedEducationInputs((p)=>[...p, ''])
     }
@@ -40,19 +42,36 @@ const ChoseSkills = () => {
     
   }
 
+  const handleAddNewCertificateInput = (e)=>{
+    e.preventDefault()
+    const add=()=>{
+      setdisabledCertificateInputs([...disabledCertificatesInputs, disabledCertificatesInputs.length])
+      setCertificates((p)=>[...p, oneCertificate])
+      setAddedCertificateInputs((p)=>[...p, ''])
+    }
+    oneCertificate && add()
+    
+  }
+
 
   // Potvrzení všeho
   const submitAll = ()=>{
+    const allEducations = [...educations, oneEducation]
+    const allCertificates = [...certificates, oneCertificate]
+    console.log(allCertificates, allEducations);
+
+
     const handleSubmitAll = async ()=>{
       const user = auth.currentUser
       user || alert("Nikdo není přihlášen")
+      
       try{
         const userRef = doc(db, 'users', user.uid)
-        await updateDoc(userRef, {educations, certificates, allSkills})
+        await updateDoc(userRef, {educations: allEducations, certificates: allCertificates, allSkills})
         const role = (await getDoc(userRef)).data().actualRole
         role === 'opravář' ? navigate('/profil-opravar') : navigate('/profil-zakaznik')
     } catch(err) {alert(err.message)}
-  }
+    }
     allSkills.length>0&&educations.length>0 ? handleSubmitAll(): alert('Musíte něco umět a mít nějaké vzdělání')
 
   }
@@ -77,22 +96,35 @@ const ChoseSkills = () => {
         {addedEducationInputs.length>1 && <button className='add-new-input-btn' onClick={(e)=>{
           e.preventDefault()
           setAddedEducationInputs(addedEducationInputs.slice(0,-1))
-          setDisabledInputs(disabledInputs.slice(0,-1))
+          setdisabledEducationsInputs(disabledEducationsInputs.slice(0,-1))
           setOneEducation('')
-          setEducations(educations.slice(0,-1))
+          setEducations(educations.slice(0,-1)) 
         }}>-</button>}
-
       </form>
 
       <form className='certificates-form'>
         <label htmlFor="certificates">Všechny certifikáty</label>
-        <input 
-          type="text" 
-          placeholder='Aj - B2'
-          name='certificates'
-          value={oneCertificate}
-          onChange={(e)=>setOneCertificate(e.target.value)}
-          />
+        {addedCertificateInputs.map((n, index)=>{
+            return  <input 
+                      key={index}
+                      type="text" 
+                      placeholder={addedCertificateInputs.length===1? 'AJ-B2':'Vaše další certifikáty'}
+                      disabled={index < addedCertificateInputs.length-1}
+                      name='certificates'
+                      value={certificates[index]}
+                      onChange={(e)=>setOneCertificate(e.target.value)}
+                    />
+          })}
+        {addedCertificateInputs.length<6 && <button className='add-new-input-btn' onClick={(e)=>handleAddNewCertificateInput(e)}>+</button>
+        }
+
+        {addedCertificateInputs.length>1 && <button className='add-new-input-btn' onClick={(e)=>{
+          e.preventDefault()
+          setAddedCertificateInputs(addedCertificateInputs.slice(0,-1))
+          setdisabledCertificateInputs(disabledCertificatesInputs.slice(0,-1))
+          setOneCertificate('')
+          setCertificates(certificates.slice(0,-1)) 
+        }}>-</button>}
       </form>
       <p className='co-umis'>Co umíš?</p>
       <form className='skills-form half'>

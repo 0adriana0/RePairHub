@@ -14,6 +14,7 @@ label{
     font-size: 3.76vw;
 }
 .add-new-input-btn{
+    cursor: pointer;
     text-align: center;
     background: none;
     padding: 5px;
@@ -27,9 +28,12 @@ label{
     border: #009b73 solid 1px;
     border-radius: 50px;
 }
+.add-new-input-btn:hover{
+    background-color: #0E725F;
+}
 .co-umis{
     text-align: left;
-    margin-left: 20px;
+    margin: 20px 0 0 4.7vw;
     font-weight: bold;
     font-size: 3.76vw;
 }
@@ -37,7 +41,7 @@ label{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 62px;
+    margin-bottom: 50px;
 }
 .skills-form div{
     width: 50%;
