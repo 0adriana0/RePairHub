@@ -33,7 +33,6 @@ const ProfilOpravar = () => {
   // Změna pfp
   const [pfp, setPfp] = useState(defaultPfp)
   const [changingPfp, setChangingPfp] = useState(false)
-  const [pfpUrl, setPfpUrl] = useState('')
   const [pfpPublicId, setPfpPublicId] = useState('')
 
   const handleChangePfp = async (e)=>{
@@ -44,11 +43,10 @@ const ProfilOpravar = () => {
     const formData = new FormData()
     formData.append('file', file)
     formData.append('upload_preset', 'RePairHub')
-    formData.append('folder', `users/${user.uid}`)
+    formData.append('folder', `users/${user.uid}/pfp`)
     
     try{
       const resp = await axios.post('https://api.cloudinary.com/v1_1/dmisabll4/image/upload', formData)
-      setPfpUrl(resp.data.secure_url)
       setPfp(resp.data.secure_url)
       setPfpPublicId(resp.data.public_id)
     } catch(err){alert(err.message)}
@@ -103,7 +101,7 @@ const ProfilOpravar = () => {
     try {
       const user = auth.currentUser
       const userRef = doc(db, 'users', user.uid)
-      await updateDoc(userRef, {name, lastName, location, email, pfp, bio, pfp: pfpUrl, pfpPublicId})  
+      await updateDoc(userRef, {name, lastName, location, email, bio, pfp, pfpPublicId})  
     } catch(err) {alert(err.message)}
     setNameClass('informace')
     setLastNameClass('informace')
@@ -121,13 +119,14 @@ const ProfilOpravar = () => {
         const user = auth.currentUser
         const userRef = doc(db, 'users', user.uid)
         const userData = (await getDoc(userRef)).data()
-        const {name, lastName, email, location, bio, pfp} = userData
+        const {name, lastName, email, location, bio, pfp, pfpPublicId} = userData
         setName(name)
         setLastName(lastName)
         setEmail(email)
         setLocation(location)
         setBio(bio || '')
         setPfp(pfp || defaultPfp)
+        pfpPublicId && setPfpPublicId(pfpPublicId)
       }
     try{
       loadData()
