@@ -3,7 +3,7 @@
 }
 .profil-opravar{
     max-width: 300px;
-    height: 68vh;
+    min-height: 68vh;
     background: #2e2b3c;
     padding: 20px;
     margin: 0 42.5px 40px 42.5px;
@@ -26,12 +26,80 @@
 }
 .profil-opravar .pfp-set input{
     color: #009B73;
-    border: 2px solid #009B73;
     width: 240px;
     border-radius: 6px;
-    padding: 0;
     margin: 20px 0;
     background: none;
+}
+.profil-opravar .pfp-set input::file-selector-button{
+    background-color: #009B73;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+}
+.unveryfiedEducations{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+.unveryfiedEducations .pocet-neoverenych-vzdelani{
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+.unveryfiedEducations .oneUnveryfiedEducation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 47vw;
+    padding: 20px 12px;
+    background-color: #06021A;
+    margin: 4px 0;
+    border-radius: 12px;
+}
+.unveryfiedEducations .oneUnveryfiedEducation p{
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+.unveryfiedEducations .oneUnveryfiedEducation button{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background-color: #282343;
+    color: #fff;
+    font-size: 12px;
+}
+.verifyingOneEducation{
+    color: #fff;
+    margin-bottom: 80%;
+}
+.verifyingOneEducation h3, h4{
+    text-align: left;
+}
+.verifyingOneEducation h3 {
+    margin: 20px 0 40px 0;
+}
+.verifyingOneEducation input{
+    display: flex;
+    justify-content: space-between;
+    background: none;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.verifyingOneEducation input::file-selector-button{
+    background-color: #282343;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
 }
 .profil-opravar .pfp{
     height: 90px;
@@ -45,8 +113,24 @@
     position: absolute;
     left: 53vw;
 }
+.profil-opravar .overte-sva-vzdelani{
+    color: #D93025;
+    display: inline-block;
+    margin-top: 14%;
+    margin-right: 2.5vw;
+    margin-bottom: 0;
+    font-size: 3.5vw;
+}
+.profil-opravar .verify-here-btn{
+    background-color: #7C778A;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    padding: 1.5% 4.5%;
+    font-size: 13px;
+}
 #top-profile{
-    margin-top: 8%;
+    margin-top: 4%;
 }
 .profil-opravar p{
     text-align: left;
