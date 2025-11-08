@@ -72,7 +72,7 @@ const ChoseSkills = () => {
         role === 'opravář' ? navigate('/profil-opravar') : navigate('/profil-zakaznik')
     } catch(err) {alert(err.message)}
     }
-    allSkills.length>0&&educations.length>0 ? handleSubmitAll(): alert('Musíte něco umět a mít nějaké vzdělání')
+    allSkills.length>0&&allEducations.length>0 ? handleSubmitAll(): alert('Musíte něco umět a mít nějaké vzdělání')
 
   }
   return (

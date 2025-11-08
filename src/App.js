@@ -10,6 +10,7 @@ import ChoseRole from './pages/ChoseRole'
 import ChoseSkills from "./pages/ChoseSkills";
 import ProfilOpravar from "./pages/ProfilOpravar";
 import "./App.css";
+import HomeOpravar from "./pages/HomeOpravar";
 
  function AppContent() {
 
@@ -21,7 +22,7 @@ import "./App.css";
   const signUpNavbarWhiteList = ['/location-setting', '/chose-role', '/chose-skills' ]
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
-  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications', '/searching', '/home']
+  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications', '/searching', '/home-opravar', '/home-zakaznik']
   const showFooter = footerWhiteList.includes(location.pathname)
   return (
     <>
@@ -35,6 +36,7 @@ import "./App.css";
         <Route path="/chose-role" element={<ChoseRole/>}/>
         <Route path="/chose-skills" element={<ChoseSkills/>}/>
         <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
+        <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {showFooter && <Footer/>}

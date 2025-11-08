@@ -65,7 +65,9 @@ input:focus {
   border-color: #0E725F;
   outline: none;
 }
-
+input[type='file']{
+  height: fit-content;
+}
 h1, h2 {
   text-align: center;
   color: #ffffff;
