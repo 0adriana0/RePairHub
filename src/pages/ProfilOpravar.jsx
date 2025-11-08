@@ -2,7 +2,7 @@ import '../styles/ProfilOpravar.css'
 import ProfilHeader from '../components/ProfilHeader'
 import defaultPfp from '../img/pfp-default.png'
 import { auth,db } from '../firebase'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { arrayRemove, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
@@ -35,37 +35,59 @@ const ProfilOpravar = () => {
   const [emailClass, setEmailClass]= useState('informace')
   const [bioClass, setBioClass]= useState('informace')
 
+  // Back Button
+  const [showBackBtn, setShowBackBtn] = useState(false)
+  const [backBtnOnclick, setBackBtnOnClick] = useState(()=>{})
+  const handleBackClick = useCallback(()=>{
+    setVerifyingEducations(false)
+    setShowBackBtn(false)
+  })
+  const handle2ndBackClick = useCallback(()=>{
+    setVerifyingOneEducation(false)
+    setBackBtnOnClick(()=>()=>handleBackClick())
+  })
+
   // Ověření vzdělání
   const [verifyingEducations, setVerifyingEducations] = useState(false)
   const [savingData, setSavingData] = useState(false)
-  // const [oneVerifyed, setOneVerifyed] = useState('')
-  
-  
+  const [verifyingOneEducation, setVerifyingOneEducation] = useState(false)
+  const [oneEducation, setOneEducation] = useState('')
+
+  const startVerifying = async (e) => {
+    setVerifyingEducations(true)
+    setShowBackBtn(true)
+    setBackBtnOnClick(() => ()=> {
+    handleBackClick()
+    })
+  }
+
+
   const UnveryfiedEducations = () => {
     const [file1, setFile1] = useState(null)
     const [file2, setFile2] = useState(null)
-    const [verifyingOneEducation, setVerifyingOneEducation] = useState(false)
-    const [oneEducation, setOneEducation] = useState('')
      const OneUnveryfiedEducation = ({educationName}) => {
       return (
         <div className='oneUnveryfiedEducation'>
           <p>{educationName}</p>
           <button onClick={()=>{
             setOneEducation(educationName)
+            setBackBtnOnClick(()=>()=>handle2ndBackClick())
             setVerifyingOneEducation(true)
           }}>Přidat ověření</button>
         </div>
       )
     }
+    
     const VerifyingOneEducation = ()=>{
       return <form className='verifyingOneEducation'>
-        <h3 >Ověření vzdělání</h3>
+        <h3 >Ověření vzdělání {oneEducation}</h3>
         <h4 className='nadpisy-stran'>První strana</h4>
         <input type="file" onChange={(e)=>setFile1(e.target.files[0])}/>
         <h4 className='nadpisy-stran'>Druhá strana</h4>
         <input type="file" onChange={(e)=>setFile2(e.target.files[0])}/>
       </form>
     }
+
     const handleVerifycationsSave = ()=>{
       const save = async ()=>{
         setSavingData(true)
@@ -73,31 +95,38 @@ const ProfilOpravar = () => {
         const formData1 = new FormData()
         formData1.append('file', file1)
         formData1.append('upload_preset', 'RePairHub')
-        formData1.append('folder', `users/${uid}/verifycation/${oneEducation}/  firstSide`)
+        formData1.append('folder', `users/${uid}/verifycation/${oneEducation}/firstSide`)
         const formData2 = new FormData()
         formData2.append('file', file2)
         formData2.append('upload_preset', 'RePairHub')
-        formData2.append('folder', `users/${uid}/verifycation/${oneEducation}/  secondSide`)
+        formData2.append('folder', `users/${uid}/verifycation/${oneEducation}/secondSide`)
         
         try {
-          const resp1 = await axios.post('https://api.cloudinary.com/v1_1/  dmisabll4/image/upload', formData1)
-          const resp2 = await axios.post('https://api.cloudinary.com/v1_1/  dmisabll4/image/upload', formData2)
-          // setOneVerifyed({name: oneEducation, firstSideUrl: resp1.data.  secure_url, secondSideUrl: resp2.data.secure_url})
+          const resp1 = await axios.post('https://api.cloudinary.com/v1_1/dmisabll4/image/upload', formData1)
+          const resp2 = await axios.post('https://api.cloudinary.com/v1_1/dmisabll4/image/upload', formData2)
+
+          console.log(oneEducation);
+          
           const userRef = doc(db, 'users', uid, 'verifyed', oneEducation)
           await setDoc(userRef, {firstSideUrl: resp1.data.secure_url, secondSideUrl: resp2.data.secure_url})
+
           educations.includes(oneEducation) && await updateDoc(doc(db,  'users', uid), {educations: arrayRemove(oneEducation)})
           certificates.includes(oneEducation) && await updateDoc(doc(db,  'users', uid), {certificates: arrayRemove(oneEducation)})
           setSavingData(false)
           setVerifyingOneEducation(false)
-        }catch(err){alert(err.message)}
+          setBackBtnOnClick(()=>()=>handleBackClick())
+        }catch(err){console.log(err)}
         }
       file1&&file2 ? save() : alert('Nahrajte prosím OBĚ strany')
-      
+    }
+    const handleBackToProfileInfo = ()=>{
+      setVerifyingEducations(false)
+      setShowBackBtn(false)
     }
     
     return (
       <>
-      {!verifyingOneEducation && <div className='unveryfiedEducations'>
+      {!verifyingOneEducation && educations&& certificates && <div className='unveryfiedEducations'>
         <p className='pocet-neoverenych-vzdelani'>
           Máte neověřeno: <br />
           {educations.length} vzdělání <br />
@@ -109,10 +138,12 @@ const ProfilOpravar = () => {
         {certificates.map((one)=>{
           return <OneUnveryfiedEducation educationName={one} />
         })}
+        <p style={{marginTop: '50px'}}>Změny se projeví do pár minut</p>
       </div>}
       {verifyingOneEducation && <VerifyingOneEducation/>}
+      
   
-      <Button onClick={()=>handleVerifycationsSave()}>{savingData?'Ukládám...':'Uložit'}</Button>
+      <Button onClick={()=>verifyingOneEducation ? handleVerifycationsSave(): handleBackToProfileInfo()}>{savingData?'Ukládám...':'Uložit'}</Button>
       </>
     )
   }
@@ -249,7 +280,12 @@ const ProfilOpravar = () => {
   const showMain = !verifyingEducations && !changingPfp
 
   return (<div className='profil-opravar-all'>
-    <ProfilHeader nadpisText='Upravit profil' />
+    <ProfilHeader 
+      nadpisText='Upravit profil' 
+      showBackBtn={showBackBtn}
+      backBtnOnClick={backBtnOnclick}
+    />
+
       <div className={changingPfp ? 'profil-opravar-smaller profil-opravar' :"profil-opravar"}>
 
           {!verifyingEducations && <>
@@ -261,8 +297,13 @@ const ProfilOpravar = () => {
           {verifyingEducations && <UnveryfiedEducations/>}
 
         { showMain && <>
-          <p className='overte-sva-vzdelani' onClick={()=>setVerifyingEducations(true)}>OVĚŘTE SVÁ VZDĚLÁNÍ</p>
-          <button className='verify-here-btn' onClick={()=>setVerifyingEducations(true)}>Ověřit zde</button>
+        {((educations||certificates)&&educations.length+certificates.length>0) &&<>
+        {console.log(educations.length+certificates.length)}
+        
+          <p className='overte-sva-vzdelani' onClick={(e)=>startVerifying(e)}>OVĚŘTE SVÁ VZDĚLÁNÍ: {certificates.length+educations.length}</p>
+          <button className='verify-here-btn' onClick={(e)=>startVerifying(e)}>Ověřit zde</button>
+        </>}
+        
           <form onSubmit={(e)=>e.preventDefault()}>
             <p id='top-profile'>Jméno</p>
             <input 

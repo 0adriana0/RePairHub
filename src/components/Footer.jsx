@@ -40,7 +40,6 @@ const Footer = () => {
         
         
     },[path, uid])
-    console.log(role);
     
 
   return <footer className='footer'>
