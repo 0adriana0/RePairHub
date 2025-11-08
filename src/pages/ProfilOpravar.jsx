@@ -2,7 +2,7 @@ import '../styles/ProfilOpravar.css'
 import ProfilHeader from '../components/ProfilHeader'
 import defaultPfp from '../img/pfp-default.png'
 import { auth,db } from '../firebase'
-import { useCallback, useEffect, useState } from 'react'
+import {  useEffect, useState } from 'react'
 import { arrayRemove, doc, getDoc, setDoc, updateDoc } from 'firebase/firestore'
 import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
@@ -38,14 +38,14 @@ const ProfilOpravar = () => {
   // Back Button
   const [showBackBtn, setShowBackBtn] = useState(false)
   const [backBtnOnclick, setBackBtnOnClick] = useState(()=>{})
-  const handleBackClick = useCallback(()=>{
+  const handleBackClick = ()=>{
     setVerifyingEducations(false)
     setShowBackBtn(false)
-  })
-  const handle2ndBackClick = useCallback(()=>{
+  }
+  const handle2ndBackClick = ()=>{
     setVerifyingOneEducation(false)
     setBackBtnOnClick(()=>()=>handleBackClick())
-  })
+  }
 
   // Ověření vzdělání
   const [verifyingEducations, setVerifyingEducations] = useState(false)
@@ -213,7 +213,6 @@ const ProfilOpravar = () => {
     setBioClass('changed-info')
   }
 
- 
 
   // Uložení nových dat
   const saveChanges = ()=>{

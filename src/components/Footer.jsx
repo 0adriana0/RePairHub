@@ -26,7 +26,8 @@ const Footer = () => {
 
     
 
-    useEffect(async()=>{
+    useEffect(()=>{
+      const loadData = async ()=>{
         path === '/profil-opravar' && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
         path === '/searching' && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
         path === '/home' && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
@@ -37,9 +38,11 @@ const Footer = () => {
           const {actualRole} = (await getDoc(userRef)).data()
           setRole(actualRole)
         } catch(err) {alert(err.message)}
+      }
+      loadData()
         
         
-    },[path, uid])
+    },[path, uid, navigate, userRef])
     
 
   return <footer className='footer'>
