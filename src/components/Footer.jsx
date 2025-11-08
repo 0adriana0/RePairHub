@@ -18,7 +18,6 @@ const Footer = () => {
     const path = location.pathname
     const [btnImages, setBtnImages] = useState([])
     const navigate = useNavigate()
-    const uid = auth.currentUser.uid
     const [role, setRole] = useState(null)
 
 
@@ -28,10 +27,10 @@ const Footer = () => {
       const loadData = async ()=>{
         path === '/profil-opravar' && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
         path === '/searching' && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
-        path === '/home' && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
+        path === '/home-opravar' && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
         path === '/notifications' && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
         try {
-          uid || alert("Nikdo není přihlášen")
+          const uid = auth.currentUser.uid
           uid || navigate('/login')
           const userRef = doc(db, 'users', uid)
           const {actualRole} = (await getDoc(userRef)).data()
@@ -41,12 +40,13 @@ const Footer = () => {
       loadData()
         
         
-    },[uid, path, navigate])
+    },[path, navigate])
     
 
   return <footer className='footer'>
-    <button className='btn-icons first-icon' onClick={()=>navigate('/home')}><img src={btnImages[0]} alt="Home" /></button>
+    <button className='btn-icons first-icon' onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
     <button className='btn-icons' onClick={()=>navigate('/searching')}><img src={btnImages[1]} alt="Search" /></button>
+
     {role==='zákazník'? <button className='add-new-inserate'>+</button>: <img src={celeR} alt='' className='ftr-mid'/>}
     
     <span className='zarovnávání'></span>
