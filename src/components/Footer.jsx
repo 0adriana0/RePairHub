@@ -19,8 +19,6 @@ const Footer = () => {
     const [btnImages, setBtnImages] = useState([])
     const navigate = useNavigate()
     const uid = auth.currentUser.uid
-    
-    const userRef = doc(db, 'users', uid)
     const [role, setRole] = useState(null)
 
 
@@ -35,6 +33,7 @@ const Footer = () => {
         try {
           uid || alert("Nikdo není přihlášen")
           uid || navigate('/login')
+          const userRef = doc(db, 'users', uid)
           const {actualRole} = (await getDoc(userRef)).data()
           setRole(actualRole)
         } catch(err) {alert(err.message)}
@@ -42,7 +41,7 @@ const Footer = () => {
       loadData()
         
         
-    },[path, uid, navigate, userRef])
+    },[uid, path, navigate])
     
 
   return <footer className='footer'>
