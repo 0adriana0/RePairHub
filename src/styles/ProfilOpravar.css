@@ -1,5 +1,5 @@
 .profil-opravar-all{
-    height: 100vh;
+    min-height: 70vh;
 }
 .profil-opravar{
     max-width: 300px;
@@ -146,4 +146,41 @@
 }
 .profil-opravar .changed-info{
     color: lightslategrey;
+}
+.bottom-btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+.add-educations-btn{
+    color: white;
+    background-color: #7C778A;
+    border: none;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 2.5% 4.5%;
+    border-radius: 7px;
+    font-size: 13px;
+}
+.profil-opravar .educations-adding-heading{
+    margin-top: 2em;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2px;
+    font-weight: bold;
+}
+.active-adding-span{
+    color: #009B74;
+}
+.inactive-adding-span{
+    color: #AEACB4;
+}
+.profil-opravar .vas-certificat-or-vzdelani{
+    margin-top: 2em;
+}
+.profil-opravar .vas-certificat-or-vzdelani-input{
+    margin-bottom: 130%;
 }
