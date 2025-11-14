@@ -46,6 +46,54 @@ const ProfilOpravar = () => {
     setVerifyingOneEducation(false)
     setBackBtnOnClick(()=>()=>handleBackClick())
   }
+  const handleDisableAddingBackClick = ()=>{
+    setAddingEducations(false)
+    setShowBackBtn(false)
+  }
+
+  // Přidávání vzdělání
+  const handleAddEducationsBtn = async ()=>{
+    setShowBackBtn(true)
+    setBackBtnOnClick(()=>()=>handleDisableAddingBackClick())
+    setAddingEducations(true)
+    
+  }
+
+  const [addingEducations, setAddingEducations] = useState(false)
+  const AddEducations = () =>{
+    const [addingCertificate, setAddingCertificate] = useState(true)
+    const [newAddedEducation, setNewAddedEducation] = useState('')
+    const [savingNewEducations, setSavingNewEducations] = useState(false)
+
+    const confirmNewEducation = async () =>{
+      setSavingNewEducations(true)
+      const uid = auth.currentUser.uid
+      const userRef = doc(db, 'users', uid)
+      const updatedDocument = addingCertificate ? certificates : educations
+      updatedDocument.push(newAddedEducation)
+      
+      if(newAddedEducation) try{
+        addingCertificate ? await updateDoc(userRef, {certificates:updatedDocument}) : await updateDoc(userRef, {educations:updatedDocument})
+        setAddingEducations(false)
+        setSavingNewEducations(false)
+      }catch(err){alert(err.message)}
+      else alert('Vyplňte prosím pole')
+    }
+    
+    
+    return <>
+      <p className='educations-adding-heading'>Přidáváte: <span onClick={()=>setAddingCertificate(!addingCertificate)} className={ addingCertificate?'active-adding-span':'inactive-adding-span'}>Certifikát</span>/<span onClick={()=>setAddingCertificate(!addingCertificate)} className={ !addingCertificate?'active-adding-span':'inactive-adding-span'}>Vzdělání</span></p>
+      <p className='vas-certificat-or-vzdelani'>{addingCertificate?'Váš certifikát':'Vaše vzdělání'}</p>
+      <input 
+        className='vas-certificat-or-vzdelani-input' 
+        type="text" 
+        placeholder={addingCertificate?'Cisco - IT Essentials':'Střední odborné učiliště...'}
+        value={newAddedEducation}
+        onChange={(e)=>setNewAddedEducation(e.target.value)}
+        />
+      <Button onClick={()=>confirmNewEducation()}>{savingNewEducations?'Ukládám...':'Potvrdit a přidat'}</Button>
+    </>
+  }
 
   // Ověření vzdělání
   const [verifyingEducations, setVerifyingEducations] = useState(false)
@@ -276,7 +324,7 @@ const ProfilOpravar = () => {
 
 
 
-  const showMain = !verifyingEducations && !changingPfp
+  const showMain = !verifyingEducations && !changingPfp && !addingEducations
 
   return (<div className='profil-opravar-all'>
     <ProfilHeader 
@@ -284,20 +332,20 @@ const ProfilOpravar = () => {
       showBackBtn={showBackBtn}
       backBtnOnClick={backBtnOnclick}
     />
-
+{console.log(pfp)}
       <div className={changingPfp ? 'profil-opravar-smaller profil-opravar' :"profil-opravar"}>
 
-          {!verifyingEducations && <>
-            <img src={pfp} alt={defaultPfp} className='pfp'/>
+          {(!verifyingEducations && !addingEducations )&&<>
+            <img src={pfp} alt='Error' className='pfp'/>
             <img src={pen} alt='' className='pen' onClick={()=>setChangingPfp(!changingPfp)}/>
           </>}
           
           {changingPfp && <PfpSet onChange={(e)=>handleChangePfp(e)}/>}
           {verifyingEducations && <UnveryfiedEducations/>}
+          {addingEducations && <AddEducations/>}
 
         { showMain && <>
         {((educations||certificates)&&educations.length+certificates.length>0) &&<>
-        {console.log(educations.length+certificates.length)}
         
           <p className='overte-sva-vzdelani' onClick={(e)=>startVerifying(e)}>OVĚŘTE SVÁ VZDĚLÁNÍ: {certificates.length+educations.length}</p>
           <button className='verify-here-btn' onClick={(e)=>startVerifying(e)}>Ověřit zde</button>
@@ -340,7 +388,10 @@ const ProfilOpravar = () => {
               onChange={(e)=>changeBio(e)}
               className={bioClass}
             />
-            <ChangeRoleBtn />
+            <div className='bottom-btns'>
+              <ChangeRoleBtn />
+              <button className='add-educations-btn' onClick={()=>handleAddEducationsBtn()}>Přidat vzdělání</button>
+            </div>
             <Button onClick={()=>saveChanges()}>Uložit změny</Button>
           </form>
           </>

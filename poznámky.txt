@@ -1,0 +1,1 @@
+Mazání starých profilovek z cloudinary zatím nepůjde
