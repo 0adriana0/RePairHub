@@ -13,14 +13,14 @@ const NotificationsOpravar = () => {
         <p className='vase-oznameni'>{notifications.length?'Vaše oznámení:':'Nemáte žádná oznámení'}</p>
         {notifications.map((one, index)=>{
             const {notificationName, notificationContent} = one
-            if (!removedNotifications.includes(one)) return <div className='oneNotification' key={index}>
+            return !removedNotifications.includes(one)? <div className='oneNotification' key={index}>
                 <img src={bell} alt="" />
                 <div className='notification-texts-div'>
                     <p className='notification-name'>{notificationName||'test'}</p>
                     <p className='notification-content'>{notificationContent||'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia distinctio iure sit aliquam'}</p>
                 </div>
                 <button onClick={()=>setRemovedNotifications([...removedNotifications, one])} className='notification-remove-btn'>Smazat</button>
-        </div>
+        </div> : <></>
         })}
         
     </div>
