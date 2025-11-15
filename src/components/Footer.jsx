@@ -28,7 +28,7 @@ const Footer = () => {
         path === '/profil-opravar' && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
         path === '/searching-opravar' && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
         path === '/home-opravar' && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
-        path === '/notifications' && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
+        path === '/notifications-opravar' && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
         try {
           const uid = auth.currentUser.uid
           uid || navigate('/login')
@@ -50,7 +50,7 @@ const Footer = () => {
     {role==='zákazník'? <button className='add-new-inserate'>+</button>: <img src={celeR} alt='' className='ftr-mid'/>}
     
     <span className='zarovnávání'></span>
-    <button className='btn-icons' onClick={()=>navigate('/notifications')}><img src={btnImages[2]} alt="Notification" /></button>
+    <button className='btn-icons' onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
     <button className='btn-icons last-icon' onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
   </footer>
 }
