@@ -23,7 +23,7 @@
 }
 .notifications-opravar .oneNotification{
     background-color: #06021A;
-    height: 95px;
+    min-height: 95px;
     width: 90%;
     padding: 7px;
     border-radius: 12px;
