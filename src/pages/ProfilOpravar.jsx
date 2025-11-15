@@ -279,6 +279,16 @@ const ProfilOpravar = () => {
     allowDataSave && doSaveChanges()
   }
 
+  // Vynucená změna role na opravář
+  useEffect(()=>{
+    const forceChangeRole = async()=>{
+      try{
+        await updateDoc(doc(db,'users',auth.currentUser.uid),{actualRole: 'opravář'})
+      }catch(err){console.log(err)}  
+    }
+    forceChangeRole()
+  },[])
+
   // Načítání dat
   useEffect(()=>{
     const user = auth.currentUser
@@ -332,7 +342,6 @@ const ProfilOpravar = () => {
       showBackBtn={showBackBtn}
       backBtnOnClick={backBtnOnclick}
     />
-{console.log(pfp)}
       <div className={changingPfp ? 'profil-opravar-smaller profil-opravar' :"profil-opravar"}>
 
           {(!verifyingEducations && !addingEducations )&&<>

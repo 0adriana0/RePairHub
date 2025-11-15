@@ -4,35 +4,78 @@ import { useEffect, useState } from 'react'
 import { db, auth} from '../firebase'
 import { useNavigate } from 'react-router-dom'
 import { doc, getDoc } from 'firebase/firestore'
+import defaultPfp from '../img/pfp-default.png'
+import chatBtn from '../img/Chat btn.png'
 
 const HomeOpravar = () => {
     const [name, setName] = useState('')
     const navigate = useNavigate()
+    const [inserates, setInserates] = useState([{
+        pfp: defaultPfp,
+        name: 'Jméno',
+        lastName: 'Příjmení',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
+        img1: logo,
+        img2: defaultPfp
+    },{
+        pfp: defaultPfp,
+        name: 'Jméno',
+        lastName: 'Příjmení',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
+        img1: logo,
+        img2: defaultPfp
+    },{
+        pfp: defaultPfp,
+        name: 'Jméno',
+        lastName: 'Příjmení',
+        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
+        img1: logo,
+        img2: defaultPfp
+    }])
 
-
+    // Načítání dat
     useEffect(()=>{
         const loadData = async () =>{
             const uid = auth.currentUser.uid
-            !uid && (alert('Nikdo není přihláčen', navigate('/login')))
+            !uid && navigate('/login')
+            !uid && alert('Nikdo není přihláčen')
             const userRef = doc(db, 'users', uid)
-            const data = (await getDoc(userRef, uid)).data()
-            setName(data.name)
+            try {
+                const data = (await getDoc(userRef, uid)).data()
+                setName(data.name)
+            }catch(err){console.log(err)}
         }
-
         loadData()
-    })
+    },[navigate])
 
   return (
     <div className='home-opravar-all'>
         <header>
             <img src={logo} alt="" />
             <p className='text-top welcoming'>Výtejte v aplikaci RePairHub</p>
-            <p className='name text-top'>{name||'jmeno'}!</p>
+            <p className='name text-top'>{name||'Jméno'}!</p>
             <hr/>
-            <p>Aktuální nabídky</p>
+            <p className='nasi-zakaznici'>Naši zákazníci</p>
         </header>
         <div className="home-opravar">
-        
+            {inserates.map((one, index)=>{
+                const {id, pfp, name, lastName, description, img1, img2} = one
+                return <div key={index} className='one-inserate'>
+                    <img className='user-pfp' src={pfp} alt="" />
+                    <p className='user-name-lastName'>{name} {lastName}</p>
+                    <p className='inserate-description'>{description}</p>
+                    <div className='inserate-bottom'>
+                        <div className='wrapper'>
+                            <img className='inserate-images' src={img1} alt="" />
+                        </div>
+                        <div className='wrapper'>
+                            <img className='inserate-images' src={img2} alt="" />
+                        </div>
+                        <button className='show-more-btn' onClick={()=>navigate(`/inzerat/${id}`)}>Zobrazit více</button>
+                    </div>
+                </div>
+            })}
+            <img className='chat-btn' src={chatBtn} alt="" onClick={()=>navigate('/chat')}/>
         </div>
     </div>
   )
