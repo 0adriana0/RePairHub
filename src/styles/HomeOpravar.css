@@ -1,4 +1,5 @@
 .home-opravar-all{
+    min-height: 92.5%;
     height: fit-content;
     width: 100vw;
     margin-bottom: 10px;
@@ -23,9 +24,11 @@
 .home-opravar-all header .welcoming{
     margin-top: 38px;
     margin-bottom: 5px;
+    font-weight: bold;
 }
 .home-opravar-all header .name{
     color: #009B74;
+    font-weight: bold;
 }
 .home-opravar-all header hr{
     width: 91.4vw;

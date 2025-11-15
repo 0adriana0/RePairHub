@@ -13,21 +13,23 @@ const HomeOpravar = () => {
     useEffect(()=>{
         const loadData = async () =>{
             const uid = auth.currentUser.uid
-            !uid && (alert('Nikdo není přihláčen', navigate('/login')))
+            !uid && navigate('/login')
+            !uid && alert('Nikdo není přihláčen')
             const userRef = doc(db, 'users', uid)
-            const data = (await getDoc(userRef, uid)).data()
-            setName(data.name)
+            try {
+                const data = (await getDoc(userRef, uid)).data()
+                setName(data.name)
+            }catch(err){console.log(err)}
         }
-
         loadData()
-    })
+    },[navigate])
 
   return (
     <div className='home-opravar-all'>
         <header>
             <img src={logo} alt="" />
             <p className='text-top welcoming'>Výtejte v aplikaci RePairHub</p>
-            <p className='name text-top'>{name||'jmeno'}!</p>
+            <p className='name text-top'>{name||'Jméno'}!</p>
             <hr/>
             <p>Aktuální nabídky</p>
         </header>
