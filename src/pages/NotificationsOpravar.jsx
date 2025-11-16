@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../styles/NotificationsOpravar.css'
+import styles from '../styles/NotificationsOpravar.module.css'
 import bell from '../img/Footer/white/zvonek.png'
 
 const NotificationsOpravar = () => {
@@ -8,18 +8,18 @@ const NotificationsOpravar = () => {
 
     
   return (
-    <div className='notifications-opravar'>
-        <h2>Oznámení</h2>
-        <p className='vase-oznameni'>{notifications.length?'Vaše oznámení:':'Nemáte žádná oznámení'}</p>
+    <div className={styles.notificationsOpravar}>
+        <h2 className={styles.heading}>Oznámení</h2>
+        <p className={styles.vaseOznameni}>{notifications.length?'Vaše oznámení:':'Nemáte žádná oznámení'}</p>
         {notifications.map((one, index)=>{
             const {notificationName, notificationContent} = one
-            return !removedNotifications.includes(one)? <div className='oneNotification' key={index}>
-                <img src={bell} alt="" />
-                <div className='notification-texts-div'>
-                    <p className='notification-name'>{notificationName||'test'}</p>
-                    <p className='notification-content'>{notificationContent||'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia distinctio iure sit aliquam'}</p>
+            return !removedNotifications.includes(one)? <div className={styles.oneNotification} key={index}>
+                <img className={styles.oneNotificationImg} src={bell} alt="" />
+                <div className={styles.notificationTextsDiv}>
+                    <p className={styles.notificationName}>{notificationName||'test'}</p>
+                    <p className={styles.notificationContent}>{notificationContent||'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia distinctio iure sit aliquam'}</p>
                 </div>
-                <button onClick={()=>setRemovedNotifications([...removedNotifications, one])} className='notification-remove-btn'>Smazat</button>
+                <button onClick={()=>setRemovedNotifications([...removedNotifications, one])} className={styles.notificationRemoveButton}>Smazat</button>
         </div> : <></>
         })}
         

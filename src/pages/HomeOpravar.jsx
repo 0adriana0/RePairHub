@@ -1,4 +1,4 @@
-import '../styles/HomeOpravar.css'
+import styles from '../styles/HomeOpravar.module.css'
 import inserateStyles from '../styles/OneInserate.module.css'
 import logo from '../img/logo.png'
 import { useEffect, useState } from 'react'
@@ -50,15 +50,15 @@ const HomeOpravar = () => {
     },[navigate])
 
   return (
-    <div className='home-opravar-all'>
-        <header>
-            <img src={logo} alt="" />
-            <p className='text-top welcoming'>Výtejte v aplikaci RePairHub</p>
-            <p className='name text-top'>{name||'Jméno'}!</p>
-            <hr/>
-            <p className='nasi-zakaznici'>Naši zákazníci</p>
+    <div className={styles.homeOpravarAll}>
+        <header className={styles.header}>
+            <img className={styles.headerImg} src={logo} alt="" />
+            <p className={styles.welcoming}>Výtejte v aplikaci RePairHub</p>
+            <p className={styles.name}>{name||'Jméno'}!</p>
+            <hr className={styles.hr}/>
+            <p style={{fontWeight:'bold', fontSize:'15px'}}>Naši zákazníci</p>
         </header>
-        <div className="home-opravar">
+        <div className={styles.homeOpravar}>
             {inserates.map((one, index)=>{
                 const {id, pfp, name, lastName, description, img1, img2} = one
                 return <div key={index} className={inserateStyles.oneInserate}>
@@ -76,7 +76,7 @@ const HomeOpravar = () => {
                     </div>
                 </div>
             })}
-            <img className='chat-btn' src={chatBtn} alt="" onClick={()=>navigate('/chat')}/>
+            <img className={styles.chatBtn} src={chatBtn} alt="" onClick={()=>navigate('/chat')}/>
         </div>
     </div>
   )

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../styles/LocationSet.css'
+import styles from '../styles/LocationSet.module.css'
 import Button from '../components/Button'
 import { useNavigate } from 'react-router-dom'
 import { auth, db } from '../firebase'
@@ -34,15 +34,15 @@ const LocationSet = ()=> {
   } else alert('Zadejte adresu')
   }
   return (
-    <div className='locationSet'>
+    <div className={styles.locationSet}>
           <input
-          className='location-form'
+          className={styles.locationForm}
           type="text"
           placeholder="Zadejte adresu"
           value={address}
           onChange={(e) => hadnleInputChange(e)}
         />
-        {src ? <iframe src={src} title='map' className='locationIframe'/>:<p className='locationIframe'>Zadejte adresu</p>}
+        {src ? <iframe src={src} title='map' className={styles.locationIframe}/>:<p className={styles.locationIframe}>Zadejte adresu</p>}
     
         <Button onClick={handleClick}>Pokračovat</Button>
         V

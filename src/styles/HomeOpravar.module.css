@@ -1,4 +1,4 @@
-.home-opravar-all{
+.homeOpravarAll{
     min-height: 92.5%;
     height: fit-content;
     width: 100vw;
@@ -9,39 +9,36 @@
     justify-content: center;
     align-items: center;
 }
-.home-opravar-all header img{
+.headerImg{
     width: 47px;
     height: 31px;
     position: absolute;
     left: 2%;
     top: 0.5%;
 }
-.home-opravar-all header .text-top{
+.welcoming, .name{
     text-align: left;
     margin: 0;
     font-size: 15px;
+    width: 90vw;
 }
-.home-opravar-all header .welcoming{
-    margin-top: 38px;
+.welcoming{
+    margin-top: 40px;
     margin-bottom: 5px;
     font-weight: bold;
 }
-.home-opravar-all header .name{
+.name{
     color: #009B74;
     font-weight: bold;
     font-size: 15px;
 }
-.home-opravar-all header hr{
+.hr{
     width: 91.4vw;
     height: 0.1px;
     border: none;
     background-color: #625C73;
 }
-.home-opravar-all header .nasi-zakaznici{
-    font-weight: bold;
-    font-size: 15px;
-}
-.home-opravar{
+.homeOpravar{
     width: 85vw;
     min-height: 68vh;
     height: fit-content;
@@ -52,7 +49,7 @@
     position: relative;
     
 }
-.home-opravar .chat-btn{
+.chatBtn{
     position: absolute;
     bottom: 3%;
     right: 5%;

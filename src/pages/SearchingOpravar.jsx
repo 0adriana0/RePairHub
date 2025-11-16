@@ -1,4 +1,4 @@
-import '../styles/SearchingOpravar.css'
+import styles from '../styles/SearchingOpravar.module.css'
 import inserateStyles from '../styles/OneInserate.module.css'
 import greyLupa from '../img/Footer/grey/lupa.png'
 import { useState } from 'react'
@@ -33,19 +33,20 @@ const SearchingOpravar = () => {
     }])
 
   return (
-    <div className='searching-opravar'>
-        <div className='search-bar'>
-            <img src={greyLupa} alt="" />
+    <div className={styles.searchingOpravar}>
+        <div className={styles.searchBar}>
+            <img className={styles.searchBarImg} src={greyLupa} alt="" />
             <form>
                 <input 
                     type="text" 
                     placeholder='Co hledáte?'
+                    className={styles.searchBarInput}
                     value={searchingBar}
                     onChange={(e)=>setSearchingBar(e.target.value)}
                     />
             </form>
         </div>
-        <p className='searching-results'>{searchingBar?`Výsledky pro ${searchingBar}:`:'Minule jste hledali:'}</p>
+        <p className={styles.searchingResults}>{searchingBar?`Výsledky pro ${searchingBar}:`:'Minule jste hledali:'}</p>
         {inserates.map((one, index)=>{
                 const {id, pfp, name, lastName, description, img1, img2} = one
                 return <div key={index} className={inserateStyles.oneInserate}>

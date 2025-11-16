@@ -1,5 +1,5 @@
 import { useState } from "react"
-import '../styles/ChoseRole.css'
+import styles from '../styles/ChoseRole.module.css'
 import workerImg from '../img/o.png'
 import customerImg from '../img/z.png'
 import Button from "../components/Button"
@@ -24,21 +24,21 @@ const ChoseRole = () => {
       } catch(err) {alert(err.message)}
   }
   return (
-    <div className="chose-role">
-      <h3>Kdo jste?</h3>
+    <div className={styles.choseRole}>
+      <h3 className={styles.kdoJste}>Kdo jste?</h3>
       <div 
-        className="roles"
+        className={styles.roles}
         onClick={()=>setUserRole('opravář')}
       >
-        <img src={workerImg} alt="Opravář" className="role-images worker-image"/>
-        <p>Opravář</p>
+        <img src={workerImg} alt="Opravář" className={`${styles.roleImages} ${styles.workerImage}`}/>
+        <p className={styles.roleTexts}>Opravář</p>
       </div>
       <div 
-        className="roles"
+        className={styles.roles}
         onClick={()=>setUserRole('zákazník')}
       >
-        <p>Zákazník</p>
-        <img src={customerImg} alt="Zákazník" className="role-images customer-image"/> 
+        <p className={styles.roleTexts}>Zákazník</p>
+        <img src={customerImg} alt="Zákazník" className={`${styles.roleImages} ${styles.customerImage}`} /> 
       </div>
 
       <Button onClick={submitHandle}>Pokračovat jako {userRole}</Button>

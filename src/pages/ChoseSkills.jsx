@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Button from '../components/Button'
-import '../styles/ChoseSkills.css'
+import styles from '../styles/ChoseSkills.module.css'
 import { useNavigate } from 'react-router-dom'
 import { updateDoc,doc, getDoc } from 'firebase/firestore'
 import { auth,db } from '../firebase'
@@ -26,9 +26,6 @@ const ChoseSkills = () => {
     )
   
 }
-
-  // Submity formulářů
-  
 
   // Přidávání inputů
   const handleAddNewEducationInput = (e)=>{
@@ -76,9 +73,9 @@ const ChoseSkills = () => {
 
   }
   return (
-    <div className="chose-skills">
-      <form className='educations-form'>
-        <label htmlFor="educations">Všechna dosažená vzdělání</label>
+    <div className={styles.choseSkills}>
+      <form>
+        <label className={styles.label} htmlFor="educations">Všechna dosažená vzdělání</label>
        {addedEducationInputs.map((n, index)=>{
             return  <input 
                       key={index}
@@ -90,10 +87,10 @@ const ChoseSkills = () => {
                       onChange={(e)=>setOneEducation(e.target.value)}
                     />
           })}
-        {addedEducationInputs.length<4 && <button className='add-new-input-btn' onClick={(e)=>handleAddNewEducationInput(e)}>+</button>
+        {addedEducationInputs.length<4 && <button className={styles.addNewInputBtn} onClick={(e)=>handleAddNewEducationInput(e)}>+</button>
         }
 
-        {addedEducationInputs.length>1 && <button className='add-new-input-btn' onClick={(e)=>{
+        {addedEducationInputs.length>1 && <button className={styles.addNewInputBtn} onClick={(e)=>{
           e.preventDefault()
           setAddedEducationInputs(addedEducationInputs.slice(0,-1))
           setdisabledEducationsInputs(disabledEducationsInputs.slice(0,-1))
@@ -102,9 +99,9 @@ const ChoseSkills = () => {
         }}>-</button>}
       </form>
 
-      <form className='certificates-form'>
-        <label htmlFor="certificates">Všechny certifikáty</label>
-        {addedCertificateInputs.map((n, index)=>{
+      <form>
+        <label className={styles.label} htmlFor="certificates">Všechny certifikáty</label>
+        {addedCertificateInputs.map((index)=>{
             return  <input 
                       key={index}
                       type="text" 
@@ -115,10 +112,10 @@ const ChoseSkills = () => {
                       onChange={(e)=>setOneCertificate(e.target.value)}
                     />
           })}
-        {addedCertificateInputs.length<6 && <button className='add-new-input-btn' onClick={(e)=>handleAddNewCertificateInput(e)}>+</button>
+        {addedCertificateInputs.length<6 && <button className={styles.addNewInputBtn} onClick={(e)=>handleAddNewCertificateInput(e)}>+</button>
         }
 
-        {addedCertificateInputs.length>1 && <button className='add-new-input-btn' onClick={(e)=>{
+        {addedCertificateInputs.length>1 && <button className={styles.addNewInputBtn} onClick={(e)=>{
           e.preventDefault()
           setAddedCertificateInputs(addedCertificateInputs.slice(0,-1))
           setdisabledCertificateInputs(disabledCertificatesInputs.slice(0,-1))
@@ -126,30 +123,30 @@ const ChoseSkills = () => {
           setCertificates(certificates.slice(0,-1)) 
         }}>-</button>}
       </form>
-      <p className='co-umis'>Co umíš?</p>
-      <form className='skills-form half'>
-        <div className='first-half'>
-        <p>Elektrika <input type="checkbox" value='Elektrika'
+      <p className={styles.coUmis}>Co umíš?</p>
+      <form className={styles.skillsForm}>
+        <div style={{width:'50%'}}>
+        <p className={styles.skillsP}>Elektrika <input className={styles.skillsCheckBox} type="checkbox" value='Elektrika'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Kola apod. <input type="checkbox" value='Kola apod.'
+        <p className={styles.skillsP}>Kola apod. <input className={styles.skillsCheckBox} type="checkbox" value='Kola apod.'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Auto <input type="checkbox" value='Auto'
+        <p className={styles.skillsP}>Auto <input className={styles.skillsCheckBox} type="checkbox" value='Auto'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Elektronika <input type="checkbox" value='Elektronika'
+        <p className={styles.skillsP}>Elektronika <input className={styles.skillsCheckBox} type="checkbox" value='Elektronika'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Voda <input type="checkbox" value='Voda'
+        <p className={styles.skillsP}>Voda <input className={styles.skillsCheckBox} type="checkbox" value='Voda'
           onChange={(e)=>checkboxChange(e)}/></p>
       </div>
-      <div className='second-half'>
-        <p>Nábytek <input type="checkbox" value='Nábytek'
+      <div style={{width:'50%'}}>
+        <p className={styles.skillsP}>Nábytek <input className={styles.skillsCheckBox} type="checkbox" value='Nábytek'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Oblečení <input type="checkbox" value='Oblečení'
+        <p className={styles.skillsP}>Oblečení <input className={styles.skillsCheckBox} type="checkbox" value='Oblečení'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Vrtat <input type="checkbox" value='Vrtat'
+        <p className={styles.skillsP}>Vrtat <input className={styles.skillsCheckBox} type="checkbox" value='Vrtat'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Seřídit okna <input type="checkbox" value='Seřídit okna'
+        <p className={styles.skillsP}>Seřídit okna <input className={styles.skillsCheckBox} type="checkbox" value='Seřídit okna'
           onChange={(e)=>checkboxChange(e)}/></p>
-        <p>Něco jiného <input type="checkbox" value='Něco jiného'
+        <p className={styles.skillsP}>Něco jiného <input className={styles.skillsCheckBox} type="checkbox" value='Něco jiného'
           onChange={(e)=>checkboxChange(e)}/></p>
       </div>
       </form>

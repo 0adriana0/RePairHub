@@ -1,7 +1,7 @@
-.profil-opravar-all{
+.profilOpravarAll{
     min-height: 70vh;
 }
-.profil-opravar{
+.profilOpravar{
     max-width: 300px;
     min-height: 68vh;
     background: #2e2b3c;
@@ -10,28 +10,29 @@
     border-radius: 26px;
     text-align: center;
 }
-.profil-opravar-smaller{
+.profilOpravarSmaller{
     height: 34vh;
 }
-.profil-opravar .pfp-set{
+.pfpSet{
     height: 300px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.profil-opravar .pfp-set p{
+.zvolteObrazek{
     margin: 0;
     text-align: left;
+    padding-left: 15px;
 }
-.profil-opravar .pfp-set input{
+.pfpFileInput{
     color: #009B73;
     width: 240px;
     border-radius: 6px;
-    margin: 20px 0;
+    margin: 10px 0;
     background: none;
 }
-.profil-opravar .pfp-set input::file-selector-button{
+.pfpFileInput::file-selector-button{
     background-color: #009B73;
     color: #fff;
     border: none;
@@ -46,11 +47,11 @@
     justify-content: center;
     margin-bottom: 45px;
 }
-.unveryfiedEducations .pocet-neoverenych-vzdelani{
+.pocetNeoverenychVzdelani{
     font-size: 16px;
     margin-bottom: 2rem;
 }
-.unveryfiedEducations .oneUnveryfiedEducation{
+.oneUnveryfiedEducation{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -61,13 +62,13 @@
     margin: 4px 0;
     border-radius: 12px;
 }
-.unveryfiedEducations .oneUnveryfiedEducation p{
+.oneEducationName{
     display: block;
     margin: 0;
     padding: 0;
     font-size: 12px;
 }
-.unveryfiedEducations .oneUnveryfiedEducation button{
+.startVerifyingOneEducationBtn{
     border: none;
     border-radius: 5px;
     padding: 5px 6px;
@@ -79,13 +80,7 @@
     color: #fff;
     margin-bottom: 80%;
 }
-.verifyingOneEducation h3, h4{
-    text-align: left;
-}
-.verifyingOneEducation h3 {
-    margin: 20px 0 40px 0;
-}
-.verifyingOneEducation input{
+.verifyingOneEducationInput{
     display: flex;
     justify-content: space-between;
     background: none;
@@ -93,7 +88,7 @@
     font-size: 12px;
     border-radius: 5px;
 }
-.verifyingOneEducation input::file-selector-button{
+.verifyingOneEducationInput::file-selector-button{
     background-color: #282343;
     border: none;
     color: #fff;
@@ -101,7 +96,7 @@
     padding: 10px;
     border-radius: 5px;
 }
-.profil-opravar .pfp{
+.pfp{
     height: 90px;
     width: 90px;
     border-radius: 50px;
@@ -109,19 +104,19 @@
     top: 14vh;
     left: 39.41vw;
 }
-.profil-opravar .pen{
+.pen{
     position: absolute;
     left: 53vw;
 }
-.profil-opravar .overte-sva-vzdelani{
+.overteSvaVzdelani{
     color: #D93025;
     display: inline-block;
+    margin: 0;
     margin-top: 14%;
     margin-right: 2.5vw;
-    margin-bottom: 0;
     font-size: 3.5vw;
 }
-.profil-opravar .verify-here-btn{
+.verifyHereBtn{
     background-color: #7C778A;
     border: none;
     color: #fff;
@@ -129,31 +124,28 @@
     padding: 1.5% 4.5%;
     font-size: 13px;
 }
-#top-profile{
+#topProfile{
     margin-top: 4%;
 }
-.profil-opravar p{
+.infoHeadings{
     text-align: left;
     margin-top: 0;
     margin-bottom: 5px;
     padding-left: 10px;
 }
-.profil-opravar .informace{
+.informace{
     color: #6BE0C2;
 }
-.profil-opravar .inactive{
-    display: none;
-}
-.profil-opravar .changed-info{
+.changedInfo{
     color: lightslategrey;
 }
-.bottom-btns{
+.bottomBtns{
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 10px;
 }
-.add-educations-btn{
+.addEducationsBtn{
     color: white;
     background-color: #7C778A;
     border: none;
@@ -163,7 +155,7 @@
     border-radius: 7px;
     font-size: 13px;
 }
-.profil-opravar .educations-adding-heading{
+.educationsAddingHeading{
     margin-top: 2em;
     padding: 0;
     display: flex;
@@ -172,15 +164,16 @@
     gap: 2px;
     font-weight: bold;
 }
-.active-adding-span{
+.activeAddingSpan{
     color: #009B74;
 }
-.inactive-adding-span{
+.inactiveAddingSpan{
     color: #AEACB4;
 }
-.profil-opravar .vas-certificat-or-vzdelani{
-    margin-top: 2em;
-}
-.profil-opravar .vas-certificat-or-vzdelani-input{
-    margin-bottom: 130%;
+.vasCertificatOrVzdelani{
+    margin: 2em 10px 5px 0;
+    padding-left: 7px;
+    font-size: 13px;
+    text-align: left;
+    
 }

@@ -1,4 +1,4 @@
-import '../styles/ProfilOpravar.css'
+import styles from '../styles/ProfilOpravar.module.css'
 import ProfilHeader from '../components/ProfilHeader'
 import defaultPfp from '../img/pfp-default.png'
 import { auth,db } from '../firebase'
@@ -82,10 +82,10 @@ const ProfilOpravar = () => {
     
     
     return <>
-      <p className='educations-adding-heading'>Přidáváte: <span onClick={()=>setAddingCertificate(!addingCertificate)} className={ addingCertificate?'active-adding-span':'inactive-adding-span'}>Certifikát</span>/<span onClick={()=>setAddingCertificate(!addingCertificate)} className={ !addingCertificate?'active-adding-span':'inactive-adding-span'}>Vzdělání</span></p>
-      <p className='vas-certificat-or-vzdelani'>{addingCertificate?'Váš certifikát':'Vaše vzdělání'}</p>
+      <p className={styles.educationsAddingHeading}>Přidáváte: <span onClick={()=>setAddingCertificate(!addingCertificate)} className={ addingCertificate?styles.activeAddingSpan:styles.inactiveAddingSpan}>Certifikát</span>/<span onClick={()=>setAddingCertificate(!addingCertificate)} className={ !addingCertificate?styles.activeAddingSpan:styles.inactiveAddingSpan}>Vzdělání</span></p>
+      <p className={styles.vasCertificatOrVzdelani}>{addingCertificate?'Váš certifikát':'Vaše vzdělání'}</p>
       <input 
-        className='vas-certificat-or-vzdelani-input' 
+        style={{marginBottom: '130%'}}
         type="text" 
         placeholder={addingCertificate?'Cisco - IT Essentials':'Střední odborné učiliště...'}
         value={newAddedEducation}
@@ -115,24 +115,26 @@ const ProfilOpravar = () => {
     const [file2, setFile2] = useState(null)
      const OneUnveryfiedEducation = ({educationName}) => {
       return (
-        <div className='oneUnveryfiedEducation'>
-          <p>{educationName}</p>
+        <div className={styles.oneUnveryfiedEducation}>
+          <p className={styles.oneEducationName}>{educationName}</p>
           <button onClick={()=>{
             setOneEducation(educationName)
             setBackBtnOnClick(()=>()=>handle2ndBackClick())
             setVerifyingOneEducation(true)
-          }}>Přidat ověření</button>
+          }}
+          className={styles.startVerifyingOneEducationBtn}
+          >Přidat ověření</button>
         </div>
       )
     }
     
     const VerifyingOneEducation = ()=>{
-      return <form className='verifyingOneEducation'>
-        <h3 >Ověření vzdělání {oneEducation}</h3>
-        <h4 className='nadpisy-stran'>První strana</h4>
-        <input type="file" onChange={(e)=>setFile1(e.target.files[0])}/>
-        <h4 className='nadpisy-stran'>Druhá strana</h4>
-        <input type="file" onChange={(e)=>setFile2(e.target.files[0])}/>
+      return <form className={styles.verifyingOneEducation}>
+        <h3 style={{margin: '20px 0 40px 0', textAlign:'left'}}>Ověření vzdělání {oneEducation}</h3>
+        <h4 style={{textAlign:'left'}}>První strana</h4>
+        <input className={styles.verifyingOneEducationInput} type="file" onChange={(e)=>setFile1(e.target.files[0])}/>
+        <h4 style={{textAlign:'left'}}>Druhá strana</h4>
+        <input className={styles.verifyingOneEducationInput} type="file" onChange={(e)=>setFile2(e.target.files[0])}/>
       </form>
     }
 
@@ -174,8 +176,8 @@ const ProfilOpravar = () => {
     
     return (
       <>
-      {!verifyingOneEducation && educations&& certificates && <div className='unveryfiedEducations'>
-        <p className='pocet-neoverenych-vzdelani'>
+      {!verifyingOneEducation && educations&& certificates && <div className={styles.unveryfiedEducations}>
+        <p className={styles.pocetNeoverenychVzdelani}>
           Máte neověřeno: <br />
           {educations.length} vzdělání <br />
           {certificates.length} certifikátů
@@ -186,7 +188,7 @@ const ProfilOpravar = () => {
         {certificates.map((one)=>{
           return <OneUnveryfiedEducation educationName={one} />
         })}
-        <p style={{marginTop: '50px'}}>Změny se projeví do pár minut</p>
+        <p style={{marginTop: '50px', fontSize:'13px'}}>Změny se projeví do pár minut</p>
       </div>}
       {verifyingOneEducation && <VerifyingOneEducation/>}
       
@@ -221,13 +223,14 @@ const ProfilOpravar = () => {
   }
 
   const PfpSet = ({onChange}) => {
-  return <div className='pfp-set'>
-      <p>Zvolte obrázek</p>
+  return <div className={styles.pfpSet}>
+      <p className={styles.zvolteObrazek}>Zvolte obrázek</p>
       <input 
+        className={styles.pfpFileInput}
         type="file"
         onChange={onChange}
       />
-      <p style={{color: '#009B73', marginBottom: '40px'}}>Změna se projeví při příštím přihlášení</p>
+      <p style={{color: '#009B73', marginBottom: '40px', fontSize:'13px'}}>Změna se projeví při příštím přihlášení</p>
       <Button onClick={()=>setChangingPfp(false)}>Zrušit</Button>
     </div>
   
@@ -238,27 +241,27 @@ const ProfilOpravar = () => {
   const changeName = (e)=>{
     e.preventDefault()
     setName(e.target.value)
-    setNameClass('changed-info')
+    setNameClass('changedInfo')
   }
   const changeLastName = (e)=>{
     e.preventDefault()
     setLastName(e.target.value)
-    setLastNameClass('changed-info')
+    setLastNameClass('changedInfo')
   }
   const changeLocation = (e)=>{
     e.preventDefault()
     setLocation(e.target.value)
-    setLocationClass('changed-info')
+    setLocationClass('changedInfo')
   }
   const changeEmail = (e)=>{
     e.preventDefault()
     setEmail(e.target.value)
-    setEmailClass('changed-info')
+    setEmailClass('changedInfo')
   }
    const changeBio = (e)=>{
     e.preventDefault()
     setBio(e.target.value)
-    setBioClass('changed-info')
+    setBioClass('changedInfo')
   }
 
 
@@ -336,17 +339,17 @@ const ProfilOpravar = () => {
 
   const showMain = !verifyingEducations && !changingPfp && !addingEducations
 
-  return (<div className='profil-opravar-all'>
+  return (<div className={styles.profilOpravarAll}>
     <ProfilHeader 
       nadpisText='Upravit profil' 
       showBackBtn={showBackBtn}
       backBtnOnClick={backBtnOnclick}
     />
-      <div className={changingPfp ? 'profil-opravar-smaller profil-opravar' :"profil-opravar"}>
+      <div className={changingPfp ? `${styles.profilOpravarSmaller} ${styles.profilOpravar}` :styles.profilOpravar}>
 
           {(!verifyingEducations && !addingEducations )&&<>
-            <img src={pfp} alt='Error' className='pfp'/>
-            <img src={pen} alt='' className='pen' onClick={()=>setChangingPfp(!changingPfp)}/>
+            <img src={pfp} alt='Error' className={styles.pfp}/>
+            <img src={pen} alt='' className={styles.pen} onClick={()=>setChangingPfp(!changingPfp)}/>
           </>}
           
           {changingPfp && <PfpSet onChange={(e)=>handleChangePfp(e)}/>}
@@ -355,51 +358,50 @@ const ProfilOpravar = () => {
 
         { showMain && <>
         {((educations||certificates)&&educations.length+certificates.length>0) &&<>
-        
-          <p className='overte-sva-vzdelani' onClick={(e)=>startVerifying(e)}>OVĚŘTE SVÁ VZDĚLÁNÍ: {certificates.length+educations.length}</p>
-          <button className='verify-here-btn' onClick={(e)=>startVerifying(e)}>Ověřit zde</button>
+          <p className={styles.overteSvaVzdelani} onClick={(e)=>startVerifying(e)}>OVĚŘTE SVÁ VZDĚLÁNÍ: {certificates.length+educations.length}</p>
+          <button className={styles.verifyHereBtn} onClick={(e)=>startVerifying(e)}>Ověřit zde</button>
         </>}
         
           <form onSubmit={(e)=>e.preventDefault()}>
-            <p id='top-profile'>Jméno</p>
+            <p id={styles.topProfile} className={styles.infoHeadings}>Jméno</p>
             <input 
               type="text"
               value={name}
               onChange={(e)=>changeName(e)}
-              className={nameClass}
+              className={styles[nameClass]}
             /> 
-            <p>Příjmení</p>
+            <p className={styles.infoHeadings}>Příjmení</p>
             <input 
               type="text"
               value={lastName}
               onChange={(e)=>changeLastName(e)}
-              className={lastNameClass}
+              className={styles[lastNameClass]}
             />
-            <p>Lokace</p>
+            <p className={styles.infoHeadings}>Lokace</p>
             <input 
               type="text" 
               value={location}
               onChange={(e)=>changeLocation(e)}
-              className={locationClass}
+              className={styles[locationClass]}
             />
-            <p>Kontaktní email</p>
+            <p className={styles.infoHeadings}>Kontaktní email</p>
             <input 
               type="text"
               value={email}   
               onChange={(e)=>changeEmail(e)}
-              className={emailClass}
+              className={styles[emailClass]}
             />
-            <p>Bio</p>
+            <p className={styles.infoHeadings}>Bio</p>
             <input 
               type="text"
               value={bio}
               placeholder='Napište něco o sobě'
               onChange={(e)=>changeBio(e)}
-              className={bioClass}
+              className={styles[bioClass]}
             />
-            <div className='bottom-btns'>
+            <div className={styles.bottomBtns}>
               <ChangeRoleBtn />
-              <button className='add-educations-btn' onClick={()=>handleAddEducationsBtn()}>Přidat vzdělání</button>
+              <button className={styles.addEducationsBtn} onClick={()=>handleAddEducationsBtn()}>Přidat vzdělání</button>
             </div>
             <Button onClick={()=>saveChanges()}>Uložit změny</Button>
           </form>
