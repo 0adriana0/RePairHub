@@ -1,4 +1,5 @@
 import '../styles/HomeOpravar.css'
+import inserateStyles from '../styles/OneInserate.module.css'
 import logo from '../img/logo.png'
 import { useEffect, useState } from 'react'
 import { db, auth} from '../firebase'
@@ -60,18 +61,18 @@ const HomeOpravar = () => {
         <div className="home-opravar">
             {inserates.map((one, index)=>{
                 const {id, pfp, name, lastName, description, img1, img2} = one
-                return <div key={index} className='one-inserate'>
-                    <img className='user-pfp' src={pfp} alt="" />
-                    <p className='user-name-lastName'>{name} {lastName}</p>
-                    <p className='inserate-description'>{description}</p>
-                    <div className='inserate-bottom'>
-                        <div className='wrapper'>
-                            <img className='inserate-images' src={img1} alt="" />
+                return <div key={index} className={inserateStyles.oneInserate}>
+                    <img className={inserateStyles.userPfp} src={pfp} alt="" />
+                    <p className={inserateStyles.userNameLastName}>{name} {lastName}</p>
+                    <p className={inserateStyles.inserateDescription}>{description}</p>
+                    <div className={inserateStyles.inserateBottom}>
+                        <div className={inserateStyles.wrapper}>
+                            <img className={inserateStyles.inserateImages} src={img1} alt="" />
                         </div>
-                        <div className='wrapper'>
-                            <img className='inserate-images' src={img2} alt="" />
+                        <div className={inserateStyles.wrapper}>
+                            <img className={inserateStyles.inserateImages} src={img2} alt="" />
                         </div>
-                        <button className='show-more-btn' onClick={()=>navigate(`/inzerat/${id}`)}>Zobrazit více</button>
+                        <button className={inserateStyles.showMoreBtn} onClick={()=>navigate(`/inzerat/${id}`)}>Zobrazit více</button>
                     </div>
                 </div>
             })}
