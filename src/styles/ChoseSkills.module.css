@@ -1,4 +1,4 @@
-.chose-skills{
+.choseSkills{
     max-width: 300px;
     min-height: 692.906px;
     height: fit-content;
@@ -8,12 +8,12 @@
     border-radius: 26px;
     text-align: left;
 }
-label{
+.label{
     margin-top: 30px;
     margin-left: 20px;
     font-size: 3.76vw;
 }
-.add-new-input-btn{
+.addNewInputBtn{
     cursor: pointer;
     text-align: center;
     background: none;
@@ -28,25 +28,22 @@ label{
     border: #009b73 solid 1px;
     border-radius: 50px;
 }
-.add-new-input-btn:hover{
+.addNewInputBtn:hover{
     background-color: #0E725F;
 }
-.co-umis{
+.coUmis{
     text-align: left;
     margin: 20px 0 0 4.7vw;
     font-weight: bold;
     font-size: 3.76vw;
 }
-.skills-form{
+.skillsForm{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: 50px;
 }
-.skills-form div{
-    width: 50%;
-}
-.skills-form div p{
+.skillsP{
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -56,7 +53,7 @@ label{
     margin-top: 30px;
     font-size: 3.76vw ;
 }
-.skills-form div p input{
+.skillsCheckBox{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -71,7 +68,7 @@ label{
     accent-color: #0E725F;
     background-color: #0E725F;
 }
-.skills-form div p input:checked::after{
+.skillsCheckBox:checked::after{
     content: "✔";
     cursor: pointer;
     display: inline-block;
