@@ -11,7 +11,7 @@
 .heading{
     margin: 55px auto;
 }
-.roles{
+.buttons{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
