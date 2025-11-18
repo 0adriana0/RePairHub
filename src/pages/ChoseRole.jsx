@@ -27,14 +27,14 @@ const ChoseRole = () => {
     <div className={styles.container}>
       <h3 className={styles.heading}>Kdo jste?</h3>
       <div 
-        className={styles.roles}
+        className={styles.buttons}
         onClick={()=>setUserRole('opravář')}
       >
         <img src={workerImg} alt="Opravář" className={`${styles.images} ${styles.workerImage}`}/>
         <p className={styles.texts}>Opravář</p>
       </div>
       <div 
-        className={styles.roles}
+        className={styles.buttons}
         onClick={()=>setUserRole('zákazník')}
       >
         <p className={styles.roleTexts}>Zákazník</p>
