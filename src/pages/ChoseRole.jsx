@@ -24,21 +24,21 @@ const ChoseRole = () => {
       } catch(err) {alert(err.message)}
   }
   return (
-    <div className={styles.choseRole}>
-      <h3 className={styles.kdoJste}>Kdo jste?</h3>
+    <div className={styles.container}>
+      <h3 className={styles.heading}>Kdo jste?</h3>
       <div 
         className={styles.roles}
         onClick={()=>setUserRole('opravář')}
       >
-        <img src={workerImg} alt="Opravář" className={`${styles.roleImages} ${styles.workerImage}`}/>
-        <p className={styles.roleTexts}>Opravář</p>
+        <img src={workerImg} alt="Opravář" className={`${styles.images} ${styles.workerImage}`}/>
+        <p className={styles.texts}>Opravář</p>
       </div>
       <div 
         className={styles.roles}
         onClick={()=>setUserRole('zákazník')}
       >
         <p className={styles.roleTexts}>Zákazník</p>
-        <img src={customerImg} alt="Zákazník" className={`${styles.roleImages} ${styles.customerImage}`} /> 
+        <img src={customerImg} alt="Zákazník" className={`${styles.images} ${styles.customerImage}`} /> 
       </div>
 
       <Button onClick={submitHandle}>Pokračovat jako {userRole}</Button>
