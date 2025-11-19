@@ -19,6 +19,7 @@ const ProfilOpravar = () => {
   const [allowDataSave, setAllowDataSave] = useState(false) 
 
   // Informace z databáze
+  const [pfp] = useState(defaultPfp)
   const [name, setName] = useState('Načítám data...')
   const [lastName, setLastName] = useState('Načítám data...')
   const [email, setEmail] = useState('Načítám data...')
@@ -200,7 +201,6 @@ const ProfilOpravar = () => {
 
 
   // Změna pfp
-  const [pfp, setPfp] = useState(defaultPfp)
   const [changingPfp, setChangingPfp] = useState(false)
   const [pfpPublicId, setPfpPublicId] = useState('')
 

@@ -20,7 +20,7 @@ const ChoseRole = () => {
         const userRef = doc(db, 'users', user.uid)
         await updateDoc(userRef, {actualRole: userRole})
 
-        userRole==='opravář'? navigate('/chose-skills'): navigate('/profile')
+        userRole==='opravář'? navigate('/chose-skills'): navigate('/profil-zakaznik')
       } catch(err) {alert(err.message)}
   }
   return (

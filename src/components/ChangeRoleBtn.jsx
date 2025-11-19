@@ -17,7 +17,7 @@ const ChangeRoleBtn = () => {
             const userRef = doc(db, 'users', user.uid)
             await updateDoc(userRef, { actualRole: newRole })
             console.log(`Role změněna na: ${newRole}`)
-            newRole === 'opravář'? navigate('/profiů-opravar') : navigate('/profil-zakaznik')
+            newRole === 'opravář'? navigate('/profil-opravar') : navigate('/profil-zakaznik')
         } catch(err) {alert(err.message)}
     }
 
