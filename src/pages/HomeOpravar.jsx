@@ -1,5 +1,5 @@
 import styles from '../styles/HomeOpravar.module.css'
-import inserateStyles from '../styles/OneInserate.module.css'
+import inserateStyles from '../styles/OneInseratePrewiew.module.css'
 import logo from '../img/logo.png'
 import { useEffect, useState } from 'react'
 import { db, auth} from '../firebase'

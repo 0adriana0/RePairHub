@@ -13,6 +13,7 @@ import "./App.css";
 import HomeOpravar from "./pages/HomeOpravar";
 import SearchingOpravar from "./pages/SearchingOpravar";
 import NotificationsOpravar from "./pages/NotificationsOpravar";
+import OneInserate from "./pages/OneInserate";
 
  function AppContent() {
 
@@ -24,7 +25,7 @@ import NotificationsOpravar from "./pages/NotificationsOpravar";
   const signUpNavbarWhiteList = ['/location-setting', '/chose-role', '/chose-skills' ]
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
-  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik']
+  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', '/one-inserate']
   const showFooter = footerWhiteList.includes(location.pathname)
   return (
     <>
@@ -39,6 +40,7 @@ import NotificationsOpravar from "./pages/NotificationsOpravar";
         <Route path="/chose-skills" element={<ChoseSkills/>}/>
         <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
+        <Route path="/one-inserate/" element={<OneInserate/>} />
         <Route path="/notifications-opravar" element={<NotificationsOpravar/>} />
         <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
         <Route path="*" element={<Navigate to="/" />} />

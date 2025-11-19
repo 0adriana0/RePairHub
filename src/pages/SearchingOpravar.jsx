@@ -1,5 +1,5 @@
 import styles from '../styles/SearchingOpravar.module.css'
-import inserateStyles from '../styles/OneInserate.module.css'
+import inserateStyles from '../styles/OneInseratePrewiew.module.css'
 import greyLupa from '../img/Footer/grey/lupa.png'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'

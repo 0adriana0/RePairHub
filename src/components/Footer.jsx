@@ -1,4 +1,4 @@
-import './styles/Footer.css'
+import styles from './styles/Footer.module.css'
 import whiteHouseImg from '../img/Footer/white/house.png'
 import whiteLupaImg from '../img/Footer/white/lupa.png'
 import whiteProfilImg from '../img/Footer/white/profil.png'
@@ -43,15 +43,15 @@ const Footer = () => {
     },[path, navigate])
     
 
-  return <footer className='footer'>
-    <button className='btn-icons first-icon' onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
-    <button className='btn-icons' onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
+  return <footer className={styles.footer}>
+    <button className={styles.buttons} onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
+    <button className={styles.buttons} onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
 
-    {role==='zákazník'? <button className='add-new-inserate'>+</button>: <img src={celeR} alt='' className='ftr-mid'/>}
+    {role==='zákazník'? <button className={styles.add}>+</button>: <img src={celeR} alt='' className={styles.middle}/>}
     
-    <span className='zarovnávání'></span>
-    <button className='btn-icons' onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
-    <button className='btn-icons last-icon' onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
+    <span></span>
+    <button className={styles.buttons} onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
+    <button className={styles.buttons} onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
   </footer>
 }
 
