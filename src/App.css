@@ -1,12 +1,17 @@
-html
+html{
+  height: 100%;
+}
 body {
   font-family: "Inter", sans-serif;
   background-color: #06021A;
   margin: 0;
   padding: 0;
   color: #333;
+  height: 100%;
 }
-
+#root{
+  height: 100%;
+}
 .container {
   max-width: 430px;
   margin: 80px auto;
@@ -19,7 +24,7 @@ body {
 
 .nav-button {
   text-align: center;
-border: none;
+  border: none;
   background-color: #009B73;
   border-radius: 26px;
   padding: 10px 20px 10px;
@@ -66,7 +71,9 @@ input:focus {
   border-color: #0E725F;
   outline: none;
 }
-
+input[type='file']{
+  height: fit-content;
+}
 h1, h2 {
   text-align: center;
   color: #ffffff;

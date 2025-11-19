@@ -15,6 +15,10 @@ import ProfilOpravar from "./pages/ProfilOpravar";
 import ProfilZakaznik from "./pages/ProfilZakaznik";
 import Prispevky from "./pages/Prispevky";
 import AddPrispevky from "./pages/AddPrispevky";
+import "./App.css";
+import HomeOpravar from "./pages/HomeOpravar";
+import SearchingOpravar from "./pages/SearchingOpravar";
+import NotificationsOpravar from "./pages/NotificationsOpravar";
 
 import "./App.css";
 
@@ -42,6 +46,7 @@ function AppContent() {
 
   const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/profil-zakaznik/prispevky',
   '/profil-zakaznik/add/step1', '/notifications', '/searching', '/home']
+  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik']
   const showFooter = footerWhiteList.includes(location.pathname)
 
   return (
@@ -59,6 +64,10 @@ function AppContent() {
         <Route path="/profil-zakaznik" element={user ? <ProfilZakaznik user={user}/> : <Navigate to="/login" />} />
         <Route path="/profil-zakaznik/prispevky" element={user ? <Prispevky user={user}/> : <Navigate to="/login" />} />
         <Route path="/profil-zakaznik/add/step1" element={user ? <AddPrispevky user={user}/> : <Navigate to="/login" />} />
+        <Route path="/home-opravar" element={<HomeOpravar/>} />
+        <Route path="/searching-opravar" element={<SearchingOpravar/>} />
+        <Route path="/notifications-opravar" element={<NotificationsOpravar/>} />
+        <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {showFooter && <Footer/>}

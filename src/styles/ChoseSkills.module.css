@@ -1,31 +1,49 @@
-.chose-skills{
+.choseSkills{
     max-width: 300px;
-    height: 692.906px;
+    min-height: 692.906px;
+    height: fit-content;
     background: #2e2b3c;
     padding: 20px;
     margin: 90px 42.5px;
     border-radius: 26px;
     text-align: left;
 }
-label{
+.label{
     margin-top: 30px;
     margin-left: 20px;
+    font-size: 3.76vw;
 }
-.co-umis{
+.addNewInputBtn{
+    cursor: pointer;
+    text-align: center;
+    background: none;
+    padding: 5px;
+    height: 29px;
+    width: 29px;
+    font-size: 4vw;
+    font-weight: 1px;
+    color: #fff;
+    margin: 0;
+    margin-right: 5px;
+    border: #009b73 solid 1px;
+    border-radius: 50px;
+}
+.addNewInputBtn:hover{
+    background-color: #0E725F;
+}
+.coUmis{
     text-align: left;
-    margin-left: 20px;
+    margin: 20px 0 0 4.7vw;
     font-weight: bold;
+    font-size: 3.76vw;
 }
-.skills-form{
+.skillsForm{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 62px;
+    margin-bottom: 50px;
 }
-.skills-form div{
-    width: 50%;
-}
-.skills-form div p{
+.skillsP{
     width: 80%;
     display: flex;
     flex-direction: row;
@@ -33,29 +51,30 @@ label{
     align-items: center;
     margin-left: 15px;
     margin-top: 30px;
+    font-size: 3.76vw ;
 }
-.skills-form div p input{
+.skillsCheckBox{
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     position: relative;
     cursor: pointer;
     display: inline-block;
-    width: 20px;
-    height: 20px;
+    width: 4.7vw;
+    height: 4.7vw;
     margin: 0;
     padding: 0;
-    margin-right: 12px;
+    margin-right: 0px;
     accent-color: #0E725F;
     background-color: #0E725F;
 }
-.skills-form div p input:checked::after{
+.skillsCheckBox:checked::after{
     content: "✔";
     cursor: pointer;
     display: inline-block;
     border-radius: 8px;
-    width: 20px;
-    height: 20px;
+    width: 4.7vw;
+    height: 4.7vw;
     margin: 0;
     margin-right: 12px;
     padding: 0;
@@ -64,6 +83,6 @@ label{
     position: absolute;
     top: -0.5px;
     left: 0.5px;
-    font-size: 14px;
+    font-size: 3.3vw;
     text-align: center;
 }

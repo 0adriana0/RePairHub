@@ -1,0 +1,179 @@
+.profilOpravarAll{
+    min-height: 70vh;
+}
+.profilOpravar{
+    max-width: 300px;
+    min-height: 68vh;
+    background: #2e2b3c;
+    padding: 20px;
+    margin: 0 42.5px 40px 42.5px;
+    border-radius: 26px;
+    text-align: center;
+}
+.profilOpravarSmaller{
+    height: 34vh;
+}
+.pfpSet{
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.zvolteObrazek{
+    margin: 0;
+    text-align: left;
+    padding-left: 15px;
+}
+.pfpFileInput{
+    color: #009B73;
+    width: 240px;
+    border-radius: 6px;
+    margin: 10px 0;
+    background: none;
+}
+.pfpFileInput::file-selector-button{
+    background-color: #009B73;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 5px;
+}
+.unveryfiedEducations{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 45px;
+}
+.pocetNeoverenychVzdelani{
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+.oneUnveryfiedEducation{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 47vw;
+    padding: 20px 12px;
+    background-color: #06021A;
+    margin: 4px 0;
+    border-radius: 12px;
+}
+.oneEducationName{
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+.startVerifyingOneEducationBtn{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 6px;
+    background-color: #282343;
+    color: #fff;
+    font-size: 12px;
+}
+.verifyingOneEducation{
+    color: #fff;
+    margin-bottom: 80%;
+}
+.verifyingOneEducationInput{
+    display: flex;
+    justify-content: space-between;
+    background: none;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 5px;
+}
+.verifyingOneEducationInput::file-selector-button{
+    background-color: #282343;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.pfp{
+    height: 90px;
+    width: 90px;
+    border-radius: 50px;
+    position: absolute;
+    top: 14vh;
+    left: 39.41vw;
+}
+.pen{
+    position: absolute;
+    left: 53vw;
+}
+.overteSvaVzdelani{
+    color: #D93025;
+    display: inline-block;
+    margin: 0;
+    margin-top: 14%;
+    margin-right: 2.5vw;
+    font-size: 3.5vw;
+}
+.verifyHereBtn{
+    background-color: #7C778A;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    padding: 1.5% 4.5%;
+    font-size: 13px;
+}
+#topProfile{
+    margin-top: 4%;
+}
+.infoHeadings{
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+.informace{
+    color: #6BE0C2;
+}
+.changedInfo{
+    color: lightslategrey;
+}
+.bottomBtns{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+}
+.addEducationsBtn{
+    color: white;
+    background-color: #7C778A;
+    border: none;
+    margin: 0;
+    margin-bottom: 1rem;
+    padding: 2.5% 4.5%;
+    border-radius: 7px;
+    font-size: 13px;
+}
+.educationsAddingHeading{
+    margin-top: 2em;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2px;
+    font-weight: bold;
+}
+.activeAddingSpan{
+    color: #009B74;
+}
+.inactiveAddingSpan{
+    color: #AEACB4;
+}
+.vasCertificatOrVzdelani{
+    margin: 2em 10px 5px 0;
+    padding-left: 7px;
+    font-size: 13px;
+    text-align: left;
+    
+}

@@ -13,7 +13,7 @@ export default function Welcome() {
         alt="Logo"
         className={styles.logo}
       />
-      <h1 className={styles.slogan}>slogan</h1>
+      <h1 className={styles.slogan}>Problém máte <br /> s námi ho dáte</h1>
       <Button onClick={() => navigate("/login")}>Pokračovat</Button>
     </div>
   );
