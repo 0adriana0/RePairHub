@@ -1,10 +1,10 @@
-.profilZakaznikAll {
+.PrispevkyAll {
   height: 100vh;
   position: relative;
 }
 
 
-.profilZakaznikImg {
+.ProfileImg {
   position: fixed;
   top: 10px;
   right: 10px;
@@ -39,4 +39,80 @@
     height: 40px;
     border: none;
     cursor: pointer;
+}
+
+
+.postItem{
+  position: relative;
+  background-color: #3E394B;
+  border-radius: 26px;
+  width: 350px;
+  margin: 10px auto;
+  padding-bottom: 15px;
+
+}
+
+.ProfilPhoto{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.nameLastName{
+  font-family: "Inter", sans-serif;
+  color: #ffffff;
+  padding-top: 20px;
+  width: 200px;
+  height: 10px;
+  margin: 10px 25px 15px;
+}
+
+.location{
+  color: #736F7E;
+  font-weight: 600;
+  margin: 0 10px 15px;
+  width: 200px;
+}
+
+.description{
+  width: 300px;
+  border-radius: 6px;
+  font-weight: 600;
+  background-color: #736F7E;
+  padding: 5px;
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin: 4px auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  color: #ffffff;
+}
+
+.arrow{
+    position: absolute;
+    left: 310px;
+    top: 10px;
+    background-color: #7A7C7E;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 100%;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.postTags{
+  margin: 10px 0 10px 20px;
+  color: #948c8c;
+}
+
+.postImage{
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  margin: 0;
 }

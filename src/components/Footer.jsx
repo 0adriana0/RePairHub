@@ -28,7 +28,7 @@ const Footer = () => {
   return <footer className='footer'>
     <button className='btn-icons first-icon' onClick={()=>navigate('/home')}><img src={btnImages[0]} alt="Home" /></button>
     <button className='btn-icons' onClick={()=>navigate('/searching')}><img src={btnImages[1]} alt="Search" /></button>
-    <button className='add-new-inserate'>+</button>
+    <button className='add-new-inserate' onClick={()=>navigate('/profil-zakaznik/add/step1')}>+</button>
     <span className='zarovnávání'></span>
     <button className='btn-icons' onClick={()=>navigate('/notifications')}><img src={btnImages[2]} alt="Notification" /></button>
     <button className='btn-icons last-icon' onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
