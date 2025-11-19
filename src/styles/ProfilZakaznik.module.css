@@ -1,0 +1,64 @@
+.profilZakaznikAll {
+  height: 100vh;
+}
+
+.profilZakaznik {
+  max-width: 300px;
+  height: auto;
+  background: #2e2b3c;
+  padding: 65px 20px 40px;
+  margin: 0 42.5px 40px 42.5px;
+  border-radius: 26px;
+  text-align: center;
+}
+
+.profilZakaznik img {
+  position: absolute;
+  top: 14vh;
+  left: 39.41vw;
+}
+
+
+.profilZakaznik p {
+  text-align: left;
+  padding: 10px 0;
+  padding-left: 10px;
+}
+
+.labelProfile{
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+    display: block;
+    color: #faf9f9;
+}
+
+
+.informace {
+  width: 280px;
+  height: 20px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+  background-color: #176358;
+  border: none;
+  color: #6BE0C2;
+  margin-top: 0;
+}
+
+.inactive {
+  display: none;
+}
+
+.role{
+    background-color: #7C778A;
+    border-radius: 6px;
+    border: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+}

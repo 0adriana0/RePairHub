@@ -19,6 +19,7 @@ const ProfilOpravar = () => {
   const [allowDataSave, setAllowDataSave] = useState(false) 
 
   // Informace z databáze
+  const [pfp] = useState(defaultPfp)
   const [name, setName] = useState('Načítám data...')
   const [lastName, setLastName] = useState('Načítám data...')
   const [email, setEmail] = useState('Načítám data...')

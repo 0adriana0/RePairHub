@@ -44,6 +44,9 @@ const Footer = () => {
     
 
   return <footer className='footer'>
+    <button className='btn-icons first-icon' onClick={()=>navigate('/home')}><img src={btnImages[0]} alt="Home" /></button>
+    <button className='btn-icons' onClick={()=>navigate('/searching')}><img src={btnImages[1]} alt="Search" /></button>
+    <button className='add-new-inserate' onClick={()=>navigate('/profil-zakaznik/add/step1')}>+</button>
     <button className='btn-icons first-icon' onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
     <button className='btn-icons' onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
 

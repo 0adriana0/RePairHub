@@ -43,7 +43,8 @@ body {
 
 label {
   font-weight: 600;
-  margin-bottom: 6px;
+  margin: 6px;
+
   display: block;
   color: #faf9f9;
 }
