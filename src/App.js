@@ -50,7 +50,6 @@ function AppContent() {
   const showFooter = footerWhiteList.some(item => 
     typeof item === 'string' ? item === location.pathname : item.test(location.pathname)
   )
-console.log(showFooter);
 
 
   return (
