@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import styles from '../styles/AddPrispevky.module.css';
 import pfp from '../img/pfp-default.png';
 import { auth, db } from '../firebase';
-import { doc, getDoc, collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, collection, addDoc, serverTimestamp, setDoc } from "firebase/firestore";
 import camera from "../img/camera.png";
-
 export default function AddPostStep1() {
   const [description, setDescription] = useState("");
   const [hashtags, setHashtags] = useState("");
@@ -77,21 +76,39 @@ export default function AddPostStep1() {
     }
 
     try {
-      const imageUrl = await uploadToCloudinary(file);
-      if (!imageUrl) throw new Error("Cloudinary upload failed");
+      const imageOneURL = await uploadToCloudinary(file);
+      if (!imageOneURL) throw new Error("Cloudinary upload failed");
 
       
-      await addDoc(collection(db, "users", user.uid, "posts"), {
+      const snap = await addDoc(collection(db, "users", user.uid, "posts"), {
         description,
-        imageURL: imageUrl,
+        imageOneURL: imageOneURL,
+        // imageTwoURL: 'Prosím dodělat druhý obrázek🤗❤️',
         hashtags: hashtags
           .split(" ")
           .map(tag => tag.trim())
           .filter(tag => tag.length > 0),
         createdAt: serverTimestamp(),
-        userId: user.uid
-      });
+        userId: user.uid,
+        userName: userData.name,
+        userLastName: userData.lastName,
+        location: userData.location
 
+      })
+      await setDoc(doc(db, "posts", snap.id), {
+        description,
+        imageOneURL: imageOneURL,
+        hashtags: hashtags
+          .split(" ")
+          .map(tag => tag.trim())
+          .filter(tag => tag.length > 0),
+        createdAt: serverTimestamp(),
+        userId: user.uid,
+        userName: userData.name,
+        userLastName: userData.lastName,
+        location: userData.location
+      })
+      
       alert("Příspěvek úspěšně přidán!");
       navigate("/profil-zakaznik");
     } catch (err) {

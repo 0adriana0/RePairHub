@@ -19,7 +19,7 @@ const ProfilOpravar = () => {
   const [allowDataSave, setAllowDataSave] = useState(false) 
 
   // Informace z databáze
-  const [pfp] = useState(defaultPfp)
+  const [pfp, setPfp] = useState(defaultPfp)
   const [name, setName] = useState('Načítám data...')
   const [lastName, setLastName] = useState('Načítám data...')
   const [email, setEmail] = useState('Načítám data...')
@@ -201,7 +201,6 @@ const ProfilOpravar = () => {
 
 
   // Změna pfp
-  const [pfp, setPfp] = useState(defaultPfp)
   const [changingPfp, setChangingPfp] = useState(false)
   const [pfpPublicId, setPfpPublicId] = useState('')
 
@@ -349,7 +348,7 @@ const ProfilOpravar = () => {
       <div className={changingPfp ? `${styles.profilOpravarSmaller} ${styles.profilOpravar}` :styles.profilOpravar}>
 
           {(!verifyingEducations && !addingEducations )&&<>
-            <img src={pfp} alt='Error' className={styles.pfp}/>
+            <img src={pfp} alt='' className={styles.pfp}/>
             <img src={pen} alt='' className={styles.pen} onClick={()=>setChangingPfp(!changingPfp)}/>
           </>}
           

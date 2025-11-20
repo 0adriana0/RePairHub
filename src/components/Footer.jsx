@@ -1,4 +1,4 @@
-import './styles/Footer.css'
+import styles from './styles/Footer.module.css'
 import whiteHouseImg from '../img/Footer/white/house.png'
 import whiteLupaImg from '../img/Footer/white/lupa.png'
 import whiteProfilImg from '../img/Footer/white/profil.png'
@@ -25,10 +25,10 @@ const Footer = () => {
 
     useEffect(()=>{
       const loadData = async ()=>{
-        path === '/profil-opravar' && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
-        path === '/searching-opravar' && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
-        path === '/home-opravar' && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
-        path === '/notifications-opravar' && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
+        (path === '/profil-opravar'||path==='/profil-zakaznik'||path==='/profil-zakaznik/prispevky'||path ==='/profil-zakaznik/add/step1') && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
+        (path === '/searching-opravar'||path==='/searching.zakaznik') && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
+        (path === '/home-opravar'||path === '/home-zakaznik') && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
+        (path === '/notifications-opravar'||path === '/notifications-zakaznik') && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
         try {
           const uid = auth.currentUser.uid
           uid || navigate('/login')
@@ -43,18 +43,15 @@ const Footer = () => {
     },[path, navigate])
     
 
-  return <footer className='footer'>
-    <button className='btn-icons first-icon' onClick={()=>navigate('/home')}><img src={btnImages[0]} alt="Home" /></button>
-    <button className='btn-icons' onClick={()=>navigate('/searching')}><img src={btnImages[1]} alt="Search" /></button>
-    <button className='add-new-inserate' onClick={()=>navigate('/profil-zakaznik/add/step1')}>+</button>
-    <button className='btn-icons first-icon' onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
-    <button className='btn-icons' onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
+  return <footer className={styles.footer}>
+    <button className={styles.buttons} onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
+    <button className={styles.buttons} onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
 
-    {role==='zákazník'? <button className='add-new-inserate'>+</button>: <img src={celeR} alt='' className='ftr-mid'/>}
+    {role==='zákazník'? <button className={styles.add}>+</button>: <img src={celeR} alt='' className={styles.middle}/>}
     
-    <span className='zarovnávání'></span>
-    <button className='btn-icons' onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
-    <button className='btn-icons last-icon' onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
+    <span></span>
+    <button className={styles.buttons} onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
+    <button className={styles.buttons} onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
   </footer>
 }
 

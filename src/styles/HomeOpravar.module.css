@@ -40,10 +40,12 @@
 }
 .homeOpravar{
     width: 85vw;
-    min-height: 68vh;
-    height: fit-content;
+    height: 68vh;
+    overflow-y: scroll;
     background: #2e2b3c;
     padding: 20px;
+    border-bottom: 15px solid #2E2B3C;
+    border-top: 15px solid #2E2B3C;
     border-radius: 26px;
     text-align: center;
     position: relative;

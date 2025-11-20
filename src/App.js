@@ -19,6 +19,7 @@ import "./App.css";
 import HomeOpravar from "./pages/HomeOpravar";
 import SearchingOpravar from "./pages/SearchingOpravar";
 import NotificationsOpravar from "./pages/NotificationsOpravar";
+import OneInserate from "./pages/OneInserate";
 
 import "./App.css";
 
@@ -44,10 +45,12 @@ function AppContent() {
   const signUpNavbarWhiteList = ['/location-setting', '/chose-role', '/chose-skills' ]
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
-  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/profil-zakaznik/prispevky',
-  '/profil-zakaznik/add/step1', '/notifications', '/searching', '/home']
-  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik']
-  const showFooter = footerWhiteList.includes(location.pathname)
+  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', /^\/one-inserate\/[^/]+$/,'/profil-zakaznik/prispevky',
+  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik']
+  const showFooter = footerWhiteList.some(item => 
+    typeof item === 'string' ? item === location.pathname : item.test(location.pathname)
+  )
+
 
   return (
     <>
@@ -66,8 +69,8 @@ function AppContent() {
         <Route path="/profil-zakaznik/add/step1" element={user ? <AddPrispevky user={user}/> : <Navigate to="/login" />} />
         <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
+        <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />
         <Route path="/notifications-opravar" element={<NotificationsOpravar/>} />
-        <Route path="/profil-opravar" element={<ProfilOpravar/>}/>
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {showFooter && <Footer/>}

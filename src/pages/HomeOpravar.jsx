@@ -1,39 +1,18 @@
 import styles from '../styles/HomeOpravar.module.css'
-import inserateStyles from '../styles/OneInserate.module.css'
+import inserateStyles from '../styles/OneInseratePrewiew.module.css'
 import logo from '../img/logo.png'
 import { useEffect, useState } from 'react'
 import { db, auth} from '../firebase'
 import { useNavigate } from 'react-router-dom'
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore'
 import defaultPfp from '../img/pfp-default.png'
 import chatBtn from '../img/Chat btn.png'
-
 const HomeOpravar = () => {
     const [name, setName] = useState('')
     const navigate = useNavigate()
-    const [inserates, setInserates] = useState([{
-        pfp: defaultPfp,
-        name: 'Jméno',
-        lastName: 'Příjmení',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
-        img1: logo,
-        img2: defaultPfp
-    },{
-        pfp: defaultPfp,
-        name: 'Jméno',
-        lastName: 'Příjmení',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
-        img1: logo,
-        img2: defaultPfp
-    },{
-        pfp: defaultPfp,
-        name: 'Jméno',
-        lastName: 'Příjmení',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
-        img1: logo,
-        img2: defaultPfp
-    }])
-
+    const [inserates, setInserates] = useState([])
+    console.log(inserates);
+    
     // Načítání dat
     useEffect(()=>{
         const loadData = async () =>{
@@ -46,7 +25,15 @@ const HomeOpravar = () => {
                 setName(data.name)
             }catch(err){console.log(err)}
         }
+        const loadInserateData = async ()=>{
+            try{
+                const snapshot = await getDocs(collection(db, "posts"))
+                setInserates(snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })))
+                
+            } catch(err) {alert(err.message); console.log(err);}
+        }
         loadData()
+        loadInserateData()
     },[navigate])
 
   return (
@@ -60,19 +47,19 @@ const HomeOpravar = () => {
         </header>
         <div className={styles.homeOpravar}>
             {inserates.map((one, index)=>{
-                const {id, pfp, name, lastName, description, img1, img2} = one
+                const {id, pfp, userName, userLastName, description,location, imageOneURL, imageTwoURL} = one
                 return <div key={index} className={inserateStyles.oneInserate}>
-                    <img className={inserateStyles.userPfp} src={pfp} alt="" />
-                    <p className={inserateStyles.userNameLastName}>{name} {lastName}</p>
+                    <img className={inserateStyles.userPfp} src={pfp||defaultPfp} alt="" />
+                    <p className={inserateStyles.userNameLastName}>{userName} {userLastName}</p>
                     <p className={inserateStyles.inserateDescription}>{description}</p>
                     <div className={inserateStyles.inserateBottom}>
                         <div className={inserateStyles.wrapper}>
-                            <img className={inserateStyles.inserateImages} src={img1} alt="" />
+                            <img className={inserateStyles.inserateImages} src={imageOneURL} alt="" />
                         </div>
                         <div className={inserateStyles.wrapper}>
-                            <img className={inserateStyles.inserateImages} src={img2} alt="" />
+                            <img className={inserateStyles.inserateImages} src={imageTwoURL} alt="" />
                         </div>
-                        <button className={inserateStyles.showMoreBtn} onClick={()=>navigate(`/inzerat/${id}`)}>Zobrazit více</button>
+                        <button className={inserateStyles.showMoreBtn} onClick={()=>navigate(`/one-inserate/${id}`)}>Zobrazit více</button>
                     </div>
                 </div>
             })}

@@ -85,28 +85,28 @@ const ProfilZakaznik = () => {
               type="text"
               value={name}
               onChange={(e)=>changeName(e)}
-              className={nameClass}
+              className={styles[nameClass]}
             /> 
             <p className={styles.labelProfile}>Příjmení</p>
             <input 
               type="text"
               value={lastName}
               onChange={(e)=>changeLastName(e)}
-              className={lastNameClass}
+              className={styles[lastNameClass]}
             />
             <p className={styles.labelProfile}>Lokace</p>
             <input 
               type="text" 
               value={location}
               onChange={(e)=>changeLocation(e)}
-              className={locationClass}
+              className={styles[locationClass]}
             />
             <p className={styles.labelProfile}>Kontaktní email</p>
             <input 
               type="text"
               value={email}   
               onChange={(e)=>changeEmail(e)}
-              className={emailClass}
+              className={styles[emailClass]}
             />
             <ChangeRoleBtn />
             <Button onClick={()=>saveChanges()}>Uložit změny</Button>
