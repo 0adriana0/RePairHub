@@ -1,6 +1,6 @@
 .oneInserate{
-    width: 90%;
-    height: 40%;
+    width: 92%;
+    height: 26%;
     background-color: #06021A;
     margin: 0;
     padding: 7px;
@@ -24,7 +24,10 @@
 .inserateDescription{
     font-size: 8px;
     color: #736F7E;
-    width: 80%;
+    width: 75%;
+    padding-right: 5%;
+    max-height: 40px;
+    overflow-y: scroll;
     text-align: left;
     margin-left: 13%;
     margin-top: 3px;

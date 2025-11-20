@@ -4,8 +4,10 @@ import smmallLogo from '../img/logo-small.png'
 import defaultPfp from '../img/pfp-default.png'
 import { useState } from 'react'
 import camera from '../img/camera.png'
+import { useNavigate } from 'react-router-dom'
 
 const OneInserate = () => {
+    const navigate = useNavigate()
     const [name, setName] = useState('Jméno')
     const [lastName, setLastName] = useState('Příjmení')
     const [location, setLocation] = useState('Lokace')
@@ -13,9 +15,9 @@ const OneInserate = () => {
 
   return (<div className={styles.container}>
     <header className={styles.header}>
-        <BackBtn show={true} />
+        <BackBtn show={true} onClick={()=>navigate('/home-opravar')}/>
         <img className={styles.topImage} src={smmallLogo} alt="" />
-        <h2 className={styles.heading}>Náhled inzerátu</h2>
+        <h2 className={styles.heading}>Příspěvek od {name}</h2>
     </header>
     <div className={styles.main}>
         <img className={styles.pfp} src={defaultPfp} alt="" />
@@ -23,8 +25,6 @@ const OneInserate = () => {
         <a href={`https://www.google.com/maps?q=${location}`} className={styles.location}>{location}</a>
         <p className={styles.description}>{desciption}</p>
         <div className={styles.image_container}>
-            <div className={styles.wrapper}><img className={styles.images} src={camera} alt="" /></div>
-            <div className={styles.wrapper}><img className={styles.images} src={camera} alt="" /></div>
             <div className={styles.wrapper}><img className={styles.images} src={camera} alt="" /></div>
             <div className={styles.wrapper}><img className={styles.images} src={camera} alt="" /></div>
         </div>

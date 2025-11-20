@@ -76,13 +76,14 @@ export default function AddPostStep1() {
     }
 
     try {
-      const imageUrl = await uploadToCloudinary(file);
-      if (!imageUrl) throw new Error("Cloudinary upload failed");
+      const imageOneURL = await uploadToCloudinary(file);
+      if (!imageOneURL) throw new Error("Cloudinary upload failed");
 
       
       const snap = await addDoc(collection(db, "users", user.uid, "posts"), {
         description,
-        imageURL: imageUrl,
+        imageOneURL: imageOneURL,
+        // imageTwoURL: 'Prosím dodělat druhý obrázek🤗❤️',
         hashtags: hashtags
           .split(" ")
           .map(tag => tag.trim())
@@ -92,10 +93,11 @@ export default function AddPostStep1() {
         userName: userData.name,
         userLastName: userData.lastName,
         location: userData.location
+
       })
       await setDoc(doc(db, "posts", snap.id), {
         description,
-        imageURL: imageUrl,
+        imageOneURL: imageOneURL,
         hashtags: hashtags
           .split(" ")
           .map(tag => tag.trim())
