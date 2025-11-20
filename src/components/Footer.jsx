@@ -16,19 +16,18 @@ import celeR from '../img/celeR.png'
 const Footer = () => {
     const location = useLocation()
     const path = location.pathname
-    const [btnImages, setBtnImages] = useState([])
+    const [btnImages, setBtnImages] = useState(['','','',''])
     const navigate = useNavigate()
     const [role, setRole] = useState(null)
 
 
-    
 
     useEffect(()=>{
       const loadData = async ()=>{
-        (path === '/profil-opravar'||path==='/profil-zakaznik'||path==='/profil-zakaznik/prispevky'||path ==='/profil-zakaznik/add/step1') && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
-        (path === '/searching-opravar'||path==='/searching.zakaznik') && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
-        (path === '/home-opravar'||path === '/home-zakaznik') && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
-        (path === '/notifications-opravar'||path === '/notifications-zakaznik') && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
+        if(path === '/profil-opravar'||path==='/profil-zakaznik'||path==='/profil-zakaznik/prispevky'||path ==='/profil-zakaznik/add/step1'){ setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])}
+        if(path === '/searching-opravar'||path==='/searching.zakaznik'){setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])}
+        if(path === '/home-opravar'||path === '/home-zakaznik'){setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])}
+        if(path === '/notifications-opravar'||path === '/notifications-zakaznik'){setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])}
         try {
           const uid = auth.currentUser.uid
           uid || navigate('/login')
@@ -47,7 +46,9 @@ const Footer = () => {
     <button className={styles.buttons} onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
     <button className={styles.buttons} onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
 
-    {role==='zákazník'? <button className={styles.add}>+</button>: <img src={celeR} alt='' className={styles.middle}/>}
+    {role==='zákazník'
+    ? <button className={styles.add}>+</button>
+    : <img src={celeR} alt='' className={styles.middle}/>}
     
     <span></span>
     <button className={styles.buttons} onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
