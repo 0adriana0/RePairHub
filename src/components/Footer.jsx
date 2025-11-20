@@ -25,10 +25,10 @@ const Footer = () => {
 
     useEffect(()=>{
       const loadData = async ()=>{
-        path === '/profil-opravar' && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
-        path === '/searching-opravar' && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
-        path === '/home-opravar' && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
-        path === '/notifications-opravar' && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
+        (path === '/profil-opravar'||path==='/profil-zakaznik'||path==='/profil-zakaznik/prispevky'||path ==='/profil-zakaznik/add/step1') && setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])
+        (path === '/searching-opravar'||path==='/searching.zakaznik') && setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])
+        (path === '/home-opravar'||path === '/home-zakaznik') && setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])
+        (path === '/notifications-opravar'||path === '/notifications-zakaznik') && setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])
         try {
           const uid = auth.currentUser.uid
           uid || navigate('/login')

@@ -11,28 +11,7 @@ import chatBtn from '../img/Chat btn.png'
 const HomeOpravar = () => {
     const [name, setName] = useState('')
     const navigate = useNavigate()
-    const [inserates, setInserates] = useState([{
-        pfp: defaultPfp,
-        name: 'Jméno',
-        lastName: 'Příjmení',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
-        img1: logo,
-        img2: defaultPfp
-    },{
-        pfp: defaultPfp,
-        name: 'Jméno',
-        lastName: 'Příjmení',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
-        img1: logo,
-        img2: defaultPfp
-    },{
-        pfp: defaultPfp,
-        name: 'Jméno',
-        lastName: 'Příjmení',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eiusLorem ipsum dolor sit amet consectetur adipisicing elit. Magni, eius.',
-        img1: logo,
-        img2: defaultPfp
-    }])
+    const [inserates, setInserates] = useState([])
 
     // Načítání dat
     useEffect(()=>{
@@ -46,7 +25,11 @@ const HomeOpravar = () => {
                 setName(data.name)
             }catch(err){console.log(err)}
         }
+        const loadInserateData = ()=>{
+            const 
+        }
         loadData()
+        loadInserateData()
     },[navigate])
 
   return (
