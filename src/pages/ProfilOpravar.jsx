@@ -348,7 +348,7 @@ const ProfilOpravar = () => {
       <div className={changingPfp ? `${styles.profilOpravarSmaller} ${styles.profilOpravar}` :styles.profilOpravar}>
 
           {(!verifyingEducations && !addingEducations )&&<>
-            <img src={pfp} alt='' className={styles.pfp}/>
+            <img src={pfp||defaultPfp} alt='' className={styles.pfp}/>
             <img src={pen} alt='' className={styles.pen} onClick={()=>setChangingPfp(!changingPfp)}/>
           </>}
           

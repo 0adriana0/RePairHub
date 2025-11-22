@@ -1,8 +1,10 @@
 .searchingOpravar{
-    min-height: 86.2vh;
+    height: 92.5%;
     width: 84vw;
+    overflow-y: scroll;
     background: #2e2b3c;
     padding: 20px;
+    border-bottom: 15px solid #2e2b3c;
     margin: 20px 10px;
     border-radius: 26px;
     text-align: center;
