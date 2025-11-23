@@ -80,6 +80,10 @@
     color: #fff;
     margin-bottom: 80%;
 }
+.verifyingOneEducationSmaller{
+    color: #fff;
+    margin-bottom: 30%;
+}
 .verifyingOneEducationInput{
     display: flex;
     justify-content: space-between;
@@ -94,7 +98,12 @@
     color: #fff;
     font-size: 12px;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 5px;   
+}
+.verificationImages{
+    max-width: 80%;
+    max-height: 300px;
+    margin: 0;
 }
 .pfp{
     height: 90px;
@@ -174,6 +183,5 @@
     margin: 2em 10px 5px 0;
     padding-left: 7px;
     font-size: 13px;
-    text-align: left;
-    
+    text-align: left; 
 }

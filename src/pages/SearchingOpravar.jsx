@@ -10,8 +10,8 @@ const SearchingOpravar = () => {
     const [searchingBar, setSearchingBar] = useState('')
     const navigate = useNavigate()
     const [lastSearched, setLastSearched] = useState([])
-    // const [allInserates, setAllInserates] = useState([{}])
     const [inserates, setInserates] = useState([])
+
     // Uložení do minule jste hledali
     const showMoreHandler = async (id)=>{
         const uid = auth.currentUser.uid
@@ -58,9 +58,7 @@ const SearchingOpravar = () => {
 
                 } catch(err) {alert(err.message); console.log(err);}
         }
-
-        loadData()
-        
+        loadData()  
     },[])
 
   return (

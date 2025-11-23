@@ -48,7 +48,7 @@ const Footer = () => {
 
     {role==='zákazník'
     ? <button className={styles.add}>+</button>
-    : <img src={celeR} alt='' className={styles.middle}/>}
+    : <img src={celeR} onClick={()=>navigate('/home-opravar')} alt='' className={styles.middle}/>}
     
     <span></span>
     <button className={styles.buttons} onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
