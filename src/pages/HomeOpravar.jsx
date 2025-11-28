@@ -11,6 +11,7 @@ const HomeOpravar = () => {
     const [name, setName] = useState('')
     const navigate = useNavigate()
     const [inserates, setInserates] = useState([])
+    console.log(inserates);
     
     // Načítání dat
     useEffect(()=>{
@@ -46,7 +47,7 @@ const HomeOpravar = () => {
         </header>
         <div className={styles.homeOpravar}>
             {inserates.map((one, index)=>{
-                const {id, pfp, userName, userLastName, description, imageOneURL, imageTwoURL} = one
+                const {id, pfp, userName, userLastName, description,location, imageOneURL, imageTwoURL} = one
                 return <div key={index} className={inserateStyles.oneInserate}>
                     <img className={inserateStyles.userPfp} src={pfp||defaultPfp} alt="" />
                     <p className={inserateStyles.userNameLastName}>{userName} {userLastName}</p>
