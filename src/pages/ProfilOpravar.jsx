@@ -51,9 +51,6 @@ const ProfilOpravar = () => {
     setAddingEducations(false)
     setShowBackBtn(false)
   }
-  const handlePfpBackClick = ()=>{
-    setChangingPfp(false)
-  }
 
   // Přidávání vzdělání
   const handleAddEducationsBtn = async ()=>{
@@ -133,26 +130,12 @@ const ProfilOpravar = () => {
     }
     
     const VerifyingOneEducation = ()=>{
-      
-      return !savingData&&<form className={!file2?styles.verifyingOneEducation : styles.verifyingOneEducationSmaller}>
+      return <form className={styles.verifyingOneEducation}>
         <h3 style={{margin: '20px 0 40px 0', textAlign:'left'}}>Ověření vzdělání {oneEducation}</h3>
         <h4 style={{textAlign:'left'}}>První strana</h4>
-        {!file1
-        ?<input 
-          className={styles.verifyingOneEducationInput} 
-          type="file" 
-          onChange={(e)=>{setFile1(e.target.files[0])}}
-        />
-        : <img src={URL.createObjectURL(file1)} alt='' className={styles.verificationImages}/>}
-        
+        <input className={styles.verifyingOneEducationInput} type="file" onChange={(e)=>setFile1(e.target.files[0])}/>
         <h4 style={{textAlign:'left'}}>Druhá strana</h4>
-        {!file2
-        ?<input 
-          className={styles.verifyingOneEducationInput}
-          type="file" 
-          onChange={(e)=>{setFile2(e.target.files[0])}}
-        />
-        : <img src={URL.createObjectURL(file2)} alt='' className={styles.verificationImages}/>}
+        <input className={styles.verifyingOneEducationInput} type="file" onChange={(e)=>setFile2(e.target.files[0])}/>
       </form>
     }
 
@@ -200,19 +183,18 @@ const ProfilOpravar = () => {
           {educations.length} vzdělání <br />
           {certificates.length} certifikátů
         </p>
-        {educations.map((one, index)=>{
-          return <OneUnveryfiedEducation educationName={one} key={index}/>
+        {educations.map((one)=>{
+          return <OneUnveryfiedEducation educationName={one} />
         })}
-        {certificates.map((one ,index)=>{
-          
-          return <OneUnveryfiedEducation educationName={one} key={-index}/>
+        {certificates.map((one)=>{
+          return <OneUnveryfiedEducation educationName={one} />
         })}
         <p style={{marginTop: '50px', fontSize:'13px'}}>Změny se projeví do pár minut</p>
       </div>}
       {verifyingOneEducation && <VerifyingOneEducation/>}
       
   
-      <Button disabled={savingData} onClick={()=>verifyingOneEducation ? handleVerifycationsSave(): handleBackToProfileInfo()}>{savingData?'Ukládám...':'Uložit'}</Button>
+      <Button onClick={()=>verifyingOneEducation ? handleVerifycationsSave(): handleBackToProfileInfo()}>{savingData?'Ukládám...':'Uložit'}</Button>
       </>
     )
   }
@@ -241,8 +223,6 @@ const ProfilOpravar = () => {
   }
 
   const PfpSet = ({onChange}) => {
-    !showBackBtn&&setShowBackBtn(true)
-    !showBackBtn&&setBackBtnOnClick(()=>()=>handlePfpBackClick())
   return <div className={styles.pfpSet}>
       <p className={styles.zvolteObrazek}>Zvolte obrázek</p>
       <input 
@@ -368,7 +348,7 @@ const ProfilOpravar = () => {
       <div className={changingPfp ? `${styles.profilOpravarSmaller} ${styles.profilOpravar}` :styles.profilOpravar}>
 
           {(!verifyingEducations && !addingEducations )&&<>
-            <img src={pfp||defaultPfp} alt='' className={styles.pfp}/>
+            <img src={pfp} alt='' className={styles.pfp}/>
             <img src={pen} alt='' className={styles.pen} onClick={()=>setChangingPfp(!changingPfp)}/>
           </>}
           
@@ -381,8 +361,6 @@ const ProfilOpravar = () => {
           <p className={styles.overteSvaVzdelani} onClick={(e)=>startVerifying(e)}>OVĚŘTE SVÁ VZDĚLÁNÍ: {certificates.length+educations.length}</p>
           <button className={styles.verifyHereBtn} onClick={(e)=>startVerifying(e)}>Ověřit zde</button>
         </>}
-        {showBackBtn&&setShowBackBtn(false)} 
-        {showBackBtn&&setBackBtnOnClick(()=>{})}
         
           <form onSubmit={(e)=>e.preventDefault()}>
             <p id={styles.topProfile} className={styles.infoHeadings}>Jméno</p>
