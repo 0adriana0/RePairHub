@@ -35,7 +35,7 @@ const OneInserate = () => {
         <h2 className={styles.heading}>Příspěvek od {userName}</h2>
     </header>
     <div className={styles.main}>
-        <img className={styles.pfp} src={defaultPfp} alt="" />
+        <img className={styles.pfp} src={userPfp||defaultPfp} alt="" />
         <p className={styles.name}>{userName} {userLastName}</p>
         <a href={`https://www.google.com/maps?q=${location}`} className={styles.location}>{location}</a>
         <p className={styles.hashtags}>{hashtags && hashtags.map((one)=>{return `${one} `})}</p>

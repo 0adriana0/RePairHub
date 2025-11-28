@@ -62,6 +62,7 @@ const ProfilZakaznik = () => {
       async function loadData(){
         const user = auth.currentUser
         const userRef = doc(db, 'users', user.uid)
+        await updateDoc(userRef, {actualRole: 'zákazník'})
         const userData = (await getDoc(userRef)).data()
         const {name, lastName, email, location} = userData
         setName(name)
