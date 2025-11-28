@@ -1,15 +1,17 @@
 .oneInserate{
     width: 92%;
-    height: 26%;
     background-color: #06021A;
     margin: 0;
     padding: 7px;
+    padding-bottom: 10px;
     border-radius: 21px;
     position: relative;
     margin-bottom: 10px;
 }
 .userPfp{
     width: 30px;
+    height: 30px;
+    border-radius: 50%;
     position: absolute;
     top: 7%;
     left: 2%;

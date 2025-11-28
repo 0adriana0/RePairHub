@@ -1,7 +1,6 @@
-.searchingOpravar{
+.container{
     height: 92.5%;
     width: 84vw;
-    overflow-y: scroll;
     background: #2e2b3c;
     padding: 20px;
     border-bottom: 15px solid #2e2b3c;
@@ -12,7 +11,7 @@
     flex-direction: column;
     align-items: center;
 }
-.searchBar{
+.search{
     width: 90%;
     border: 2px solid #736F7E;
     border-radius: 14.5px;
@@ -35,9 +34,17 @@
 .searchBarInput::placeholder{
     color: #736F7E;
 }
-.searchingResults{
+.results{
     color: #736F7E;
     width: 80%;
     text-align: left;
     font-size: 13px;
+}
+.wrapp{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    overflow-y: scroll;
 }

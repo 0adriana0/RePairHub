@@ -36,19 +36,19 @@ const HomeOpravar = () => {
     },[navigate])
 
   return (
-    <div className={styles.homeOpravarAll}>
+    <div className={styles.bigContainer}>
         <header className={styles.header}>
-            <img className={styles.headerImg} src={logo} alt="" />
+            <img className={styles.hImage} src={logo} alt="" />
             <p className={styles.welcoming}>Výtejte v aplikaci RePairHub</p>
             <p className={styles.name}>{name||'Jméno'}!</p>
             <hr className={styles.hr}/>
             <p style={{fontWeight:'bold', fontSize:'15px'}}>Naši zákazníci</p>
         </header>
-        <div className={styles.homeOpravar}>
+        <div className={styles.container}>
             {inserates.map((one, index)=>{
-                const {id, pfp, userName, userLastName, description, imageOneURL, imageTwoURL} = one
+                const {id, userPfp, userName, userLastName, description, imageOneURL, imageTwoURL} = one
                 return <div key={index} className={inserateStyles.oneInserate}>
-                    <img className={inserateStyles.userPfp} src={pfp||defaultPfp} alt="" />
+                    <img className={inserateStyles.userPfp} src={userPfp||defaultPfp} alt="" />
                     <p className={inserateStyles.userNameLastName}>{userName} {userLastName}</p>
                     <p className={inserateStyles.inserateDescription}>{description}</p>
                     <div className={inserateStyles.inserateBottom}>
@@ -62,7 +62,7 @@ const HomeOpravar = () => {
                     </div>
                 </div>
             })}
-            <img className={styles.chatBtn} src={chatBtn} alt="" onClick={()=>navigate('/chat')}/>
+            <img className={styles.btn} src={chatBtn} alt="" onClick={()=>navigate('/chat')}/>
         </div>
     </div>
   )

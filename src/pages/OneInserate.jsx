@@ -38,7 +38,7 @@ const OneInserate = () => {
         <img className={styles.pfp} src={userPfp||defaultPfp} alt="" />
         <p className={styles.name}>{userName} {userLastName}</p>
         <a href={`https://www.google.com/maps?q=${location}`} className={styles.location}>{location}</a>
-        <p className={styles.hashtags}>{hashtags && hashtags.map((one)=>{return `${one} `})}</p>
+        <p className={styles.hashtags}>{hashtags && hashtags.map((one)=>{return one+' '})}</p>
         <p className={styles.description}>{description}</p>
         <div className={styles.image_container}>
             <div className={styles.wrapper}><img className={styles.images} src={imageOneURL} alt="" /></div>

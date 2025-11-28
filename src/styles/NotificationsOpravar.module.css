@@ -1,5 +1,5 @@
-.notificationsOpravar{
-    min-height: 86.2vh;
+.container{
+    height: 86.2vh;
     width: 84vw;
     background: #2e2b3c;
     padding: 20px;
@@ -17,11 +17,20 @@
     margin-bottom: 10px;
     margin-top: 10px;
 }
-.vaseOznameni{
+.text{
     color: #736F7E;
     font-size: 12px;
 }
-.oneNotification{
+.wrapp{
+    height: 85%;
+    width: 100%;
+    overflow-y: scroll;
+    border-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.notification{
     background-color: #06021A;
     min-height: 95px;
     width: 90%;
@@ -32,33 +41,36 @@
     gap: 15%;
     margin-bottom: 12px;
 }
-.oneNotification * {
+.notification * {
     margin: 0;
     padding: 0;
 }
-.oneNotificationImg{
+.img{
     width: 23px;
     position: absolute;
     left: 2.5%;
     top: 11%;
 }
-.notificationTextsDiv{
+.textWrapp{
     width: 65%;
-    overflow: hidden;
+    padding-right: 15px;
     margin-left: 13%;
 }
-.notificationName{
+.name{
     font-weight: bold;
     text-align: left;
     margin: 3% 0 2% 2%;
 }
-.notificationContent{
+.content{
     color: #736F7E;
     font-size: 12.5px;
     text-align: left;
     width: 80%;
+    max-height: 60%;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
-.notificationRemoveButton{
+.btn{
     width: fit-content;
     height: fit-content;
     padding: 8px 10px;

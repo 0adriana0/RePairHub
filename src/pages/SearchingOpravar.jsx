@@ -2,6 +2,7 @@ import styles from '../styles/SearchingOpravar.module.css'
 import inserateStyles from '../styles/OneInseratePrewiew.module.css'
 import greyLupa from '../img/Footer/grey/lupa.png'
 import camera from '../img/camera.png'
+import defaultPfp from '../img/pfp-default.png'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore'
@@ -62,10 +63,10 @@ const SearchingOpravar = () => {
     },[])
 
   return (
-    <div className={styles.searchingOpravar}>
+    <div className={styles.container}>
         {!auth.currentUser&&navigate('/login')}
 
-        <div className={styles.searchBar}>
+        <div className={styles.search}>
             <img className={styles.searchBarImg} src={greyLupa} alt="" />
                 <input 
                     type="text" 
@@ -75,9 +76,10 @@ const SearchingOpravar = () => {
                     onChange={(e)=>setSearchingBar(e.target.value)}
                     />
         </div>
-        <p className={styles.searchingResults}>{searchingResult()}</p>
-        {searchingBar? inserates.map((one, index)=>{
-                const {id, location, pfp, userName, userLastName, description, imageOneURL, imageTwoURL, hashtags} = one
+        <p className={styles.results}>{searchingResult()}</p>
+        <div className={styles.wrapp}>
+            {searchingBar? inserates.map((one, index)=>{
+                const {id, location, userPfp, userName, userLastName, description, imageOneURL, imageTwoURL, hashtags} = one
                 
                 const hashtagsIncluded = ()=>{
                     return hashtags.map((one)=>{
@@ -88,7 +90,7 @@ const SearchingOpravar = () => {
 
                 const show = searchingBar.toLowerCase().includes(userLastName.toLowerCase())||userLastName.toLowerCase().includes(searchingBar.toLowerCase()) ||description.toLowerCase().includes(searchingBar.toLowerCase())|| searchingBar.toLowerCase().includes(location.toLowerCase())||location.toLowerCase().includes(searchingBar.toLowerCase())||hashtagsIncluded()
                 return show && <div key={index} className={inserateStyles.oneInserate}>
-                    <img className={inserateStyles.userPfp} src={pfp} alt="" />
+                    <img className={inserateStyles.userPfp} src={userPfp||defaultPfp} alt="" />
                     <p className={inserateStyles.userNameLastName}>{userName} {userLastName}</p>
                     <p className={inserateStyles.inserateDescription}>{description}</p>
                     <div className={inserateStyles.inserateBottom}>
@@ -103,9 +105,9 @@ const SearchingOpravar = () => {
                 </div>
             })
             :lastSearched.map((one, index)=>{
-                const {id, pfp, userName, userLastName, description, imageOneURL, imageTwoURL} = one
+                const {id, userPfp, userName, userLastName, description, imageOneURL, imageTwoURL} = one
                 return one && <div key={index} className={inserateStyles.oneInserate}>
-                    <img className={inserateStyles.userPfp} src={pfp} alt="" />
+                    <img className={inserateStyles.userPfp} src={userPfp||defaultPfp} alt="" />
                     <p className={inserateStyles.userNameLastName}>{userName} {userLastName}</p>
                     <p className={inserateStyles.inserateDescription}>{description}</p>
                     <div className={inserateStyles.inserateBottom}>
@@ -118,27 +120,28 @@ const SearchingOpravar = () => {
                         <button className={inserateStyles.showMoreBtn} onClick={()=>showMoreHandler(id)}>Zobrazit více</button>
                     </div>
                 </div>
-            }
-        )}
-        {(!lastSearched.length&&!searchingBar)&&
-        inserates.map((one, index)=>{
-            const {id, pfp, userName, userLastName, description, imageOneURL, imageTwoURL} = one
-            return one && <div key={index} className={inserateStyles.oneInserate}>
-                    <img className={inserateStyles.userPfp} src={pfp} alt="" />
-                    <p className={inserateStyles.userNameLastName}>{userName} {userLastName}</p>
-                    <p className={inserateStyles.inserateDescription}>{description}</p>
-                    <div className={inserateStyles.inserateBottom}>
-                        <div className={inserateStyles.wrapper}>
-                            <img className={inserateStyles.inserateImages} src={imageOneURL} alt="" />
+                }
+            )}
+            {(!lastSearched.length&&!searchingBar)&&
+            inserates.map((one, index)=>{
+                const {id, userPfp, userName, userLastName,     description, imageOneURL, imageTwoURL} = one
+                return one && <div key={index} className=   {inserateStyles.oneInserate}>
+                        <img className={inserateStyles.userPfp} src=    {userPfp||defaultPfp} alt="" />
+                        <p className={inserateStyles.userNameLastName}> {userName} {userLastName}</p>
+                        <p className={inserateStyles.   inserateDescription}>{description}</p>
+                        <div className={inserateStyles.inserateBottom}>
+                            <div className={inserateStyles.wrapper}>
+                                <img className={inserateStyles. inserateImages} src={imageOneURL}    alt="" />
+                            </div>
+                            <div className={inserateStyles.wrapper}>
+                                <img className={inserateStyles. inserateImages} src={imageTwoURL||   camera} alt="" />
+                            </div>
+                            <button className={inserateStyles.  showMoreBtn} onClick={()=>showMoreHandler (id)}>Zobrazit více</button>
                         </div>
-                        <div className={inserateStyles.wrapper}>
-                            <img className={inserateStyles.inserateImages} src={imageTwoURL||camera} alt="" />
-                        </div>
-                        <button className={inserateStyles.showMoreBtn} onClick={()=>showMoreHandler(id)}>Zobrazit více</button>
                     </div>
-                </div>
-        })
-        }
+                    })
+                }
+        </div>
     </div>
   
 
