@@ -1,4 +1,4 @@
-import styles from './styles/Footer.module.css'
+import styles from '../styles/Footer.module.css'
 import whiteHouseImg from '../img/Footer/white/house.png'
 import whiteLupaImg from '../img/Footer/white/lupa.png'
 import whiteProfilImg from '../img/Footer/white/profil.png'

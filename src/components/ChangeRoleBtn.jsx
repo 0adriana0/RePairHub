@@ -1,10 +1,21 @@
 import { useNavigate } from 'react-router-dom'
-import './styles/ChangeRoleBtn.css'
 import { auth, db } from '../firebase'
 import { useEffect, useState } from 'react'
 import { doc, getDoc, updateDoc } from 'firebase/firestore'
 
 const ChangeRoleBtn = () => {
+
+    const style = {
+        color: 'white',
+        backgroundColor: '#7C778A',
+        border: 'none',
+        margin: 0,
+        marginBottom: '1rem',
+        padding: '2.5% 4.5%',
+        borderRadius: '7px',
+        fontSize: '13px'
+    }
+
     const navigate = useNavigate()
 
     const [role, setRole] = useState(null)
@@ -30,7 +41,7 @@ const ChangeRoleBtn = () => {
         }
         try {loadData()} catch(err) {alert(err.message)}
     },[])
-    return <button className='change-role-btn' onClick={()=>switchRole()}>Změnit roli</button>
+    return <button style={style} onClick={()=>switchRole()}>Změnit roli</button>
 }
 
 export default ChangeRoleBtn

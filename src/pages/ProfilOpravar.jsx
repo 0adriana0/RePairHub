@@ -230,7 +230,7 @@ const ProfilOpravar = () => {
         type="file"
         onChange={onChange}
       />
-      <p style={{color: '#009B73', marginBottom: '40px', fontSize:'13px'}}>Změna se projeví při příštím přihlášení</p>
+      <p style={{marginBottom: '40px', fontSize:'13px'}}>Změna se projeví při příštím přihlášení</p>
       <Button onClick={()=>setChangingPfp(false)}>Zrušit</Button>
     </div>
   

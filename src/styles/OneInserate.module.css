@@ -42,9 +42,10 @@
 .pfp{
     width: 9.4vw;
     height: 9.4vw;
+    border-radius: 50%;
     position: absolute;
     left: 4.5%;
-    top: 3.5%;
+    top: 4.5%;
 }
 .name{
     margin: 0;

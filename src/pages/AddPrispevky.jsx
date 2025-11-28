@@ -103,6 +103,7 @@ export default function AddPostStep1() {
           .map(tag => tag.trim())
           .filter(tag => tag.length > 0),
         createdAt: serverTimestamp(),
+        userPfp: userData.pfp,
         userId: user.uid,
         userName: userData.name,
         userLastName: userData.lastName,

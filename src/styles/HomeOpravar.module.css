@@ -1,4 +1,4 @@
-.homeOpravarAll{
+.bigContainer{
     min-height: 92.5%;
     height: fit-content;
     width: 100vw;
@@ -9,7 +9,8 @@
     justify-content: center;
     align-items: center;
 }
-.headerImg{
+/* Header */
+.hImage{
     width: 47px;
     height: 31px;
     position: absolute;
@@ -38,7 +39,8 @@
     border: none;
     background-color: #625C73;
 }
-.homeOpravar{
+/* Konec headeru */
+.container{
     width: 85vw;
     height: 68vh;
     overflow-y: scroll;
@@ -51,7 +53,7 @@
     position: relative;
     
 }
-.chatBtn{
+.btn{
     position: absolute;
     bottom: 3%;
     right: 5%;
