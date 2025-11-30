@@ -1,0 +1,137 @@
+.container{
+    height: 92.5%;
+    width: 84vw;
+    background: #2e2b3c;
+    padding: 20px;
+    border-bottom: 15px solid #2e2b3c;
+    margin: 20px 10px;
+    border-radius: 26px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search{
+    width: 90%;
+    border: 2px solid #736F7E;
+    border-radius: 14.5px;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px;
+}
+.searchBarImg{
+    height: 22px;
+    margin: 0;
+    margin-right: 10px;
+}
+.searchBarInput{
+    background: none;
+    margin: 0;
+    padding: 0;
+}
+.searchBarInput::placeholder{
+    color: #736F7E;
+}
+.results{
+    color: #736F7E;
+    width: 80%;
+    text-align: left;
+    font-size: 13px;
+}
+.loading{
+    color: #736F7E;
+    text-align: center;
+}
+.wrapp{
+    width: 100%;
+    border-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90%;
+    overflow-y: scroll;
+}
+.oneUser{
+    flex-shrink: 0;
+    width: 92%;
+    max-height: 15%;
+    min-height: 7%;
+    height: calc(var(--variable-height)+75%);
+    background-color: #06021A;
+    margin: 0;
+    padding: 11px;
+    padding-bottom: 10px;
+    border-radius: 21px;
+    position: relative;
+    margin-bottom: 10px;
+    
+}
+.oneUser *{
+    margin: 0;
+    padding: 0;
+}
+.pfp{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 7%;
+    left: 2%;
+}
+.name{
+    font-size: 8px;
+    text-align: left;
+    width: 80%;
+    margin-left: 13%;
+    margin-bottom: 0;
+}
+.bio{
+    font-size: 8px;
+    color: #736F7E;
+    width: 65%;
+    padding-right: 5%;
+    margin-bottom: 10%;
+    max-height: 40px;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+    text-align: left;
+    margin-left: 13%;
+    margin-top: 3px;
+}
+.bottom{
+    display: flex;
+    align-items: end;
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+}
+.starWrapp{
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    gap: 3px;
+}
+.star{
+    width: 12px;
+}
+.rating{
+    margin-left: 8px;
+    margin-bottom: 5px;
+    font-size: 8px;
+    color: #aeacb4;
+    display: inline-block;
+}
+.btn{
+    background-color: #282343;
+    border: none;
+    border-radius: 5px;
+    height: fit-content;
+    padding: 7px 7px;
+    margin-left: 30%;
+    font-size: 9px;
+    color: #fff;
+}
