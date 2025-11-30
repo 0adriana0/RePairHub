@@ -20,6 +20,7 @@ import HomeOpravar from "./pages/HomeOpravar";
 import SearchingOpravar from "./pages/SearchingOpravar";
 import NotificationsOpravar from "./pages/NotificationsOpravar";
 import OneInserate from "./pages/OneInserate";
+import SearchingZakaznik from "./pages/SearchingZakaznik";
 
 import "./App.css";
 
@@ -37,7 +38,7 @@ function AppContent() {
     return () => unsub();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div style={{textAlign:'center', marginTop:'50%', fontSize:'30pt'}}>Načítám...</div>;
 
   const navbarWhiteList = ['/login', '/register']
   const showNavbar = navbarWhiteList.includes(location.pathname)
@@ -67,6 +68,7 @@ function AppContent() {
         <Route path="/profil-zakaznik" element={user ? <ProfilZakaznik user={user}/> : <Navigate to="/login" />} />
         <Route path="/profil-zakaznik/prispevky" element={user ? <Prispevky user={user}/> : <Navigate to="/login" />} />
         <Route path="/profil-zakaznik/add/step1" element={user ? <AddPrispevky user={user}/> : <Navigate to="/login" />} />
+        <Route path="/searching-zakaznik" element={<SearchingZakaznik />}/>
         <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
         <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />

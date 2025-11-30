@@ -25,7 +25,7 @@ const Footer = () => {
     useEffect(()=>{
       const loadData = async ()=>{
         if(path === '/profil-opravar'||path==='/profil-zakaznik'||path==='/profil-zakaznik/prispevky'||path ==='/profil-zakaznik/add/step1'){ setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])}
-        if(path === '/searching-opravar'||path==='/searching.zakaznik'){setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])}
+        if(path === '/searching-opravar'||path==='/searching-zakaznik'){setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])}
         if(path === '/home-opravar'||path === '/home-zakaznik'){setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])}
         if(path === '/notifications-opravar'||path === '/notifications-zakaznik'){setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])}
         try {
@@ -44,7 +44,7 @@ const Footer = () => {
 
   return <footer className={styles.footer}>
     <button className={styles.buttons} onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
-    <button className={styles.buttons} onClick={()=>navigate('/searching-opravar')}><img src={btnImages[1]} alt="Search" /></button>
+    <button className={styles.buttons} onClick={()=>role==='opravář'?navigate('/searching-opravar'):navigate('/searching-zakaznik')}><img src={btnImages[1]} alt="Search" /></button>
 
     {role==='zákazník'
     ? <button className={styles.add}>+</button>
