@@ -1,9 +1,9 @@
 .footer{
-    /* position: absolute;
+    position: absolute;
     bottom: 0;
-    left: 0; */
     background-color: #2e2b3c;
     height: 6.14vh;
+    width: 385px;
     padding: 0 20px;
     border-radius: 21px 21px 0 0;
     display: flex;
