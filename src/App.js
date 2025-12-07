@@ -1,13 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { auth, onAuthStateChanged } from "./firebase";
+import "./App.css";
 
+//Pages
 import Welcome from "./pages/Welcome";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Navbar from "./components/Navbar";
-import SignUpNavbar from "./components/SignUpNavbar";
-import Footer from "./components/Footer";
 import LocationSet from "./pages/LocationSet";
 import ChoseRole from './pages/ChoseRole'
 import ChoseSkills from "./pages/ChoseSkills";
@@ -15,14 +14,18 @@ import ProfilOpravar from "./pages/ProfilOpravar";
 import ProfilZakaznik from "./pages/ProfilZakaznik";
 import Prispevky from "./pages/Prispevky";
 import AddPrispevky from "./pages/AddPrispevky";
-import "./App.css";
 import HomeOpravar from "./pages/HomeOpravar";
 import SearchingOpravar from "./pages/SearchingOpravar";
 import NotificationsOpravar from "./pages/NotificationsOpravar";
 import OneInserate from "./pages/OneInserate";
 import SearchingZakaznik from "./pages/SearchingZakaznik";
+import ShowProfile from "./pages/ShowProfile";
 
-import "./App.css";
+//Components
+import Navbar from "./components/Navbar";
+import SignUpNavbar from "./components/SignUpNavbar";
+import Footer from "./components/Footer";
+
 
 function AppContent() {
   const location = useLocation();
@@ -47,7 +50,7 @@ function AppContent() {
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
   const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', /^\/one-inserate\/[^/]+$/,'/profil-zakaznik/prispevky',
-  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik']
+  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik', /^\/profile\/[^/]+$/]
   const showFooter = footerWhiteList.some(item => 
     typeof item === 'string' ? item === location.pathname : item.test(location.pathname)
   )
@@ -69,6 +72,7 @@ function AppContent() {
         <Route path="/profil-zakaznik/prispevky" element={user ? <Prispevky user={user}/> : <Navigate to="/login" />} />
         <Route path="/profil-zakaznik/add/step1" element={user ? <AddPrispevky user={user}/> : <Navigate to="/login" />} />
         <Route path="/searching-zakaznik" element={<SearchingZakaznik />}/>
+        <Route path="/profile/:userId" element={<ShowProfile/>}/>
         <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
         <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />

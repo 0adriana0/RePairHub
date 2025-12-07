@@ -5,6 +5,7 @@ import defaultPfp from '../img/pfp-default.png'
 import Stars from '../components/Stars'
 import {auth, db} from '../firebase'
 import { collection, doc, getDoc, getDocs, updateDoc } from 'firebase/firestore'
+import { useNavigate } from 'react-router-dom'
 
 const SearchingZakaznik = () => {
     const [searchingBar, setSearchingBar] = useState('')
@@ -14,6 +15,7 @@ const SearchingZakaznik = () => {
     const [mapedUsers, setMapedUsers] = useState([])
     const [loading, setLoading] = useState(true)
 
+    const navigate = useNavigate()
 
     const handleEmptySearchingBar = ()=>{
                 setResultsText(lastSearchedUsers.length?'Minule jste hledali: ':'Návrhy pro vás:')
@@ -21,13 +23,14 @@ const SearchingZakaznik = () => {
             }
 
     // Uložení do last searched
-    const handleSaveToHistory = async (userId)=>{
+    const handleShowProfile = async (userId)=>{
         const uid = auth.currentUser.uid
         const userRef = doc(db, 'users', uid)
         try {
             const current = lastSearchedUsers.map((one)=>{return one.id})
             !current.includes(userId)&& await updateDoc(userRef, {lastSearchedUsers: [...current, userId]})
         } catch(err){console.log(err.message)}
+        finally {navigate(`/profile/${userId}`)}
     }
 
     // Načítání opravářů a historie
@@ -103,7 +106,7 @@ const SearchingZakaznik = () => {
                         <Stars rating={rating} className={styles.star} />
                     </div>
                     <p className={styles.rating}>{recenze?recenze.length:'0'} {recenze&&recenze.length<5?'recenze':'recenzí'}</p>
-                    <button className={styles.btn} onClick={()=>handleSaveToHistory(id)}>Přejít na profil</button>
+                    <button className={styles.btn} onClick={()=>handleShowProfile(id)}>Přejít na profil</button>
                 </div>
                 
             </div>

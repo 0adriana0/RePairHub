@@ -25,7 +25,7 @@ const Footer = () => {
     useEffect(()=>{
       const loadData = async ()=>{
         if(path === '/profil-opravar'||path==='/profil-zakaznik'||path==='/profil-zakaznik/prispevky'||path ==='/profil-zakaznik/add/step1'){ setBtnImages([greyHouseImg, greyLupaImg, greyZvonekImg, whiteProfilImg])}
-        if(path === '/searching-opravar'||path==='/searching-zakaznik'){setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])}
+        if(path === '/searching-opravar'||path==='/searching-zakaznik'||path==='/profile/:userId'){setBtnImages([greyHouseImg, whiteLupaImg,  greyZvonekImg, greyProfilImg])}
         if(path === '/home-opravar'||path === '/home-zakaznik'){setBtnImages([whiteHouseImg, greyLupaImg,   greyZvonekImg, greyProfilImg])}
         if(path === '/notifications-opravar'||path === '/notifications-zakaznik'){setBtnImages([greyHouseImg, greyLupaImg, whiteZvonekImg, greyProfilImg ])}
         try {
