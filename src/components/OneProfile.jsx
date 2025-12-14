@@ -1,10 +1,12 @@
 import defaultPfp from '../img/pfp-default.png'
 import Stars from './Stars'
 import styles from '../styles/OneProfile.module.css'
+import { useNavigate } from 'react-router-dom'
 
 
-const OneProfile = ({user}) => {
+const OneProfile = ({user, id}) => {
     const {name, lastName, pfp, location, allSkills, rating, bio} = user
+    const navigate = useNavigate()
   return (
     <div className={styles.container}>
             <img src={pfp||defaultPfp} alt="" className={styles.pfp}/>
@@ -15,7 +17,7 @@ const OneProfile = ({user}) => {
                 <div className={styles.starWrapp}>
                   <Stars rating={rating} className={styles.stars}/>
                 </div>
-                <button className={styles.btn}>Zobrazit recenze</button>
+                <button className={styles.btn} onClick={()=>navigate(`/revievs/${id}`)}>Zobrazit recenze</button>
                 <button className={styles.btn}>Zobrazit vzdělání</button>
               </div>
               <ul className={styles.skills}>
