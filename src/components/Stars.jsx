@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import y from '../img/stars/CelaHvezda.png'
 import g from '../img/stars/PrazdnaHvezda.png'
-import h from '../img/stars/PulHvezda.png'
+import h from '../img/stars/Pulhvezda.png'
 
 const Stars = (props) => {
     const [stars, setStars] = useState([g,g,g,g,g])

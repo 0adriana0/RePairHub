@@ -1,0 +1,46 @@
+.container{
+    background-color: #2e2b3c;
+    width: 85%;
+    padding: 5%;
+    margin-bottom: 15%;
+    height: 48%;
+    border-radius: 26px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+.img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-left: -6%;
+}
+.heading{
+    color: #fff;
+    display: inline-block;
+    margin: 0 0 10px 0;
+    align-self: flex-start;
+    font-size: 15pt;
+}
+.wrapp{
+    height: 80%;
+    overflow-y: scroll;
+    border-radius: 6px;
+}
+.star{
+    width: 12pt;
+}
+.btn{
+    color: #fff;
+    background-color: #009B73;
+    border: none;
+    margin-top: 5px;
+    margin-left: 8%;
+    padding: 7px 15px;
+    font-size: 8pt;
+    border-radius: 6px;
+}
+.text{
+    color: #736F7E;
+    text-align: start;
+    font-size: 12pt;
+}

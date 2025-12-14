@@ -15,10 +15,12 @@ const ShowProfile = () => {
 
     const [userData, setUserData] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [id, setId] = useState('')
 
     useEffect(()=>{
         const load =async ()=>{
             const uid = pathName.split('/')[pathName.split('/').length-1]
+            setId(uid)
             const userRef = doc(db, 'users', uid)
             try {
                 const user = await getDoc(userRef)
@@ -36,7 +38,7 @@ const ShowProfile = () => {
                 <img className={styles.logo} src={smallLogo} alt="" />
                 <h2 className={styles.heading}>Profil opraváře</h2>
             </header>
-            <OneProfile user={userData}/>
+            <OneProfile user={userData} id={id}/>
             <div style={{width:'60%'}}>
                 <Button>Kontaktovat opraváře</Button>
             </div>
