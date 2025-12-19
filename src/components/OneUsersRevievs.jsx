@@ -1,10 +1,10 @@
 import defaultPfp from '../img/pfp-default.png'
 import Stars from './Stars'
-import Reviev from './RevievCard'
+import Reviev from './Reviev'
 import styles from '../styles/OneUsersRevievs.module.css'
 
 const OneUserReviev = ({data}) => {
-  const {name, lastName, pfp, recenze, rating} = data
+  const {name, lastName, pfp, recenze, rating, id} = data
 
   return (
     <div className={styles.container}>
@@ -19,7 +19,7 @@ const OneUserReviev = ({data}) => {
         <h3 className={styles.heading}>Recenze pro <br />{name} {lastName}</h3>
         <div className={styles.wrapp}>
           {recenze?recenze.map((one)=>{
-            return <Reviev data={one}/>
+            return <Reviev data={one} uid={id}/>
           }):<p className={styles.text}>Tady zatím nic není</p>}
         </div>
       </div>

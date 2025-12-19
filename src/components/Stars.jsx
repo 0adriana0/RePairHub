@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import y from '../img/stars/CelaHvezda.png'
 import g from '../img/stars/PrazdnaHvezda.png'
-import h from '../img/stars/Pulhvezda.png'
+import h from '../img/stars/PulHvezda.png'
 
 const Stars = (props) => {
     const [stars, setStars] = useState([g,g,g,g,g])
-    const {className, rating} = props
+    const {className, rating, style} = props
 
     useEffect(()=>{
         const loadStars = ()=>{
@@ -24,11 +24,11 @@ const Stars = (props) => {
     },[rating])
   return (
     <>
-        <img className={className} src={stars[0]} alt="" />
-        <img className={className} src={stars[1]} alt="" />
-        <img className={className} src={stars[2]} alt="" />
-        <img className={className} src={stars[3]} alt="" />
-        <img className={className} src={stars[4]} alt="" />
+        <img style={style} className={className} src={stars[0]} alt="" />
+        <img style={style} className={className} src={stars[1]} alt="" />
+        <img style={style} className={className} src={stars[2]} alt="" />
+        <img style={style} className={className} src={stars[3]} alt="" />
+        <img style={style} className={className} src={stars[4]} alt="" />
     </>
   )
 }

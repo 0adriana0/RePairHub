@@ -7,6 +7,7 @@ import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 import OneUserReviev from '../components/OneUsersRevievs'
 import Button from '../components/Button'
+import PublicProfileHeader from '../components/PublicProfileHeader'
 
 const AllRevievs = () => {
   const navigate = useNavigate()
@@ -32,11 +33,7 @@ const AllRevievs = () => {
   })
   return (
     <div className={styles.container}>
-      <header className={styles.header}>
-        <BackBtn show={true} onClick={()=>navigate(`/profile/${id}`)}/>
-        <img className={styles.logo} src={logo} alt="" />
-        <h2 className={styles.heading}>Recenze opraváře</h2>
-      </header>
+      <PublicProfileHeader text={'Recenze opraváře'} backBtnNavigateTo={`/profile/${id}`}/>
      {!loading&& <OneUserReviev data={userData}/>}
      <div style={{width:'60%'}}>
       <Button>Kontaktovat opraváře</Button></div>
