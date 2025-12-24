@@ -21,6 +21,8 @@ import OneInserate from "./pages/OneInserate";
 import SearchingZakaznik from "./pages/SearchingZakaznik";
 import ShowProfile from "./pages/ShowProfile";
 import AllRevievs from './pages/AllRevievs'
+import FullReviev from "./pages/FullReviev";
+import AddReviev from "./pages/AddReviev";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -75,6 +77,8 @@ function AppContent() {
         <Route path="/searching-zakaznik" element={<SearchingZakaznik />}/>
         <Route path="/profile/:userId" element={<ShowProfile/>}/>
         <Route path="/revievs/:userId" element={<AllRevievs />}/>
+        <Route path="/revievs/:userId/:revievId" element={<FullReviev />} />
+        <Route path="/add-reviev/:userId" element={<AddReviev />}/>
         <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
         <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />

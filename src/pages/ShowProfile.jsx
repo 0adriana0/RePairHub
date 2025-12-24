@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { doc, getDoc } from 'firebase/firestore'
 import {db} from '../firebase'
+import PublicProfileHeader from '../components/PublicProfileHeader'
 
 const ShowProfile = () => {
     const navigate = useNavigate()
@@ -33,11 +34,7 @@ const ShowProfile = () => {
   return (
     <>
     {!loading?<div className={styles.container}> 
-            <header className={styles.header}>
-                <BackBtn show={true} onClick={()=>{navigate('/searching-zakaznik')}}/>
-                <img className={styles.logo} src={smallLogo} alt="" />
-                <h2 className={styles.heading}>Profil opraváře</h2>
-            </header>
+            <PublicProfileHeader text={'Profil opraváře'} backBtnNavigateTo={'/searching-zakaznik'} />
             <OneProfile user={userData} id={id}/>
             <div style={{width:'60%'}}>
                 <Button>Kontaktovat opraváře</Button>
