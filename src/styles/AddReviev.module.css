@@ -1,0 +1,90 @@
+.container{
+    height: 86vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.main{
+    background-color: #2e2b3c;
+    width: 85%;
+    padding: 5%;
+    margin-bottom: 15%;
+    height: 48%;
+    border-radius: 26px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.wrapp{
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+    "p h h h"
+    "p s s s"
+    ;
+}
+.star{
+    height: 24pt;
+    width: 24pt;
+}
+.pfp{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    grid-area: p;
+}
+.heading{
+    color: #fff;
+    grid-area: h;
+    margin-bottom: 0;
+    margin-left: -7%;
+    font-size: 16pt;
+}
+.starWrapp{
+    grid-area: s;
+    margin-left: -7%;
+    display: flex;
+}
+.select{
+    margin: 0;
+    margin-right: -30px;
+    margin-left: 5px;
+    margin-top: 3px;
+    color: #fff;
+    background-color: #176358;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-radius: 12px;
+    height: 24pt;
+    width: 24pt;
+}
+.select option{
+    cursor: pointer;
+    color: #fff;
+    background-color: #42A08C;
+    border: none;
+    outline: none;
+}
+.select option:hover{
+    background-color: #176358;
+}
+.text{
+    width: 95%;
+    text-align: start;
+    font-size: 13pt;
+}
+.input{
+    background-color: #176358;
+    color: #42A08C;
+    margin: 0;
+    padding: 15px;
+    font-size: 12pt;
+    width: 93%;
+    height: 65%;
+    outline: none;
+    border-radius: 12px;
+    text-align: start;
+    overflow-wrap: break-word;
+    overflow-y: scroll;
+}

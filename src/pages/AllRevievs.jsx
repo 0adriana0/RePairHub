@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { doc, getDoc } from 'firebase/firestore'
 import { db } from '../firebase'
-import OneUserReviev from '../components/OneUsersRevievs'
+import OneUsersRevievs from '../components/OneUsersRevievs'
 import Button from '../components/Button'
 import PublicProfileHeader from '../components/PublicProfileHeader'
 
@@ -34,7 +34,7 @@ const AllRevievs = () => {
   return (
     <div className={styles.container}>
       <PublicProfileHeader text={'Recenze opraváře'} backBtnNavigateTo={`/profile/${id}`}/>
-     {!loading&& <OneUserReviev data={userData}/>}
+     {!loading&& <OneUsersRevievs data={userData}/>}
      <div style={{width:'60%'}}>
       <Button>Kontaktovat opraváře</Button></div>
     </div>

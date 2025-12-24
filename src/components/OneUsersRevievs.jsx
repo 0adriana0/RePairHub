@@ -2,9 +2,11 @@ import defaultPfp from '../img/pfp-default.png'
 import Stars from './Stars'
 import Reviev from './Reviev'
 import styles from '../styles/OneUsersRevievs.module.css'
+import { useNavigate } from 'react-router-dom'
 
-const OneUserReviev = ({data}) => {
+const OneUsersRevievs = ({data}) => {
   const {name, lastName, pfp, recenze, rating, id} = data
+  const navigate = useNavigate()
 
   return (
     <div className={styles.container}>
@@ -13,7 +15,7 @@ const OneUserReviev = ({data}) => {
         <div className={styles.starWrapp}>
           <Stars className={styles.star} rating={rating}/>
         </div>
-        <button className={styles.btn}>Přidat</button>
+        <button className={styles.btn} onClick={()=>navigate(`/add-reviev/${id}`)}>Přidat</button>
       </div>
       <div>
         <h3 className={styles.heading}>Recenze pro <br />{name} {lastName}</h3>
@@ -27,4 +29,4 @@ const OneUserReviev = ({data}) => {
   )
 }
 
-export default OneUserReviev
+export default OneUsersRevievs

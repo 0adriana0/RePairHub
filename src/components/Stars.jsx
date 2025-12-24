@@ -9,9 +9,10 @@ const Stars = (props) => {
 
     useEffect(()=>{
         const loadStars = ()=>{
+          const flooredRating = Math.round(rating*2)/2
             const starsArr = []
-            const full = Math.floor(rating)
-            const half = rating % 1 >= 0.5 ? 1 : 0
+            const full = Math.floor(flooredRating)
+            const half = flooredRating % 1 >= 0.5 ? 1 : 0
             const empty = 5 - full - half
 
             for (let i = 0; i < full; i++) starsArr.push(y)
