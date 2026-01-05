@@ -53,7 +53,7 @@ function AppContent() {
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
   const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', /^\/one-inserate\/[^/]+$/,'/profil-zakaznik/prispevky',
-  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik', /^\/profile\/[^/]+$/, /^\/revievs\/[^/]+$/ ]
+  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik', /^\/profile\/[^/]+$/, /^\/revievs\/[^/]+$/, /^\/add-reviev\/[^/]+$/ ]
   const showFooter = footerWhiteList.some(item => 
     typeof item === 'string' ? item === location.pathname : item.test(location.pathname)
   )
