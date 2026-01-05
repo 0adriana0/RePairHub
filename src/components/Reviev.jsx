@@ -1,9 +1,10 @@
-import { background } from '@cloudinary/url-gen/qualifiers/focusOn'
+import { useNavigate } from 'react-router-dom'
 import defaultPfp from '../img/pfp-default.png'
 import Stars from './Stars'
 
-const Reviev = ({data}) => {
-    const {pfp, stars, content} = data
+const Reviev = ({data, uid}) => {
+    const {pfp, stars, content, id} = data
+    const navigate = useNavigate()
 
     const styles = {
         container: {
@@ -32,13 +33,17 @@ const Reviev = ({data}) => {
             marginTop: '1.5px',
             textAlign: 'start',
             overflowY: 'scroll'
+        },
+        star:{
+            height: '12pt',
+            width: '12pt'
         }
     }
   return (
-    <div style={styles.container}>
+    <div style={styles.container} onClick={()=>navigate(`/revievs/${uid}/${id}`)}>
         <div style={styles.top}>
             <img style={styles.img} src={pfp||defaultPfp} alt="" />
-            <div><Stars rating={stars}/></div>
+            <div><Stars rating={stars} style={styles.star }/></div>
         </div>
         <p style={styles.content}>{content}</p>
     </div>
