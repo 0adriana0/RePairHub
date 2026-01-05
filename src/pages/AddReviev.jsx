@@ -52,10 +52,10 @@ const AddReviev = () => {
         return (
             <>
                 <img onClick={()=>setSelect(select===1?0:1)} className={className} src={stars[0]} alt="" />
-                <img onClick={()=>setSelect(2)} className={className} src={stars[1]} alt="" />
-                <img onClick={()=>setSelect(3)} className={className} src={stars[2]} alt="" />
-                <img onClick={()=>setSelect(4)} className={className} src={stars[3]} alt="" />
-                <img onClick={()=>setSelect(5)} className={className} src={stars[4]} alt="" />
+                <img onClick={()=>setSelect(select===2?0:2)} className={className} src={stars[1]} alt="" />
+                <img onClick={()=>setSelect(select===3?0:3)} className={className} src={stars[2]} alt="" />
+                <img onClick={()=>setSelect(select===4?0:4)} className={className} src={stars[3]} alt="" />
+                <img onClick={()=>setSelect(select===5?0:5)} className={className} src={stars[4]} alt="" />
             </>)}
 
     const handleAdd = async ()=>{
