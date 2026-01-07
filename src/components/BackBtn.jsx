@@ -1,6 +1,6 @@
 import imageContent from '../img/backBtn.png'
 
-const BackBtn = ({onClick, show, type='button'}) => {
+const BackBtn = ({onClick, show=true, type='button'}) => {
   const styles = {
     btn: {
       background:'none',

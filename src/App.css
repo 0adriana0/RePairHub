@@ -8,6 +8,7 @@ body {
   padding: 0;
   color: #333;
   height: 100%;
+  overflow: hidden;
 }
 *::-webkit-scrollbar{
   display: none;
