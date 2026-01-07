@@ -2,11 +2,14 @@
     background-color: #2e2b3c;
     width: 85%;
     padding: 5%;
+    padding-bottom: 0;
     margin-bottom: 15%;
     height: 48%;
     border-radius: 26px;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    overflow-y: scroll;
+    border-bottom: #2e2b3c solid 25px;
 }
 .img{
     width: 90px;

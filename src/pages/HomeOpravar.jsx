@@ -17,7 +17,7 @@ const HomeOpravar = () => {
         const loadData = async () =>{
             const uid = auth.currentUser.uid
             !uid && navigate('/login')
-            !uid && alert('Nikdo není přihláčen')
+            !uid && alert('Nejste přihlášen.')
             const userRef = doc(db, 'users', uid)
             try {
                 const data = (await getDoc(userRef, uid)).data()

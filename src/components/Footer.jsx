@@ -38,14 +38,25 @@ const Footer = () => {
         } catch(err) {alert(err.message)}
       }
       loadData()
-        
-        
-    },[])
+    },[path, navigate])
+    useEffect(()=>{
+      const loadData =async ()=>{
+        try {
+          const uid = auth.currentUser.uid
+          !uid && navigate('/login')
+          const userRef = doc(db, 'users', uid)
+          const snap = await getDoc(userRef)
+          const {actualRole} = snap.data()
+          setRole(actualRole)
+        } catch(err) {alert(err.message)}
+      }
+      loadData()
+    },[path, navigate])
     
 
   return <footer className={styles.footer}>
-    <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/home-opravar':'/home-zakaznik')}><img src={btnImages[0]} alt="Home" /></button>
-    <button className={styles.buttons} onClick={()=>role==='opravář'?navigate('/searching-opravar'):navigate('/searching-zakaznik')}><img src={btnImages[1]} alt="Search" /></button>
+    <button className={styles.buttons} onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
+    <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/searching-opravar':'/searching-zakaznik')}><img src={btnImages[1]} alt="Search" /></button>
 
     {role==='zákazník'
     ? <button className={styles.add}>+</button>
@@ -53,7 +64,7 @@ const Footer = () => {
     
     <span></span>
     <button className={styles.buttons} onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
-    <button className={styles.buttons} onClick={()=>navigate('/profil-opravar')}><img src={btnImages[3]} alt="Profile" /></button>
+    <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/profil-opravar':'/profil-zakaznik')}><img src={btnImages[3]} alt="Profile" /></button>
   </footer>
 }
 

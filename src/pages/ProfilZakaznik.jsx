@@ -68,6 +68,7 @@ const ProfilZakaznik = () => {
         setLastName(lastName)
         setEmail(email)
         setLocation(location)
+        updateDoc(userRef, {actualRole: 'zákazník'})
       }
     try{
       loadData()

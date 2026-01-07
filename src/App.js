@@ -23,6 +23,7 @@ import ShowProfile from "./pages/ShowProfile";
 import AllRevievs from './pages/AllRevievs'
 import FullReviev from "./pages/FullReviev";
 import AddReviev from "./pages/AddReviev";
+import ShowEducations from "./pages/ShowEducations";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -53,7 +54,7 @@ function AppContent() {
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
   const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', /^\/one-inserate\/[^/]+$/,'/profil-zakaznik/prispevky',
-  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik', /^\/profile\/[^/]+$/, /^\/revievs\/[^/]+$/, /^\/add-reviev\/[^/]+$/ ]
+  '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik', /^\/profile\/[^/]+$/, /^\/revievs\/[^/]+$/, /^\/add-reviev\/[^/]+$/, /^\/educations\/[^/]+$/ ]
   const showFooter = footerWhiteList.some(item => 
     typeof item === 'string' ? item === location.pathname : item.test(location.pathname)
   )
@@ -79,6 +80,7 @@ function AppContent() {
         <Route path="/revievs/:userId" element={<AllRevievs />}/>
         <Route path="/revievs/:userId/:revievId" element={<FullReviev />} />
         <Route path="/add-reviev/:userId" element={<AddReviev />}/>
+        <Route path="/educations/:userId" element={<ShowEducations />} />
         <Route path="/home-opravar" element={<HomeOpravar/>} />
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
         <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />

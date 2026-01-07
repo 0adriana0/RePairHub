@@ -18,7 +18,7 @@ const OneProfile = ({user, id}) => {
                   <Stars rating={rating} className={styles.stars}/>
                 </div>
                 <button className={styles.btn} onClick={()=>navigate(`/revievs/${id}`)}>Zobrazit recenze</button>
-                <button className={styles.btn}>Zobrazit vzdělání</button>
+                <button className={styles.btn} onClick={()=>navigate(`/educations/${id}`)}>Zobrazit vzdělání</button>
               </div>
               <ul className={styles.skills}>
                   <p className={styles.text}>Co umím?</p>
