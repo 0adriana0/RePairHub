@@ -55,7 +55,7 @@ const Footer = () => {
     
 
   return <footer className={styles.footer}>
-    <button className={styles.buttons} onClick={()=>navigate('/home-opravar')}><img src={btnImages[0]} alt="Home" /></button>
+    <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/home-opravar':'/home-zakaznik')}><img src={btnImages[0]} alt="Home" /></button>
     <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/searching-opravar':'/searching-zakaznik')}><img src={btnImages[1]} alt="Search" /></button>
 
     {role==='zákazník'
