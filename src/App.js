@@ -17,6 +17,7 @@ import AddPrispevky from "./pages/AddPrispevky";
 import HomeOpravar from "./pages/HomeOpravar";
 import SearchingOpravar from "./pages/SearchingOpravar";
 import NotificationsOpravar from "./pages/NotificationsOpravar";
+import NotificationsZakaznik from "./pages/NotificationsZakaznik";
 import OneInserate from "./pages/OneInserate";
 import SearchingZakaznik from "./pages/SearchingZakaznik";
 import ShowProfile from "./pages/ShowProfile";
@@ -24,6 +25,7 @@ import AllRevievs from './pages/AllRevievs'
 import FullReviev from "./pages/FullReviev";
 import AddReviev from "./pages/AddReviev";
 import ShowEducations from "./pages/ShowEducations";
+import HomeZakaznik from "./pages/HomeZakaznik";
 
 //Components
 import Navbar from "./components/Navbar";
@@ -53,7 +55,7 @@ function AppContent() {
   const signUpNavbarWhiteList = ['/location-setting', '/chose-role', '/chose-skills' ]
   const showSignUpNavbar = signUpNavbarWhiteList.includes(location.pathname)
 
-  const footerWhiteList = ['/profil-opravar', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', /^\/one-inserate\/[^/]+$/,'/profil-zakaznik/prispevky',
+  const footerWhiteList = ['/profil-opravar','/home-zakaznik', '/profil-zakaznik', '/notifications-opravar', '/searching-opravar', '/home-opravar', '/home-zakaznik', /^\/one-inserate\/[^/]+$/,'/profil-zakaznik/prispevky',
   '/profil-zakaznik/add/step1', '/notifications-zakaznik', '/searching-zakaznik', /^\/profile\/[^/]+$/, /^\/revievs\/[^/]+$/, /^\/add-reviev\/[^/]+$/, /^\/educations\/[^/]+$/ ]
   const showFooter = footerWhiteList.some(item => 
     typeof item === 'string' ? item === location.pathname : item.test(location.pathname)
@@ -65,7 +67,7 @@ function AppContent() {
       {showNavbar && <Navbar />}
       {showSignUpNavbar && <SignUpNavbar/>}
       <Routes>
-        <Route path="/" element={<Welcome />} />
+        <Route path="/" element={<Welcome />} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/location-setting" element={<LocationSet/>} />
@@ -82,9 +84,11 @@ function AppContent() {
         <Route path="/add-reviev/:userId" element={<AddReviev />}/>
         <Route path="/educations/:userId" element={<ShowEducations />} />
         <Route path="/home-opravar" element={<HomeOpravar/>} />
+        <Route path="/home-zakaznik" element={<HomeZakaznik />}/>
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
         <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />
         <Route path="/notifications-opravar" element={<NotificationsOpravar/>} />
+        <Route path="/notifications-zakaznik" element={<NotificationsZakaznik />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {showFooter && <Footer/>}
