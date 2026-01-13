@@ -59,11 +59,11 @@ const Footer = () => {
     <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/searching-opravar':'/searching-zakaznik')}><img src={btnImages[1]} alt="Search" /></button>
 
     {role==='zákazník'
-    ? <button className={styles.add}>+</button>
+    ? <button className={styles.add} onClick={()=>navigate("/profil-zakaznik/prispevky")}>+</button>
     : <img src={celeR} alt='' className={styles.middle}/>}
     
     <span></span>
-    <button className={styles.buttons} onClick={()=>navigate('/notifications-opravar')}><img src={btnImages[2]} alt="Notification" /></button>
+    <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/notifications-opravar':'/notifications-zakaznik')}><img src={btnImages[2]} alt="Notifications" /></button>
     <button className={styles.buttons} onClick={()=>navigate(role==='opravář'?'/profil-opravar':'/profil-zakaznik')}><img src={btnImages[3]} alt="Profile" /></button>
   </footer>
 }

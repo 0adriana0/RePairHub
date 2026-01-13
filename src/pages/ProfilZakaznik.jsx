@@ -11,7 +11,7 @@ import ChangeRoleBtn from '../components/ChangeRoleBtn'
 const ProfilZakaznik = () => {
   const navigate = useNavigate()
 
-  const [pfp] = useState(defaultPfp)
+  const [pfp, setPfp] = useState(defaultPfp)
   const [name, setName] = useState('Načítám data...')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('Načítám data...')
@@ -63,11 +63,12 @@ const ProfilZakaznik = () => {
         const user = auth.currentUser
         const userRef = doc(db, 'users', user.uid)
         const userData = (await getDoc(userRef)).data()
-        const {name, lastName, email, location} = userData
+        const {name, lastName, email, location, pfp} = userData
         setName(name)
         setLastName(lastName)
         setEmail(email)
         setLocation(location)
+        setPfp(pfp)
         updateDoc(userRef, {actualRole: 'zákazník'})
       }
     try{
@@ -78,7 +79,7 @@ const ProfilZakaznik = () => {
   return (<div className={styles.profilZakaznikAll}>
     <ProfilHeader nadpisText='Upravit profil' />
       <div className={styles.profilZakaznik}>
-          <img src={pfp} alt="" />
+          <img className={styles.pfp} src={pfp} alt="" />
           <form onSubmit={(e)=>e.preventDefault()}>
             <button className={styles.role} onClick={()=> navigate('/profil-zakaznik/prispevky')} type="button">Moje Příspěvky</button>
             <p className={styles.labelProfile}>Jméno</p>

@@ -17,6 +17,7 @@ import AddPrispevky from "./pages/AddPrispevky";
 import HomeOpravar from "./pages/HomeOpravar";
 import SearchingOpravar from "./pages/SearchingOpravar";
 import NotificationsOpravar from "./pages/NotificationsOpravar";
+import NotificationsZakaznik from "./pages/NotificationsZakaznik";
 import OneInserate from "./pages/OneInserate";
 import SearchingZakaznik from "./pages/SearchingZakaznik";
 import ShowProfile from "./pages/ShowProfile";
@@ -87,6 +88,7 @@ function AppContent() {
         <Route path="/searching-opravar" element={<SearchingOpravar/>} />
         <Route path="/one-inserate/:inserateId" element={<OneInserate/>} />
         <Route path="/notifications-opravar" element={<NotificationsOpravar/>} />
+        <Route path="/notifications-zakaznik" element={<NotificationsZakaznik />} />
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {showFooter && <Footer/>}
